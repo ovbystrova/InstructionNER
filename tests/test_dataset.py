@@ -1,79 +1,73 @@
+import json
+from pathlib import Path
 from unittest import TestCase
 
 from parameterized import parameterized
 
-from src.dataset import NERDataset
-from src.core.datatypes import Instance, Preffix
+from src.dataset import T5NERDataset
+from src.core.datatypes import Instance
 
-# Samle input data
-input_data = [{
-    "context": "London is a capital of Great Britain",
-    "entities": {
-        "LOC": ["London", "Great Britain"]
-        }
-}]
-instructions = {"NER": "Extract all entities"}
-options = ["ORG", "LOC"]
 
-# Sample Expected Instances
-expected_instances = [Instance(
-    context=Preffix.CONTEXT.value + "London is a capital of Great Britain",
-    question=Preffix.INSTRUCTION.value + "Extract all entities" + " " + Preffix.OPTIONS.value + "ORG, LOC",
-    answer="London is a LOC, Great Britain is a LOC"
-)]
-
-expected_instances_2 = [Instance(
-    context=Preffix.CONTEXT.value + "London is a capital of Great Britain",
-    question=Preffix.INSTRUCTION.value + "Extract Entities",
-    answer="London, Great Britain"
-)]
-
-expected_instances_3 = [Instance(
-    context=Preffix.CONTEXT.value + "London is a capital of Great Britain",
-    question=Preffix.INSTRUCTION.value + "Type Entities: London, Great Britain" + " " + Preffix.OPTIONS.value + "ORG, LOC",
-    answer="London is a LOC, Great Britain is a LOC"
-)]
+def _make_instance(data):
+    instance = Instance(
+        context=data["context"],
+        question=data["question"],
+        answer=data["answer"]
+    )
+    return instance
 
 
 class TestDataset(TestCase):
+
     maxDiff = None
+    test_data_dir = Path(__file__).parent / "data"
+    with open(test_data_dir / "test_case_dataset.json") as f:
+        data = json.load(f)
+
+    input_data = data["markup"]
+    instructions = data["instructions"]
+    options = data["options"]
+
+    instances = [_make_instance(instance) for instance in data["instances"]]
 
     @parameterized.expand([
-        (input_data, instructions, options, 1)
-    ], skip_on_empty=True)
+        (input_data, instructions, options, 3),
+        (input_data, {"NER": instructions["NER"]}, options, 1)
+    ])
     def test_dataset_length(self, data, instructions, options, length_true):
-        dataset = NERDataset(
+        dataset = T5NERDataset(
             data=data,
             instructions=instructions,
             options=options
         )
+        length_pred = len(dataset)
         self.assertEqual(
-            len(dataset),
+            length_pred,
             length_true
         )
 
     @parameterized.expand([
-        (input_data, instructions, options, 0)
+        (input_data, {"NER": instructions["NER"]}, options, 0)
     ])
     def test_dataset_getitem(self, data, instructions, options, idx):
-        dataset = NERDataset(
+        dataset = T5NERDataset(
             data=data,
             instructions=instructions,
             options=options
         )
         instance = dataset[idx]
         self.assertEqual(
-            expected_instances[idx],
+            self.instances[idx],
             instance
         ) 
 
     @parameterized.expand([
-        (input_data, instructions, options, expected_instances),
-        (input_data, {"EntityExtractor": "Extract Entities"}, options, expected_instances_2),
-        (input_data, {"EntityTyping": "Type Entities: "}, options, expected_instances_3)
+        (input_data, {"NER": instructions["NER"]}, options, [instances[0]]),
+        (input_data, {"EntityExtractor": instructions["EntityExtractor"]}, options, [instances[1]]),
+        (input_data, {"EntityTyping": instructions["EntityTyping"]}, options, [instances[2]])
     ])
     def test_dataset_instances(self, data, instructions, options, instances_true):
-        dataset = NERDataset(
+        dataset = T5NERDataset(
             data=data,
             instructions=instructions,
             options=options

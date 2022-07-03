@@ -1,0 +1,36 @@
+{
+  "markup": [
+    {
+      "context": "London is a capital of Great Britain",
+      "entities": {
+        "LOC": [
+          "London",
+          "Great Britain"
+        ]
+      }
+    }
+  ],
+  "options": ["ORG", "LOC"],
+  "instructions": {
+    "NER": "extract entities and their types",
+    "EntityTyping": "type these entity words: ",
+    "EntityExtractor": "extract entity words"
+  },
+  "instances": [
+    {
+      "context": "Sentence: London is a capital of Great Britain",
+      "question": "Instruction: extract entities and their types Options: ORG, LOC",
+      "answer": "London is a LOC, Great Britain is a LOC"
+    },
+    {
+      "context": "Sentence: London is a capital of Great Britain",
+      "question": "Instruction: extract entity words",
+      "answer": "London, Great Britain"
+    },
+    {
+      "context": "Sentence: London is a capital of Great Britain",
+      "question": "Instruction: type these entity words: London, Great Britain Options: ORG, LOC",
+      "answer": "London is a LOC, Great Britain is a LOC"
+    }
+  ]
+}
