@@ -1,7 +1,7 @@
 import configparser
+import json
 from pathlib import Path
 import random
-from typing import Dict, List
 
 import numpy as np
 import torch
@@ -21,6 +21,7 @@ def set_global_seed(seed: int):
     torch.cuda.manual_seed_all(seed)
     torch.backends.cudnn.benchmark = False
     torch.backends.cudnn.deterministic = True
+
 
 def load_config(config_file: str) -> configparser.ConfigParser:
     """
@@ -49,3 +50,9 @@ def load_config(config_file: str) -> configparser.ConfigParser:
             f"Current file path is '{config_file.absolute()}'")
 
     return config
+
+
+def load_json(filepath: str):
+    with open(filepath, "r") as f:
+        data = json.load(f)
+    return data
