@@ -39,6 +39,6 @@ class Formatter(ABC):
             else:
                 answers.extend([f"{value} is a {entity_label}" for value in values])
 
-        answer = ", ".join(answers)
+        answer = ", ".join(answers) + "."
 
         return answer

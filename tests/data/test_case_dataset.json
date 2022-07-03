@@ -20,17 +20,17 @@
     {
       "context": "Sentence: London is a capital of Great Britain",
       "question": "Instruction: extract entities and their types Options: ORG, LOC",
-      "answer": "London is a LOC, Great Britain is a LOC"
+      "answer": "London is a LOC, Great Britain is a LOC."
     },
     {
       "context": "Sentence: London is a capital of Great Britain",
       "question": "Instruction: extract entity words",
-      "answer": "London, Great Britain"
+      "answer": "London, Great Britain."
     },
     {
       "context": "Sentence: London is a capital of Great Britain",
       "question": "Instruction: type these entity words: London, Great Britain Options: ORG, LOC",
-      "answer": "London is a LOC, Great Britain is a LOC"
+      "answer": "London is a LOC, Great Britain is a LOC."
     }
   ]
 }

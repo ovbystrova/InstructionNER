@@ -26,7 +26,7 @@ class EntityExtractTaskFormatter(Formatter):
         instance = Instance(
             context=Preffix.CONTEXT.value + data["context"],
             question=question,
-            answer=", ".join(answers)
+            answer=", ".join(answers) + "."
         )
 
         return instance
