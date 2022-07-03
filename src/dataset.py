@@ -2,7 +2,7 @@ from typing import Dict, List
 
 from torch.utils.data import Dataset
 
-from src.core.datatypes import Instance, DatasetType, Preffix
+from src.core.datatypes import Instance, TaskType
 from src.formatters.EntityTask import EntityTaskFormatter
 from src.formatters.EntityTypeTask import EntityTypeTaskFormatter
 from src.formatters.NERTask import NERTaskFormatter
@@ -15,13 +15,19 @@ class NERDataset(Dataset):
         data: List[Dict[str]],
         instructions: Dict[str, str],
         options: List[str],
+        tasks: List[TaskType] = [
+            TaskType.NER,
+            TaskType.ENTITY_EXTRACTOR,
+            TaskType.ENTITY_TYPING
+        ]
     ):
         super().__init__()
 
         self.instances = self._convert_list_to_instances(
             data=data,
             instructions=instructions,
-            options=options
+            options=options, 
+            tasks=tasks
         )
 
     def __len__(self) -> int:
@@ -34,33 +40,29 @@ class NERDataset(Dataset):
         self,
         data: List[Dict[str]],
         instructions: Dict[str, str],
-        options: Dict[str, List[str]]
-    ):
+        options: Dict[str, List[str]],
+        tasks: List[TaskType]
+    ) -> List[Instance]:
+
         instances = []
 
+        # TODO Think how to move it from here
+        task_to_formatter = {
+            TaskType.ENTITY_EXTRACTOR: EntityTaskFormatter,
+            TaskType.ENTITY_TYPING: EntityTypeTaskFormatter,
+            TaskType.NER: NERTaskFormatter
+            }
+
         for item in data:
-            # TODO this is for NER task only for now
-            # TODO whrite a better Formatter for every type of three tasks
-            
-            entity_instance = EntityTaskFormatter.format(
-                data=item,
-                instruction=instructions["EntityTask"],
-                options=options
-            )
-            entity_ner_instance = NERTaskFormatter.format(
-                data=item,
-                instruction=instructions["NERTask"],
-                options=options
-            )
-            entity_type_instance = EntityTypeTaskFormatter.format(
-                data=item,
-                instruction=instructions["EntityTypingTask"],
-                options=options
-            )
 
+            for task in tasks:
+                
+                instance = task_to_formatter[task].format(
+                    data=item,
+                    instruction=instructions[task.value],
+                    options=options
+                )
 
-
-
-            instances.append(entity_instance)
+                instances.append(instance)
 
         return instances

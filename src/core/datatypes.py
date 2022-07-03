@@ -16,9 +16,14 @@ class Preffix(enum):
     INSTRUCTION = "Instruction: "
     OPTIONS = "Options: "
 
+class TaskType(enum):
+    ENTITY_EXTRACTOR = "EntityExtractor"
+    ENTITY_TYPING = "EntityTyping"
+    NER = "NER"
+
 
 @dataclass
 class Instance:
     context: str
-    instruction: str
-    options: Optional[List[str]]
+    question: str
+    answer: str

@@ -1,4 +1,3 @@
-from dis import Instruction
 from typing import Dict, List
 
 from src.core.datatypes import Instance, Preffix
@@ -17,7 +16,8 @@ class EntityTypeTaskFormatter(Formatter):
         instance = Instance(
             context=Preffix.CONTEXT + data["context"],
             instruction = Preffix.INSTRUCTION + instruction,
-            options=Preffix.OPTIONS +  ", ".join(options)
+            options=Preffix.OPTIONS +  ", ".join(options),
+            answer=Formatter.format_answer(data["entities"])
         )
 
         return instance
