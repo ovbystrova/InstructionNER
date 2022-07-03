@@ -9,7 +9,16 @@ model:
   batch_size: 16
   learning_rate: 5e-5
   beam_size: 2
+  n_epoch: 1
+
+tokenizer:
+  max_length: 512
+#  truncation: "only_second",
+  padding": True
+  return_tensors: "pt"
+#  return_offsets_mapping": True,
 
 do_log: true
 seed: 23
+replace_labels_with_special_tokens: false
 

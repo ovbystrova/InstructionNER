@@ -1,9 +1,13 @@
 import torch
+from torch.utils.data import DataLoader
 from torch.utils.tensorboard import SummaryWriter
 from transformers import T5Tokenizer, T5ForConditionalGeneration
 
-from src.dataset import T5NERDataset
 from arg_parse import get_train_args
+from train_utils import train
+
+from src.collator import Collator
+from src.dataset import T5NERDataset
 from utils import set_global_seed, load_config, load_json
 
 
@@ -15,6 +19,7 @@ if __name__ == "__main__":
 
     set_global_seed(int(config["seed"]))
 
+    writer = None
     if args.log_dir is not None:
         writer = SummaryWriter(log_dir=args.log_dir)
 
@@ -49,9 +54,50 @@ if __name__ == "__main__":
 
     # load model
     tokenizer = T5Tokenizer.from_pretrained(config["model"]["name"])
+    tokenizer_kwargs = dict(config["tokenizer"])
     model = T5ForConditionalGeneration.from_pretrained(config["model"]["name"])
+
+    if config["replace_labels_with_special_tokens"]:
+        # TODO add special tokens to tokenizer and model
+        pass
 
     optimizer = torch.optim.Adam(
         model.parameters(),
         lr=float(config["model"]["learning_rate"]),
+    )
+
+    collator = Collator(
+        tokenizer=tokenizer,
+        tokenizer_kwargs=tokenizer_kwargs,
+    )
+
+    train_dataloader = DataLoader(
+        dataset=train_dataset,
+        batch_size=int(config["model"]["batch_size"]),
+        shuffle=True,
+        collate_fn=collator,
+    )
+
+    valid_dataloader = DataLoader(
+        dataset=train_dataset,
+        batch_size=int(config["model"]["batch_size"]),
+        shuffle=True,
+        collate_fn=collator,
+    )
+
+    test_dataloader = DataLoader(
+        dataset=train_dataset,
+        batch_size=int(config["model"]["batch_size"]),
+        shuffle=True,
+        collate_fn=collator,
+    )
+
+    train(
+        n_epochs=config["model"]["n_epoch"],
+        model=model,
+        train_dataloader=train_dataloader,
+        test_dataloader=test_dataloader,
+        optimizer=optimizer,
+        writer=writer,
+        device=device,
     )
