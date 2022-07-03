@@ -3,32 +3,36 @@ from typing import Dict, List, Any
 from torch.utils.data import Dataset
 
 from src.core.datatypes import Instance, TaskType
-from src.formatters.EntityTask import EntityTaskFormatter
-from src.formatters.EntityTypeTask import EntityTypeTaskFormatter
-from src.formatters.NERTask import NERTaskFormatter
+from src.formatters import (
+    EntityExtractTaskFormatter,
+    EntityTypeTaskFormatter,
+    NERTaskFormatter
+)
 
 
-class NERDataset(Dataset):
+class T5NERDataset(Dataset):
 
     def __init__(
-        self, 
-        data: List[Dict[str, Any]],
-        instructions: Dict[str, str],
-        options: List[str],
-        tasks: List[TaskType] = [
-            TaskType.NER,
-            TaskType.ENTITY_EXTRACTOR,
-            TaskType.ENTITY_TYPING
-        ]
+            self,
+            data: List[Dict[str, Any]],
+            instructions: Dict[str, str],
+            options: List[str],
+            tasks: List[TaskType] = (
+                    TaskType.NER,
+                    TaskType.ENTITY_EXTRACTOR,
+                    TaskType.ENTITY_TYPING
+            )
     ):
         super().__init__()
 
         self.instances = self._convert_list_to_instances(
             data=data,
             instructions=instructions,
-            options=options, 
+            options=options,
             tasks=tasks
         )
+
+
 
     def __len__(self) -> int:
         return len(self.instances)
@@ -37,35 +41,71 @@ class NERDataset(Dataset):
         return self.instances[index]
 
     def _convert_list_to_instances(
-        self,
-        data: List[Dict[str, Any]],
-        instructions: Dict[str, str],
-        options: Dict[str, List[str]],
-        tasks: List[TaskType]
+            self,
+            data: List[Dict[str, Any]],
+            instructions: Dict[str, str],
+            options: List[str],
+            tasks: List[TaskType]
     ) -> List[Instance]:
+        """
+        Converts raw data into list of Instance objects
+        :param data:
+        :param instructions: mapping dictionary from task type to relevant instruction
+        :param options: list of labels relevant to the whole dataset
+        :param tasks: for what tasks create Instances (each task has its own instruction)
+        :return: List of Instance objects
+        """
 
         instances = []
 
-        # TODO Think how to move it from here
-        task_to_formatter = {
-            TaskType.ENTITY_EXTRACTOR: EntityTaskFormatter,
-            TaskType.ENTITY_TYPING: EntityTypeTaskFormatter,
-            TaskType.NER: NERTaskFormatter
-            }
-
         for item in data:
 
-            for task in tasks:
+            instances_per_item = self._convert_item_to_instances(
+                data_item=item,
+                instructions=instructions,
+                options=options,
+                tasks=tasks
+            )
 
-                if not task.value in instructions:
-                    continue
-                
-                instance = task_to_formatter[task].format(
-                    data=item,
-                    instruction=instructions[task.value],
-                    options=options
-                )
+            instances.extend(instances_per_item)
+        return instances
 
-                instances.append(instance)
+    def _convert_item_to_instances(
+            self,
+            data_item,
+            instructions,
+            options,
+            tasks
+    ):
+        """
+        Creates all task instances from one element of data
+        :param data_item:
+        :param instructions: mapping dictionary from task type to relevant instruction
+        :param options: list of labels relevant to the whole dataset
+        :param tasks: for what tasks create Instances (each task has its own instruction)
+        :return: Instance
+        """
+
+        instances = []
+
+        # TODO think about this dict and whether it is good for DIP
+        task_to_formatter = {
+            TaskType.ENTITY_EXTRACTOR: EntityExtractTaskFormatter,
+            TaskType.ENTITY_TYPING: EntityTypeTaskFormatter,
+            TaskType.NER: NERTaskFormatter
+        }
+
+        for task in tasks:
+
+            if task.value not in instructions:
+                continue
+
+            instance = task_to_formatter[task].format_instance(
+                data=data_item,
+                instruction=instructions[task.value],
+                options=options
+            )
+
+            instances.append(instance)
 
         return instances

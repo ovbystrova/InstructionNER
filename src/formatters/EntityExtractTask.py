@@ -1,18 +1,24 @@
 from typing import Dict, List, Any
 
 from src.core.datatypes import Instance, Preffix
-from src.formatters import Formatter
+from src.core.formatter import Formatter
 
 
-class EntityTaskFormatter(Formatter):
+class EntityExtractTaskFormatter(Formatter):
+    """
+    Task: Extract all entity values from the text without their labels
+    """
 
     @classmethod
-    def format(cls,
-               data: Dict[str, Any],
-               instruction: str,
-               options: List[str]
-               ) -> Instance:
+    def format_instance(
+            cls,
+            data: Dict[str, Any],
+            instruction: str,
+            options: List[str]
+    ) -> Instance:
+
         question = Preffix.INSTRUCTION.value + instruction
+
         answers = []
         for entity_values in data["entities"].values():
             answers.extend(entity_values)

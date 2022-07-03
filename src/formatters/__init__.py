@@ -1,30 +1,10 @@
-from abc import abstractmethod, ABC
-from typing import List, Dict
+from src.formatters.EntityExtractTask import EntityExtractTaskFormatter
+from src.formatters.EntityTypeTask import EntityTypeTaskFormatter
+from src.formatters.NERTask import NERTaskFormatter
 
-from src.core.datatypes import Instance
 
-
-class Formatter(ABC):
-
-    @abstractmethod
-    def format(self, *args) -> Instance:
-        raise NotImplementedError
-
-    @classmethod
-    def format_answer(cls, entities: Dict[str, List[str]]):
-
-        answers = []
-
-        for entity_label, values in entities.items():
-
-            for value in values:
-                if entity_label.lower().startswith("a"):
-                    answer = f"{value} is an {entity_label}"
-                else:
-                    answer = f"{value} is a {entity_label}"
-
-                answers.append(answer)
-
-        answer = ", ".join(answers)
-
-        return answer
+__all__ = [
+    "EntityExtractTaskFormatter",
+    "EntityTypeTaskFormatter",
+    "NERTaskFormatter"
+]
