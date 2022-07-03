@@ -1,6 +1,7 @@
 from typing import Dict, List, Any
 
 from torch.utils.data import Dataset
+from tqdm import tqdm
 
 from src.core.datatypes import Instance, TaskType
 from src.formatters import (
@@ -32,8 +33,6 @@ class T5NERDataset(Dataset):
             tasks=tasks
         )
 
-
-
     def __len__(self) -> int:
         return len(self.instances)
 
@@ -58,7 +57,7 @@ class T5NERDataset(Dataset):
 
         instances = []
 
-        for item in data:
+        for item in tqdm(data, desc="Prepare Dataset"):
 
             instances_per_item = self._convert_item_to_instances(
                 data_item=item,
