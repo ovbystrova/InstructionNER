@@ -1,4 +1,6 @@
 dataclasses==0.6
 pyyaml==6.0
+SentencePiece==0.1.96
 torch==1.12.0
+tensorboard==2.9.1
 transformers==4.3.3
