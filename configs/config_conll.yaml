@@ -1,0 +1,15 @@
+data:
+  train: "data/conll2003/train_gen.json"
+  valid: "data/conll2003/valid_gen.json"
+  test: "data/conll2003/test_gen.json"
+  dataset: "conll2003"
+
+model:
+  name: "t5-base"
+  batch_size: 16
+  learning_rate: 5e-5
+  beam_size: 2
+
+do_log: true
+seed: 23
+
