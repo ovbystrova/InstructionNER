@@ -3,6 +3,7 @@ from typing import List, Dict
 
 from src.core.datatypes import Instance
 
+
 class Formatter(ABC):
 
     @abstractmethod
@@ -10,7 +11,7 @@ class Formatter(ABC):
         raise NotImplementedError
 
     @classmethod
-    def format_answer(entities: Dict[str, List[str]]):
+    def format_answer(cls, entities: Dict[str, List[str]]):
 
         answers = []
 
@@ -18,12 +19,12 @@ class Formatter(ABC):
 
             for value in values:
                 if entity_label.lower().startswith("a"):
-                    answer = "{value} is an {entity_label}"
+                    answer = f"{value} is an {entity_label}"
                 else:
-                    answer = "{value} is a {entity_label}"
+                    answer = f"{value} is a {entity_label}"
 
                 answers.append(answer)
 
-        answer = " ".join(answers)
+        answer = ", ".join(answers)
 
         return answer

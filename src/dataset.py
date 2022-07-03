@@ -1,4 +1,4 @@
-from typing import Dict, List
+from typing import Dict, List, Any
 
 from torch.utils.data import Dataset
 
@@ -12,7 +12,7 @@ class NERDataset(Dataset):
 
     def __init__(
         self, 
-        data: List[Dict[str]],
+        data: List[Dict[str, Any]],
         instructions: Dict[str, str],
         options: List[str],
         tasks: List[TaskType] = [
@@ -38,7 +38,7 @@ class NERDataset(Dataset):
 
     def _convert_list_to_instances(
         self,
-        data: List[Dict[str]],
+        data: List[Dict[str, Any]],
         instructions: Dict[str, str],
         options: Dict[str, List[str]],
         tasks: List[TaskType]
@@ -56,6 +56,9 @@ class NERDataset(Dataset):
         for item in data:
 
             for task in tasks:
+
+                if not task.value in instructions:
+                    continue
                 
                 instance = task_to_formatter[task].format(
                     data=item,
