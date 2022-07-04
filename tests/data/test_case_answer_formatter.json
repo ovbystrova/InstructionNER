@@ -1,0 +1,18 @@
+{
+  "instance":
+  {
+    "context": "Sentence: London is a capital of Great Britain",
+    "question": "Instruction: extract entities and their types Options: ORG, LOC",
+    "answer": "London is a LOC, Great Britain is a LOC."
+  },
+  "answers": [
+    "London is a LOC, Great Britain is a LOC.",
+    "London sdsdd LOC, Great Britain is a LOC.",
+    "Great Britain is a LOC."
+  ],
+  "spans_true": [
+    [[0,6, "LOC"], [23, 36, "LOC"]],
+    [[23, 36, "LOC"]],
+    [[23, 36, "LOC"]]
+  ]
+}
