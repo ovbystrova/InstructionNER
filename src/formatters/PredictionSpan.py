@@ -50,13 +50,13 @@ class PredictionSpanFormatter(Formatter):
             label = label.strip(" ").rstrip(" ")
 
             print(source_sentence)
-            value_counts_in_sencence = source_sentence.count(value)
+            value_counts_in_sentence = source_sentence.count(value)
 
-            if value_counts_in_sencence == 0:
+            if value_counts_in_sentence == 0:
                 return None
 
-            elif value_counts_in_sencence > 1:
-                raise ValueError(f"Expected to be one value per sentence, found {value_counts_in_sencence}")
+            elif value_counts_in_sentence > 1:
+                raise ValueError(f"Expected to be one value per sentence, found {value_counts_in_sentence}")
 
             start = source_sentence.find(value)
             end = start + len(value)
