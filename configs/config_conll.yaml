@@ -13,10 +13,8 @@ model:
 
 tokenizer:
   max_length: 512
-#  truncation: "only_second",
-  padding": True
+  padding: True
   return_tensors: "pt"
-#  return_offsets_mapping": True,
 
 do_log: true
 seed: 23
