@@ -93,6 +93,9 @@ if __name__ == "__main__":
         collate_fn=collator,
     )
 
+    eval_every_n_batches = args.eval_every_n_batches
+    pred_every_n_batches = args.pred_every_n_batches
+
     train(
         n_epochs=int(config["model"]["n_epoch"]),
         model=model,
@@ -102,4 +105,6 @@ if __name__ == "__main__":
         optimizer=optimizer,
         writer=writer,
         device=device,
+        eval_every_n_batches=eval_every_n_batches,
+        pred_every_n_batches=pred_every_n_batches
     )

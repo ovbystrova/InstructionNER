@@ -31,6 +31,20 @@ def get_train_args() -> argparse.Namespace:
     )
 
     parser.add_argument(
+        "--eval_every_n_batches",
+        type=int,
+        default=200,
+        help="do evaluation every n batches",
+    )
+
+    parser.add_argument(
+        "--pred_every_n_batches",
+        type=int,
+        default=200,
+        help="write one sample prediction every n batches",
+    )
+
+    parser.add_argument(
         "--path_to_model_config",
         type=str,
         required=True,
