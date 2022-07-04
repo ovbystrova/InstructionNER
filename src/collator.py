@@ -32,6 +32,10 @@ class Collator:
             question_list, context_list, **self.tokenizer_kwargs
         )
 
+        with self.tokenizer.as_target_tokenizer():
+            answers = self.tokenizer(answer_list, **self.tokenizer_kwargs)
+
+        tokenized_batch["answers"] = answers
         tokenized_batch["instances"] = batch
 
         return tokenized_batch
