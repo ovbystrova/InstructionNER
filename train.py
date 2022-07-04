@@ -56,6 +56,7 @@ if __name__ == "__main__":
     tokenizer = T5Tokenizer.from_pretrained(config["model"]["name"])
     tokenizer_kwargs = dict(config["tokenizer"])
     model = T5ForConditionalGeneration.from_pretrained(config["model"]["name"])
+    model.to(device)
 
     if config["replace_labels_with_special_tokens"]:
         # TODO add special tokens to tokenizer and model
@@ -93,8 +94,9 @@ if __name__ == "__main__":
     )
 
     train(
-        n_epochs=config["model"]["n_epoch"],
+        n_epochs=int(config["model"]["n_epoch"]),
         model=model,
+        tokenizer=tokenizer,
         train_dataloader=train_dataloader,
         test_dataloader=test_dataloader,
         optimizer=optimizer,
