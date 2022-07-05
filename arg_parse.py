@@ -52,6 +52,13 @@ def get_train_args() -> argparse.Namespace:
         help="path to all necessary information for model",
     )
 
+    parser.add_argument(
+        "--path_to_model_save",
+        type=str,
+        default="runs/model/",
+        help="where to save model",
+    )
+
     args = parser.parse_args()
 
     return args
