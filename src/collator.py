@@ -29,7 +29,7 @@ class Collator:
             answer_list.append(instance.answer)
 
         tokenized_batch = self.tokenizer(
-            question_list, context_list, **self.tokenizer_kwargs
+            context_list, question_list, **self.tokenizer_kwargs
         )
 
         with self.tokenizer.as_target_tokenizer():
