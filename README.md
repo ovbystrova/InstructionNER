@@ -44,9 +44,11 @@ Prediction (raw text): Spain is a LOC.
 ```
 
 # Citation
+```bibtex
 @article{wang2022instructionner,
   title={Instructionner: A multi-task instruction-based generative framework for few-shot ner},
   author={Wang, Liwen and Li, Rumei and Yan, Yang and Yan, Yuanmeng and Wang, Sirui and Wu, Wei and Xu, Weiran},
   journal={arXiv preprint arXiv:2203.03903},
   year={2022}
 }
+```
