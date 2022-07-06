@@ -53,6 +53,11 @@ def load_config(config_file: str) -> configparser.ConfigParser:
 
 
 def load_json(filepath: str):
+    """
+    Load json file
+    :param filepath: str
+    :return:
+    """
     with open(filepath, "r") as f:
         data = json.load(f)
     return data

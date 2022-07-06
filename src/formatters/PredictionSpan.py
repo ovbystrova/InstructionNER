@@ -1,10 +1,13 @@
-from typing import Dict, Any, List, Tuple
+from typing import Dict, Any, List, Tuple, Optional
 
 from src.core.datatypes import Instance, Preffix
 from src.core.formatter import Formatter
 
 
 class PredictionSpanFormatter(Formatter):
+    """
+    Turns raw Model output into NER spans (start_idx, end_idx, label)
+    """
     answer_templates = ["is a", "is an"]
 
     def format_instance(
@@ -16,6 +19,12 @@ class PredictionSpanFormatter(Formatter):
         raise NotImplementedError
 
     def format_answer_spans(self, instance: Instance, prediction: str) -> List[Tuple[int, int, str]]:
+        """
+        Based on model prediction and instance created entity spans
+        :param instance:
+        :param prediction:
+        :return:
+        """
 
         entity_spans = []
         source_sentence = instance.context.lstrip(Preffix.CONTEXT.value)
@@ -34,7 +43,13 @@ class PredictionSpanFormatter(Formatter):
 
         return entity_spans
 
-    def _get_span_from_part(self, prediction_part, source_sentence):
+    def _get_span_from_part(self, prediction_part: str, source_sentence: str) -> Optional[Tuple(int, int, str)]:
+        """
+        Gets entity span from part of prediction
+        :param prediction_part: Olga is a PER
+        :param source_sentence: Today Olga decided to sleep a lot.
+        :return: (6, 10, "PER")
+        """
 
         if not any([template in prediction_part for template in self.answer_templates]):
             return None

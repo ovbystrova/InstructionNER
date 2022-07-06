@@ -10,6 +10,8 @@ from src.formatters import (
     NERTaskFormatter
 )
 
+# TODO change input format in data parameter / Add additional converters to datasets
+
 
 class T5NERDataset(Dataset):
 
@@ -71,10 +73,10 @@ class T5NERDataset(Dataset):
 
     def _convert_item_to_instances(
             self,
-            data_item,
-            instructions,
-            options,
-            tasks
+            data_item: Dict[str, Any],
+            instructions: Dict[str, str],
+            options: List[str],
+            tasks: List[TaskType]
     ):
         """
         Creates all task instances from one element of data

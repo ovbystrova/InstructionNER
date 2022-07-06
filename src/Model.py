@@ -33,7 +33,15 @@ class Model:
         self.instructions = instructions
         self.options = options
 
-    def predict(self, text, task_type=TaskType.NER):
+    # TODO add PredictionList formatter for TaskType.EntitiesExtractor
+    # TODO change return to Any task, not only spans
+    def predict(self, text: str, task_type=TaskType.NER):
+        """
+        Generate prediction and format spans based on TaskType
+        :param text: input text
+        :param task_type: one of NER / EntityExtractor / EntityTyping
+        :return:
+        """
 
         if task_type not in self.task_to_formatter:
             raise ValueError(f"Expected task_type to be on of {self.task_to_formatter.keys()}")

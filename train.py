@@ -80,14 +80,14 @@ if __name__ == "__main__":
     )
 
     valid_dataloader = DataLoader(
-        dataset=train_dataset,
+        dataset=valid_dataset,
         batch_size=int(config["model"]["batch_size"]),
         shuffle=True,
         collate_fn=collator,
     )
 
     test_dataloader = DataLoader(
-        dataset=train_dataset,
+        dataset=test_dataset,
         batch_size=int(config["model"]["batch_size"]),
         shuffle=True,
         collate_fn=collator,
@@ -106,5 +106,8 @@ if __name__ == "__main__":
         writer=writer,
         device=device,
         eval_every_n_batches=eval_every_n_batches,
-        pred_every_n_batches=pred_every_n_batches
+        pred_every_n_batches=pred_every_n_batches,
+        generation_kwargs={
+            "num_beams": int(config["model"]["beam_size"])
+        }
     )

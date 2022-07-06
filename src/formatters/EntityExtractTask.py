@@ -8,7 +8,6 @@ class EntityExtractTaskFormatter(Formatter):
     """
     Task: Extract all entity values from the text without their labels
     """
-
     @classmethod
     def format_instance(
             cls,

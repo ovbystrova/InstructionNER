@@ -14,7 +14,6 @@ class Formatter(ABC):
             options
     ) -> Instance:
         """
-
         :param data: context and entities
         :param instruction: prompt for
         :param options: entity labels presented in data context

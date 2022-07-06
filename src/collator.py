@@ -18,6 +18,12 @@ class Collator:
         self,
         batch: List[Instance],
     ) -> transformers.tokenization_utils_base.BatchEncoding:
+        """
+        Tokenizes context, questions, answer and puts them into batch
+        along with original instances
+        :param batch: List of Instances
+        :return: Batch
+        """
 
         context_list = []
         question_list = []
