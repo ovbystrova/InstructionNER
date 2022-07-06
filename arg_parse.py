@@ -21,13 +21,13 @@ def get_train_args() -> argparse.Namespace:
         "--path_to_options",
         type=str,
         default="options.json",
-        help="file with mapping between dataset and NER labels",
+        help="file with mapping dataset to its entities",
     )
 
     parser.add_argument(
         "--log_dir",
         type=str,
-        help="file with mapping between dataset and NER labels",
+        help="where to log tensorboard",
     )
 
     parser.add_argument(
@@ -41,7 +41,7 @@ def get_train_args() -> argparse.Namespace:
         "--pred_every_n_batches",
         type=int,
         default=200,
-        help="write one sample prediction every n batches",
+        help="write random sample sample predictions every n batches",
     )
 
     parser.add_argument(
