@@ -62,3 +62,38 @@ def get_train_args() -> argparse.Namespace:
     args = parser.parse_args()
 
     return args
+
+
+def get_data_args() -> argparse.Namespace:
+    """
+    Reader Argument Parser.
+    Returns:
+        Namespace: Parsed arguments.
+    """
+
+    parser = argparse.ArgumentParser()
+
+    parser.add_argument(
+        "--path_to_file",
+        type=str,
+        required=True,
+        help="path to initial raw data file",
+    )
+
+    parser.add_argument(
+        "--dataset_type",
+        type=str,
+        required=True,
+        choices=["conll2003"],
+        help="dataset type to map it with relevant Reader",
+    )
+
+    parser.add_argument(
+        "--output_folder",
+        type=str,
+        help="where to save converted dataset",
+    )
+
+    args = parser.parse_args()
+
+    return args

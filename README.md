@@ -12,6 +12,45 @@ pip install -r requirements.txt
 pip install -r requirements_test.txt
 ```
 
+## Data Preparation
+In order to make a unified training interface, 
+you can convert your raw input data (**for conll2003 dataset only for now**)
+with the following script:
+```
+python prepare_data.py \
+--path_to_file 'data/conll2003/train.txt' \
+--dataset_type 'conll2003' \
+--output_folder 'data/conll2003' \
+```
+
+This script converts every dataset to a list of sentences.
+Every sentence is like this:
+```
+{
+    "context": "SOCCER - JAPAN GET LUCKY WIN , CHINA IN SURPRISE DEFEAT .",
+    "entity_values": {
+            "LOC": [
+                "JAPAN "
+            ],
+            "PER": [
+                "CHINA "
+            ]
+        },
+    "entity_spans": [
+            {
+                "start": 9,
+                "end": 15,
+                "label": "LOC"
+            },
+            {
+                "start": 31,
+                "end": 37,
+                "label": "PER"
+            }
+        ]
+}
+```
+
 ## Training
 Script for training T5 model:
 ```
