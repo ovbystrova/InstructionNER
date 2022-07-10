@@ -1,6 +1,46 @@
 from enum import Enum
+from typing import List, Optional, Tuple
 
 from dataclasses import dataclass
+
+
+@dataclass()
+class Instance:
+    """
+    Core Instance dataclass.
+    :param context (str): initial text
+    :param question (str): question for QA model
+    :param answer (optional): raw answer from QA model
+    :param spans (optional): List of Spans
+    """
+    context: str
+    question: str
+    answer: Optional[str]
+    # spans: Optional[List[Tuple[int, int, str]]]
+
+
+@dataclass()
+class Span:
+    """
+    Core Span dataclass
+    :param start(int): start index of an entity
+    :param end(int): end index of an entity
+    :param label(str): entity label
+    """
+    start: int
+    end: int
+    label: str
+
+    def to_json(self):
+        return {"start": self.start, "end": self.end, "label": self.label}
+
+    @staticmethod
+    def from_json(data):
+        return Span(
+            start=int(data["start"]),
+            end=int(data["end"]),
+            label=data["label"]
+        )
 
 
 class DatasetType(Enum):
@@ -22,8 +62,7 @@ class TaskType(Enum):
     NER = "NER"
 
 
-@dataclass
-class Instance:
-    context: str
-    question: str
-    answer: str
+class DatasetField(Enum):
+    CONTEXT = "context"
+    ENTITY_VALUES = "entity_values"
+    ENTITY_SPANS = "entity_spans"
