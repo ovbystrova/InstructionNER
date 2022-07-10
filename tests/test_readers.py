@@ -49,7 +49,7 @@ class TestReader(TestCase):
         reader = CONLLReader()
 
         output_pred = reader.read_from_file(
-            path_to_conll_file=input_conll_file
+            path_to_file=input_conll_file
         )
 
         self.assertListEqual(

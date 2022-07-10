@@ -1,5 +1,5 @@
 import json
-from pathlib import Path, PosixPath
+from pathlib import Path
 from typing import Any, Dict, List, Union, Tuple
 
 from src.core.datatypes import DatasetField, Span
@@ -44,13 +44,16 @@ class CONLLReader(Reader):
         return data_processed
 
     @staticmethod
-    def save_to_json(data: List[Dict[str, Any]], path: str):
+    def save_to_json(data: List[Dict[str, Any]], path: Union[str, Path]):
         """
         Save processed data to json file
         :param data: List of sentences with entities
         :param path: where to save the file
         :return:
         """
+
+        if not isinstance(path, str):
+            path = str(path)
 
         for item in data:
 
@@ -65,20 +68,20 @@ class CONLLReader(Reader):
 
         print(f"Saved to {path}")
 
-    def read_from_file(self, path_to_conll_file: Union[str, PosixPath]):
+    def read_from_file(self, path_to_file: Union[str, Path]):
         """
         Wrapper around self.read(). Read 'path_to_conll_file' and run self.read()
-        :param path_to_conll_file:
+        :param path_to_file:
         :return: List of Dicts where each element is a sentence with entities
         """
 
-        if isinstance(path_to_conll_file, str):
-            path_to_conll_file = Path(path_to_conll_file)
+        if isinstance(path_to_file, str):
+            path_to_file = Path(path_to_file)
 
-        if not path_to_conll_file.suffix.endswith(".txt"):
-            raise ValueError(f"Expected .txt file, got {path_to_conll_file}")
+        if not path_to_file.suffix.endswith(".txt"):
+            raise ValueError(f"Expected .txt file, got {path_to_file}")
 
-        with open(path_to_conll_file, "r") as f:
+        with open(path_to_file, "r") as f:
             file_lines = f.readlines()
             file_lines = [x.strip("\n") for x in file_lines]
 

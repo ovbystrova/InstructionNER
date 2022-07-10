@@ -1,5 +1,6 @@
 from abc import ABC, abstractmethod
-from typing import Any
+from pathlib import Path
+from typing import Any, Union
 
 
 class Reader(ABC):
@@ -8,4 +9,8 @@ class Reader(ABC):
     """
     @abstractmethod
     def read(self, data: Any):
+        raise NotImplementedError
+
+    @abstractmethod
+    def read_from_file(self, path_to_file: Union[str, Path]):
         raise NotImplementedError
