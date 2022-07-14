@@ -19,6 +19,13 @@ class Instance:
     entity_spans: Optional[List[Tuple[int, int, str]]]
     entity_values: Optional[Dict[str, List[str]]]
 
+    def __str__(self):
+
+        if self.answer is not None:
+            return self.context + " " + self.question + " " + self.answer
+
+        return self.context + " " + self.question
+
 
 @dataclass()
 class Span:
@@ -55,6 +62,7 @@ class Preffix(Enum):
     CONTEXT = "Sentence: "
     INSTRUCTION = "Instruction: "
     OPTIONS = "Options: "
+    ANSWER = "Answer: "
 
 
 class TaskType(Enum):
