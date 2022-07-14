@@ -48,7 +48,7 @@ def get_train_args() -> argparse.Namespace:
         "--path_to_model_config",
         type=str,
         required=True,
-        default="config.yaml",
+        default="configs/config.yaml",
         help="path to all necessary information for model",
     )
 
