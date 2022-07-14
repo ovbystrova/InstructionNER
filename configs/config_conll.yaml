@@ -1,7 +1,7 @@
 data:
-  train: "data/conll2003/train_gen.json"
-  valid: "data/conll2003/valid_gen.json"
-  test: "data/conll2003/test_gen.json"
+  train: "data/conll2003/train.json"
+  valid: "data/conll2003/valid.json"
+  test: "data/conll2003/test.json"
   dataset: "conll2003"
 
 model:
@@ -19,4 +19,3 @@ tokenizer:
 do_log: true
 seed: 23
 replace_labels_with_special_tokens: false
-

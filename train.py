@@ -8,7 +8,7 @@ from train_utils import train
 
 from src.collator import Collator
 from src.dataset import T5NERDataset
-from utils import set_global_seed, load_config, load_json
+from utils import set_global_seed, load_config, load_json, loads_json
 
 
 if __name__ == "__main__":
@@ -17,7 +17,7 @@ if __name__ == "__main__":
 
     config = load_config(args.path_to_model_config)
 
-    set_global_seed(int(config["seed"]))
+    set_global_seed(config["seed"])
 
     writer = None
     if args.log_dir is not None:
@@ -29,9 +29,9 @@ if __name__ == "__main__":
     instructions = load_json(args.path_to_instructions)
 
     # load data files
-    data_train = load_json(config["data"]["train"])["markup"]
-    data_valid = load_json(config["data"]["valid"])["markup"]
-    data_test = load_json(config["data"]["test"])["markup"]
+    data_train = loads_json(config["data"]["train"])
+    data_valid = loads_json(config["data"]["valid"])
+    data_test = loads_json(config["data"]["test"])
 
     # Create Datasets
     train_dataset = T5NERDataset(
@@ -51,6 +51,7 @@ if __name__ == "__main__":
     )
 
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    print(f"Using device: {device}")
 
     # load model
     tokenizer = T5Tokenizer.from_pretrained(config["model"]["name"])
