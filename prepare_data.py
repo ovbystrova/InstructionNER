@@ -5,7 +5,7 @@ from src.core.datatypes import DatasetType
 from src.readers import CONLLReader
 
 dataset2reader = {
-    DatasetType.CONLL2003.value : CONLLReader
+    DatasetType.CONLL2003.value: CONLLReader
 }
 
 
