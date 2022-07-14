@@ -4,17 +4,7 @@ from unittest import TestCase
 
 from parameterized import parameterized
 
-from src.core.datatypes import Instance
 from src.formatters import PredictionSpanFormatter
-
-
-def _make_instance(data):
-    instance = Instance(
-        context=data["context"],
-        question=data["question"],
-        answer=data["answer"]
-    )
-    return instance
 
 
 class TestSpanFormatter(TestCase):
@@ -24,7 +14,7 @@ class TestSpanFormatter(TestCase):
     with open(test_data_dir / "test_case_answer_formatter.json") as f:
         data = json.load(f)
 
-    instance = _make_instance(data["instance"])
+    context = data["context"]
     predictions = data["answers"]
 
     spans_true = []
@@ -33,17 +23,17 @@ class TestSpanFormatter(TestCase):
         spans_true.append(spans)
 
     @parameterized.expand([
-        (instance, predictions[0], spans_true[0]),
-        (instance, predictions[0], spans_true[0]),
-        (instance, predictions[0], spans_true[0])
+        (context, predictions[0], spans_true[0]),
+        (context, predictions[0], spans_true[0]),
+        (context, predictions[0], spans_true[0])
     ])
-    def test_format_span(self, instance, prediction, spans_true):
+    def test_format_span(self, context, prediction, spans_true):
 
         formatter = PredictionSpanFormatter()
 
         spans_pred = formatter.format_answer_spans(
-            prediction=prediction,
-            instance=instance
+            context=context,
+            prediction=prediction
         )
 
         self.assertListEqual(

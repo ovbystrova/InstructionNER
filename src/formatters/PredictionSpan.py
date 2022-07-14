@@ -1,6 +1,6 @@
 from typing import List, Tuple, Optional
 
-from src.core.datatypes import Instance, Preffix
+from src.core.datatypes import Preffix
 
 
 class PredictionSpanFormatter:
@@ -9,16 +9,16 @@ class PredictionSpanFormatter:
     """
     answer_templates = ["is a", "is an"]  # TODO move this (get rid of literals)
 
-    def format_answer_spans(self, instance: Instance, prediction: str) -> List[Tuple[int, int, str]]:
+    def format_answer_spans(self, context: str, prediction: str) -> List[Tuple[int, int, str]]:
         """
-        Based on model prediction and instance created entity spans
-        :param instance:
+        Based on model prediction and context create entity spans
+        :param context:
         :param prediction:
         :return:
         """
 
         entity_spans = []
-        source_sentence = instance.context.lstrip(Preffix.CONTEXT.value)
+        source_sentence = context.lstrip(Preffix.CONTEXT.value)
 
         prediction = prediction.strip(".")  # Because answer in train data always ends with '.'
         prediction_parts = prediction.split(",")

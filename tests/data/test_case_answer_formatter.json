@@ -1,10 +1,5 @@
 {
-  "instance":
-  {
-    "context": "Sentence: London is a capital of Great Britain",
-    "question": "Instruction: extract entities and their types Options: ORG, LOC",
-    "answer": "London is a LOC, Great Britain is a LOC."
-  },
+  "context": "Sentence: London is a capital of Great Britain",
   "answers": [
     "London is a LOC, Great Britain is a LOC.",
     "London sdsdd LOC, Great Britain is a LOC.",
