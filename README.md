@@ -8,8 +8,8 @@ Python >=3.8
 
 ## Installation
 ```shell
-pip install -r requirements.txt
-pip install -r requirements_test.txt
+pip install -r requirements.in
+pip install -r requirements_test.in
 ```
 
 ## Data Preparation
