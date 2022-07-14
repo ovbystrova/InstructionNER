@@ -23,8 +23,8 @@ class EntityExtractTaskFormatter(InstanceFormatter):
 
         if entity_values is not None:
             answers = []
-            for entity_values in entity_values.values():
-                answers.extend(entity_values)
+            for _entity_values in entity_values.values():
+                answers.extend(_entity_values)
             answer = ", ".join(answers) + "."
 
         instance = Instance(
