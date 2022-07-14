@@ -175,7 +175,7 @@ class CONLLReader(Reader):
                     # It means that previous token was entity and we should create Span
                     entity_span = Span(
                         start=current_start_idx,
-                        end=current_start_idx+entity_length,
+                        end=current_start_idx+entity_length-1,
                         label=entity_label
                     )
                     entity_spans.append(entity_span)
@@ -183,7 +183,7 @@ class CONLLReader(Reader):
                     entity_label = None
                     entity_length = 0
 
-                    current_start_idx = entity_span.end # + 1
+                    current_start_idx = entity_span.end + 1
 
                 current_start_idx += len(token)
                 current_start_idx += 1  # Because in the end we join them with space symbol

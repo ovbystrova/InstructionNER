@@ -3,21 +3,21 @@
         "context": "SOCCER - JAPAN GET LUCKY WIN , CHINA IN SURPRISE DEFEAT .",
         "entity_values": {
             "LOC": [
-                "JAPAN "
+                "JAPAN"
             ],
             "PER": [
-                "CHINA "
+                "CHINA"
             ]
         },
         "entity_spans": [
             {
                 "start": 9,
-                "end": 15,
+                "end": 14,
                 "label": "LOC"
             },
             {
                 "start": 31,
-                "end": 37,
+                "end": 36,
                 "label": "PER"
             }
         ]
@@ -26,19 +26,19 @@
         "context": "AL-AIN , United Arab Emirates 1996-12-06",
         "entity_values": {
             "LOC": [
-                "AL-AIN ",
-                "United Arab Emirates "
+                "AL-AIN",
+                "United Arab Emirates"
             ]
         },
         "entity_spans": [
             {
                 "start": 0,
-                "end": 7,
+                "end": 6,
                 "label": "LOC"
             },
             {
                 "start": 9,
-                "end": 30,
+                "end": 29,
                 "label": "LOC"
             }
         ]
@@ -47,27 +47,27 @@
         "context": "Japan began the defence of their Asian Cup title with a lucky 2-1 win against Syria in a Group C championship match on Friday .",
         "entity_values": {
             "LOC": [
-                "Japan ",
-                "Syria "
+                "Japan",
+                "Syria"
             ],
             "MISC": [
-                "Asian Cup "
+                "Asian Cup"
             ]
         },
         "entity_spans": [
             {
                 "start": 0,
-                "end": 6,
+                "end": 5,
                 "label": "LOC"
             },
             {
                 "start": 33,
-                "end": 43,
+                "end": 42,
                 "label": "MISC"
             },
             {
                 "start": 78,
-                "end": 84,
+                "end": 83,
                 "label": "LOC"
             }
         ]
@@ -76,19 +76,19 @@
         "context": "But China saw their luck desert them in the second match of the group , crashing to a surprise 2-0 defeat to newcomers Uzbekistan .",
         "entity_values": {
             "LOC": [
-                "China ",
-                "Uzbekistan "
+                "China",
+                "Uzbekistan"
             ]
         },
         "entity_spans": [
             {
                 "start": 4,
-                "end": 10,
+                "end": 9,
                 "label": "LOC"
             },
             {
                 "start": 119,
-                "end": 130,
+                "end": 129,
                 "label": "LOC"
             }
         ]
@@ -97,13 +97,13 @@
         "context": "It was the second costly blunder by Syria in four minutes .",
         "entity_values": {
             "LOC": [
-                "Syria "
+                "Syria"
             ]
         },
         "entity_spans": [
             {
                 "start": 36,
-                "end": 42,
+                "end": 41,
                 "label": "LOC"
             }
         ]
@@ -112,21 +112,21 @@
         "context": "Nader Jokhadar had given Syria the lead with a well-struck header in the seventh minute .",
         "entity_values": {
             "PER": [
-                "Nader Jokhadar "
+                "Nader Jokhadar"
             ],
             "LOC": [
-                "Syria "
+                "Syria"
             ]
         },
         "entity_spans": [
             {
                 "start": 0,
-                "end": 15,
+                "end": 14,
                 "label": "PER"
             },
             {
                 "start": 25,
-                "end": 31,
+                "end": 30,
                 "label": "LOC"
             }
         ]
@@ -135,26 +135,26 @@
         "context": "Japan then laid siege to the Syrian penalty area for most of the game but rarely breached the Syrian defence .",
         "entity_values": {
             "LOC": [
-                "Japan "
+                "Japan"
             ],
             "MISC": [
-                "Syrian "
+                "Syrian"
             ]
         },
         "entity_spans": [
             {
                 "start": 0,
-                "end": 6,
+                "end": 5,
                 "label": "LOC"
             },
             {
                 "start": 29,
-                "end": 36,
+                "end": 35,
                 "label": "MISC"
             },
             {
                 "start": 94,
-                "end": 101,
+                "end": 100,
                 "label": "MISC"
             }
         ]
@@ -163,29 +163,29 @@
         "context": "Japan coach Shu Kamo said : ' ' The Syrian own goal proved lucky for us .",
         "entity_values": {
             "LOC": [
-                "Japan "
+                "Japan"
             ],
             "PER": [
-                "Shu Kamo "
+                "Shu Kamo"
             ],
             "MISC": [
-                "Syrian "
+                "Syrian"
             ]
         },
         "entity_spans": [
             {
                 "start": 0,
-                "end": 6,
+                "end": 5,
                 "label": "LOC"
             },
             {
                 "start": 12,
-                "end": 21,
+                "end": 20,
                 "label": "PER"
             },
             {
                 "start": 36,
-                "end": 43,
+                "end": 42,
                 "label": "MISC"
             }
         ]
@@ -194,13 +194,13 @@
         "context": "The Syrians scored early and then played defensively and adopted long balls which made it hard for us . '",
         "entity_values": {
             "MISC": [
-                "Syrians "
+                "Syrians"
             ]
         },
         "entity_spans": [
             {
                 "start": 4,
-                "end": 12,
+                "end": 11,
                 "label": "MISC"
             }
         ]
@@ -209,29 +209,29 @@
         "context": "Japan , co-hosts of the World Cup in 2002 and ranked 20th in the world by FIFA , are favourites to regain their title here .",
         "entity_values": {
             "LOC": [
-                "Japan "
+                "Japan"
             ],
             "MISC": [
-                "World Cup "
+                "World Cup"
             ],
             "ORG": [
-                "FIFA "
+                "FIFA"
             ]
         },
         "entity_spans": [
             {
                 "start": 0,
-                "end": 6,
+                "end": 5,
                 "label": "LOC"
             },
             {
                 "start": 24,
-                "end": 34,
+                "end": 33,
                 "label": "MISC"
             },
             {
                 "start": 74,
-                "end": 79,
+                "end": 78,
                 "label": "ORG"
             }
         ]
@@ -240,31 +240,31 @@
         "context": "Hosts UAE play Kuwait and South Korea take on Indonesia on Saturday in Group A matches .",
         "entity_values": {
             "LOC": [
-                "UAE ",
-                "Kuwait ",
-                "South Korea ",
-                "Indonesia "
+                "UAE",
+                "Kuwait",
+                "South Korea",
+                "Indonesia"
             ]
         },
         "entity_spans": [
             {
                 "start": 6,
-                "end": 10,
+                "end": 9,
                 "label": "LOC"
             },
             {
                 "start": 15,
-                "end": 22,
+                "end": 21,
                 "label": "LOC"
             },
             {
                 "start": 26,
-                "end": 38,
+                "end": 37,
                 "label": "LOC"
             },
             {
                 "start": 46,
-                "end": 56,
+                "end": 55,
                 "label": "LOC"
             }
         ]
