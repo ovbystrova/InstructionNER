@@ -67,3 +67,7 @@ class DatasetField(Enum):
     CONTEXT = "context"
     ENTITY_VALUES = "entity_values"
     ENTITY_SPANS = "entity_spans"
+
+
+class Language(Enum):
+    EN = "en"
