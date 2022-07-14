@@ -11,7 +11,7 @@ class TestSpanFormatter(TestCase):
 
     maxDiff = None
     test_data_dir = Path(__file__).parent / "data"
-    with open(test_data_dir / "test_case_answer_formatter.json") as f:
+    with open(test_data_dir / "test_case_prediction_span_formatter.json") as f:
         data = json.load(f)
 
     context = data["context"]
