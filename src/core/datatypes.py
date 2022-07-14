@@ -1,5 +1,5 @@
 from enum import Enum
-from typing import List, Optional, Tuple
+from typing import Dict, List, Optional, Tuple
 
 from dataclasses import dataclass
 
@@ -16,7 +16,8 @@ class Instance:
     context: str
     question: str
     answer: Optional[str]
-    # spans: Optional[List[Tuple[int, int, str]]]
+    entity_spans: Optional[List[Tuple[int, int, str]]]
+    entity_values: Optional[Dict[str, List[str]]]
 
 
 @dataclass()
