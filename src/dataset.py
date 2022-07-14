@@ -10,8 +10,6 @@ from src.formatters import (
     NERTaskFormatter
 )
 
-# TODO change input format in data parameter / Add additional converters to datasets
-
 
 class T5NERDataset(Dataset):
 
@@ -46,7 +44,8 @@ class T5NERDataset(Dataset):
             data: List[Dict[str, Any]],
             instructions: Dict[str, str],
             options: List[str],
-            tasks: List[TaskType]
+            tasks: List[TaskType],
+            language: str = "en"
     ) -> List[Instance]:
         """
         Converts raw data into list of Instance objects
@@ -65,7 +64,8 @@ class T5NERDataset(Dataset):
                 data_item=item,
                 instructions=instructions,
                 options=options,
-                tasks=tasks
+                tasks=tasks,
+                language=language
             )
 
             instances.extend(instances_per_item)
@@ -76,7 +76,8 @@ class T5NERDataset(Dataset):
             data_item: Dict[str, Any],
             instructions: Dict[str, str],
             options: List[str],
-            tasks: List[TaskType]
+            tasks: List[TaskType],
+            language: str = "en"  # TODO uncomment this
     ):
         """
         Creates all task instances from one element of data
@@ -91,9 +92,9 @@ class T5NERDataset(Dataset):
 
         # TODO think about this dict and whether it is good for DIP
         task_to_formatter = {
-            TaskType.ENTITY_EXTRACTOR: EntityExtractTaskFormatter,
-            TaskType.ENTITY_TYPING: EntityTypeTaskFormatter,
-            TaskType.NER: NERTaskFormatter
+            TaskType.ENTITY_EXTRACTOR: EntityExtractTaskFormatter(),
+            TaskType.ENTITY_TYPING: EntityTypeTaskFormatter(),
+            TaskType.NER: NERTaskFormatter()
         }
 
         for task in tasks:
@@ -101,8 +102,14 @@ class T5NERDataset(Dataset):
             if task.value not in instructions:
                 continue
 
+            context = data_item["context"]
+            entity_values = data_item["entity_values"]
+            entity_spans = data_item["entity_spans"]
+
             instance = task_to_formatter[task].format_instance(
-                data=data_item,
+                context=context,
+                entity_values=entity_values,
+                entity_spans=entity_spans,
                 instruction=instructions[task.value],
                 options=options
             )

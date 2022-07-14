@@ -12,7 +12,9 @@ def _make_instance(data):
     instance = Instance(
         context=data["context"],
         question=data["question"],
-        answer=data["answer"]
+        answer=data["answer"],
+        entity_spans=data["entity_spans"],
+        entity_values=data["entity_values"]
     )
     return instance
 
@@ -24,7 +26,7 @@ class TestDataset(TestCase):
     with open(test_data_dir / "test_case_dataset.json") as f:
         data = json.load(f)
 
-    input_data = data["markup"]
+    input_data = data["instance"]
     instructions = data["instructions"]
     options = data["options"]
 
@@ -72,6 +74,10 @@ class TestDataset(TestCase):
             instructions=instructions,
             options=options
         )
+
+        print(dataset[0].entity_values)
+        print(instances_true[0].entity_values)
+
         self.assertListEqual(
             dataset.instances,
             instances_true
