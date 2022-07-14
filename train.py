@@ -8,7 +8,7 @@ from train_utils import train
 
 from src.collator import Collator
 from src.dataset import T5NERDataset
-from utils import set_global_seed, load_config, load_json, loads_json
+from src.utils import set_global_seed, load_config, load_json, loads_json
 
 
 if __name__ == "__main__":
