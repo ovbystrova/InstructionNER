@@ -67,8 +67,8 @@ python train.py \
 Arguments:
 - **--path_to_instructions** - file with instruction prompts
 - **--path_to_options** - file with mapping dataset to its entities
-- **--log_dir** - where to log tensorboard ([BIO-markup](https://github.com/dayyass/QaNER/tree/main/data/conll2003))
-- **--eval_every_n_batches** - do evaluation every n batches ([BIO-markup](https://github.com/dayyass/QaNER/tree/main/data/conll2003))
+- **--log_dir** - where to log tensorboard
+- **--eval_every_n_batches** - do evaluation every n batches
 - **--pred_every_n_batches** - write n sample prediction every n batches
 - **--config.yaml** - path to all necessary information for model
 - **--path_to_model_save** - where to save model
