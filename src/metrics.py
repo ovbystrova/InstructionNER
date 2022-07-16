@@ -8,6 +8,14 @@ def calculate_metrics(
         spans_true: List[List[Tuple[int, int, str]]],
         options: List[str]
 ):
+    """
+    Built confusion matrix and calculate metrics (precision, recall, f1-score)
+    average options: micro, macro, weighted
+    :param spans_pred: predicted spans over batch / epoch
+    :param spans_true: true spans over batch / epoch
+    :param options: list of labels presented in data
+    :return: dictionary of per label metrics and average metrics
+    """
 
     label2index = {"O": 0}
     for option in options:
@@ -27,7 +35,7 @@ def calculate_metrics(
     metrics = add_average_metrics(
         confusion_matrix=confusion_matrix,
         label2index=label2index,
-        metrics_per_label=metrics_per_label
+        metrics=metrics_per_label
     )
 
     return metrics
@@ -36,8 +44,15 @@ def calculate_metrics(
 def build_confusion_matrix(
         spans_pred: List[List[Tuple[int, int, str]]],
         spans_true: List[List[Tuple[int, int, str]]],
-        label2index: Dict[str]
+        label2index: Dict[str, int]
 ) -> np.array:
+    """
+    Build confusion matrix based on true and predicted spans
+    :param spans_pred: predicted spans over batch / epoch
+    :param spans_true: true spans over batch / epoch
+    :param label2index: mapping between label and its index in confusion matrix
+    :return: confusion matrix
+    """
 
     confusion_matrix = np.zeros((len(label2index), len(label2index)))
 
@@ -57,8 +72,16 @@ def update_confusion_matrix(
         spans_pred: List[Tuple[int, int, str]],
         spans_true: List[Tuple[int, int, str]],
         confusion_matrix: np.array,
-        label2index: Dict[str]
+        label2index: Dict[str, int]
 ) -> np.array:
+    """
+    Update confusion matrix based on spans from one data item
+    :param spans_pred: predicted spans from text
+    :param spans_true: true spans for text
+    :param confusion_matrix: matrix (n_labels, n_labels)
+    :param label2index: mapping between label and its index in confusion matrix
+    :return: confusion matrix
+    """
 
     # i  - true
     # j - pred
@@ -76,12 +99,21 @@ def update_confusion_matrix(
 
         equal_start = [span for span in spans_true if span[0] == start and span[1] != end and span[-1] == label]
         equal_end = [span for span in spans_true if span[1] == end and span[-1] == label and span[0] != start]
+        equal_start_end = [span for span in spans_true if span[1] == end and span[0] == start and span[-1] != label]
 
-        if len(equal_start) == 0 and len(equal_end) == 0:
+        if len(equal_start_end) > 0:  # If model found the right boundaries but wrong label
+            equal_start_end_span = equal_start_end[0]
+            _, _, label_true = equal_start_end_span
+            confusion_matrix[label2index[label_true]][j] += 1
+            if equal_start_end_span in spans_true_missed_in_pred:
+                spans_true_missed_in_pred.remove(equal_start_end_span)
+            continue
+
+        elif len(equal_start) == 0 and len(equal_end) == 0:  # If model found wrong boundaries
             confusion_matrix[label2index["O"]][j] += 1  # False Positive   # TODO remove 'O' with special variable
             continue
 
-        for equal_start_span in equal_start:
+        for equal_start_span in equal_start:  # If start matches  # TODO simplify
             end_true = equal_start_span[1]
             if end < end_true:
                 confusion_matrix[j][label2index["O"]] += 1  # False Negative
@@ -91,7 +123,7 @@ def update_confusion_matrix(
             if equal_start_span in spans_true_missed_in_pred:
                 spans_true_missed_in_pred.remove(equal_start_span)
 
-        for equal_end_span in equal_end:
+        for equal_end_span in equal_end: # If end matches
             start_true = equal_end_span[1]
             if start > start_true:
                 confusion_matrix[j][label2index["O"]] += 1  # False Negative
@@ -101,16 +133,24 @@ def update_confusion_matrix(
             if equal_end_span in spans_true_missed_in_pred:
                 spans_true_missed_in_pred.remove(equal_end_span)
 
-        # Treat not predicted spans as False Negative
-        confusion_matrix[j][label2index["O"]] += len(spans_true_missed_in_pred)
+    # Treat not predicted spans as False Negative
+    for span in spans_true_missed_in_pred:
+        _, _, label = span
+        confusion_matrix[label2index[label]][label2index["O"]] += 1
 
     return confusion_matrix
 
 
 def calculate_metrics_from_confusion_matrix(
         confusion_matrix: np.array,
-        label2index: Dict[str]
+        label2index: Dict[str, int]
 ) -> Dict[str, Dict[str, float]]:
+    """
+    Calculate Precision, Recall, F1-Score per label (without average)
+    :param confusion_matrix: np.array
+    :param label2index: mapping between label and its index in confusion matrix
+    :return:
+    """
 
     metrics = {}
 
@@ -122,13 +162,16 @@ def calculate_metrics_from_confusion_matrix(
         metrics_per_label = {}
 
         true_positive = confusion_matrix[idx][idx]
-        precision = true_positive / (np.sum(confusion_matrix[:][idx]))  # TODO check this
-        recall = true_positive / (np.sum(confusion_matrix[idx][:]))
+        precision = true_positive / (np.sum(confusion_matrix[:][idx])) if true_positive > 0 else 0
+        recall = true_positive / (np.sum(confusion_matrix[idx][:])) if true_positive > 0 else 0
 
         metrics_per_label["precision"] = precision
         metrics_per_label["recall"] = recall
-        metrics_per_label["f1-score"] = 2 * precision * recall / (precision + recall)
+        metrics_per_label["f1-score"] = 2 * precision * recall / (precision + recall) \
+            if precision > 0 or recall > 0 else 0
         metrics_per_label["support"] = np.sum(confusion_matrix[idx][:])
+
+        metrics[label] = metrics_per_label
 
     return metrics
 
@@ -136,17 +179,25 @@ def calculate_metrics_from_confusion_matrix(
 def add_average_metrics(
         confusion_matrix: np.array,
         label2index: Dict[str, int],
-        metrics_per_label: Dict[str, Dict[str, float]]
+        metrics: Dict[str, Dict[str, float]]
 ) -> Dict[str, Dict[str, float]]:
-
-    metrics = {}
+    """
+    Add micro average, marco average, and weighted average metrics
+    :param confusion_matrix: np.array
+    :param label2index: mapping between label and its index in confusion matrix
+    :param metrics: metrics per label
+    :return:
+    """
 
     precisions, recalls, f1scores, supports = [], [], [], []
-    for label, metrics in metrics_per_label.items():
-        precisions.append(metrics["precision"])
-        recalls.append(metrics["recall"])
-        f1scores.append(metrics["f1-score"])
-        supports.append(metrics["support"])
+
+    for label, metrics_label in metrics.items():
+
+        precisions.append(metrics_label["precision"])
+        recalls.append(metrics_label["recall"])
+        f1scores.append(metrics_label["f1-score"])
+        supports.append(metrics_label["support"])
+
     supports_proportions = [support / np.sum(supports) for support in supports]
 
     metrics["macro_avg"] = {
@@ -166,6 +217,7 @@ def add_average_metrics(
         "precision": precision_micro,
         "recall": recall_micro,
         "f1-score": 2 * precision_micro * recall_micro / (precision_micro + recall_micro)
+        if precision_micro > 0 and recall_micro > 0 else 0
     }
 
     metrics["weighted_avg"] = {

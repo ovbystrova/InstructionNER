@@ -6,6 +6,11 @@ from torch.utils.tensorboard import SummaryWriter
 from tqdm import tqdm
 from transformers import T5ForConditionalGeneration, T5Tokenizer
 
+from metrics import calculate_metrics
+from src.formatters.PredictionSpan import PredictionSpanFormatter
+
+prediction_span_formatter = PredictionSpanFormatter()
+
 
 # TODO: add metrics calculation
 def train(
@@ -45,6 +50,7 @@ def train(
             writer=writer,
             device=device,
             epoch=epoch,
+            generation_kwargs=generation_kwargs
         )
 
 
@@ -116,6 +122,7 @@ def train_epoch(
                     writer=writer,
                     device=device,
                     epoch=epoch,
+                    generation_kwargs=generation_kwargs
                 )
         if i % pred_every_n_batches == 0 and i >= pred_every_n_batches:
             get_sample_text_prediction(
@@ -137,11 +144,15 @@ def evaluate(
         dataloader: torch.utils.data.DataLoader,
         writer: SummaryWriter,
         device: torch.device,
+        generation_kwargs,
         epoch: int,
 ):
     model.eval()
 
     epoch_loss = []
+
+    spans_true = []
+    spans_pred = []
 
     with torch.no_grad():
         for i, inputs in tqdm(
@@ -150,7 +161,11 @@ def evaluate(
                 desc="loop over test batches",
         ):
 
-            inputs.pop("instances")
+            instances = inputs.pop("instances")
+            contexts = [instance.context for instance in instances]
+            spans_true_batch = [instance.entity_spans for instance in instances]
+            spans_true.extend(spans_true_batch)
+
             answers = inputs.pop("answers")
 
             # replace padding token id's of the labels by -100 so it's ignored by the loss
@@ -162,10 +177,31 @@ def evaluate(
             outputs = model(**inputs, labels=answers)
             loss = outputs.loss
 
+            prediction_texts = model.generate(**inputs, **generation_kwargs)
+            prediction_texts = tokenizer.decode(prediction_texts, skip_special_tokens=True)
+
+            spans_pred_batch = [prediction_span_formatter.format_answer_spans(context, prediction)
+                                for context, prediction in zip(contexts, prediction_texts)]
+            spans_pred.extend(spans_pred_batch)
+
+            batch_metrics = calculate_metrics(
+                spans_pred_batch,
+                spans_true_batch,
+                options=[]  # TODO fill it right
+            )
+
             epoch_loss.append(loss.item())
             writer.add_scalar(
                 "batch loss / evaluation", loss.item(), epoch * len(dataloader) + i
             )
+
+        epoch_metrics = calculate_metrics(
+            spans_pred,
+            spans_true,
+            options=[]  # TODO fill it right
+        )
+
+        # TODO add classification report visualization
 
 
 def get_sample_text_prediction(

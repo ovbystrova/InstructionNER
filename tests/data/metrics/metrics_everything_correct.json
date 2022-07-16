@@ -1,0 +1,35 @@
+{
+    "ORG": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1-score": 1.0,
+        "support": 1.0
+    },
+    "LOC": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1-score": 1.0,
+        "support": 1.0
+    },
+    "PER": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1-score": 1.0,
+        "support": 1.0
+    },
+    "macro_avg": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1-score": 1.0
+    },
+    "micro_avg": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1-score": 1.0
+    },
+    "weighted_avg": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1-score": 1.0
+    }
+}
