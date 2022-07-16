@@ -123,8 +123,8 @@ def update_confusion_matrix(
             if equal_start_span in spans_true_missed_in_pred:
                 spans_true_missed_in_pred.remove(equal_start_span)
 
-        for equal_end_span in equal_end: # If end matches
-            start_true = equal_end_span[1]
+        for equal_end_span in equal_end:  # If end matches
+            start_true = equal_end_span[0]
             if start > start_true:
                 confusion_matrix[j][label2index["O"]] += 1  # False Negative
             elif start < start_true:
