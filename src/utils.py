@@ -84,4 +84,4 @@ def show_classification_report(metrics: Dict[str, Dict[str, float]]):
     :return:
     """
     df = pd.DataFrame.from_dict(metrics)
-    print(df.shanspose())
+    print(df.transpose())
