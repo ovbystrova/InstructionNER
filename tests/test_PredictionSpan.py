@@ -31,10 +31,12 @@ class TestSpanFormatter(TestCase):
     def test_format_span(self, context, prediction, spans_true):
 
         formatter = PredictionSpanFormatter()
+        options = ["ORG", "PER", "LOC"]
 
         spans_pred = formatter.format_answer_spans(
             context=context,
-            prediction=prediction
+            prediction=prediction,
+            options=options
         )
 
         spans_pred = [astuple(span) for span in spans_pred]

@@ -1,4 +1,5 @@
-from typing import List, Tuple, Optional
+import re
+from typing import List, Optional
 
 from src.core.datatypes import Preffix, Span
 
@@ -9,9 +10,10 @@ class PredictionSpanFormatter:
     """
     answer_templates = ["is a", "is an"]  # TODO move this (get rid of literals)
 
-    def format_answer_spans(self, context: str, prediction: str) -> List[Span]:
+    def format_answer_spans(self, context: str, prediction: str, options: List[str]) -> List[Span]:
         """
         Based on model prediction and context create entity spans
+        :param options:
         :param context:
         :param prediction:
         :return:
@@ -24,17 +26,19 @@ class PredictionSpanFormatter:
         prediction_parts = prediction.split(",")
 
         for prediction_part in prediction_parts:
-            span = self._get_span_from_part(
+            spans = self._get_span_from_part(
                 prediction_part,
                 source_sentence
             )
-            if span is None:
+            if spans is None:
                 continue
-            entity_spans.append(span)
+
+            spans = [span for span in spans if span.label in options]
+            entity_spans.extend(spans)
 
         return entity_spans
 
-    def _get_span_from_part(self, prediction_part: str, source_sentence: str) -> Optional[Span]:
+    def _get_span_from_part(self, prediction_part: str, source_sentence: str) -> Optional[List[Span]]:
         """
         Gets entity span from part of prediction
         :param prediction_part: Olga is a PER
@@ -55,22 +59,25 @@ class PredictionSpanFormatter:
             value = value.strip(" ").rstrip(" ")
             label = label.strip(" ").rstrip(" ")
 
-            value_counts_in_sentence = source_sentence.count(value)
+            matches = re.finditer(value, source_sentence)
+            matches = list(matches)
 
-            if value_counts_in_sentence == 0:
+            if len(matches) == 0:
                 return None
 
-            elif value_counts_in_sentence > 1:
-                raise ValueError(f"Expected to be one value per sentence, found {value_counts_in_sentence}")
+            spans = []
 
-            start = source_sentence.find(value)
-            end = start + len(value)
-            span = Span(
-                start=start,
-                end=end,
-                label=label
-            )
-            # span = (start, end, label)
-            return span
+            for match in matches:
+
+                start = match.start()
+                end = match.end()
+                span = Span(
+                    start=start,
+                    end=end,
+                    label=label
+                )
+                spans.append(span)
+
+            return spans
 
         return None
