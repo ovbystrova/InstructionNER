@@ -2,10 +2,12 @@ from typing import Dict, List, Tuple
 
 import numpy as np
 
+from src.core.datatypes import Span
+
 
 def calculate_metrics(
-        spans_pred: List[List[Tuple[int, int, str]]],
-        spans_true: List[List[Tuple[int, int, str]]],
+        spans_pred: List[List[Span]],
+        spans_true: List[List[Span]],
         options: List[str]
 ):
     """
@@ -42,8 +44,8 @@ def calculate_metrics(
 
 
 def build_confusion_matrix(
-        spans_pred: List[List[Tuple[int, int, str]]],
-        spans_true: List[List[Tuple[int, int, str]]],
+        spans_pred: List[List[Span]],
+        spans_true: List[List[Span]],
         label2index: Dict[str, int]
 ) -> np.array:
     """
@@ -69,8 +71,8 @@ def build_confusion_matrix(
 
 
 def update_confusion_matrix(
-        spans_pred: List[Tuple[int, int, str]],
-        spans_true: List[Tuple[int, int, str]],
+        spans_pred: List[Span],
+        spans_true: List[Span],
         confusion_matrix: np.array,
         label2index: Dict[str, int]
 ) -> np.array:
@@ -90,21 +92,22 @@ def update_confusion_matrix(
 
     for span_pred in spans_pred:
 
-        start, end, label = span_pred
-        j = label2index[label]
+        j = label2index[span_pred.label]
 
         if span_pred in spans_true:
             confusion_matrix[j][j] += 1  # True Positive
             continue
 
-        equal_start = [span for span in spans_true if span[0] == start and span[1] != end and span[-1] == label]
-        equal_end = [span for span in spans_true if span[1] == end and span[-1] == label and span[0] != start]
-        equal_start_end = [span for span in spans_true if span[1] == end and span[0] == start and span[-1] != label]
+        equal_start = [span for span in spans_true if span.start == span_pred.start and span.end != span_pred.end
+                       and span.label == span_pred.label]
+        equal_end = [span for span in spans_true if span.end == span_pred.end and span.label == span_pred.label
+                     and span.start != span_pred.start]
+        equal_start_end = [span for span in spans_true if span.end == span_pred.end and span.start == span_pred.start
+                           and span.label != span_pred.label]
 
         if len(equal_start_end) > 0:  # If model found the right boundaries but wrong label
             equal_start_end_span = equal_start_end[0]
-            _, _, label_true = equal_start_end_span
-            confusion_matrix[label2index[label_true]][j] += 1
+            confusion_matrix[label2index[equal_start_end_span.label]][j] += 1
             if equal_start_end_span in spans_true_missed_in_pred:
                 spans_true_missed_in_pred.remove(equal_start_end_span)
             continue
@@ -114,20 +117,18 @@ def update_confusion_matrix(
             continue
 
         for equal_start_span in equal_start:  # If start matches  # TODO simplify
-            end_true = equal_start_span[1]
-            if end < end_true:
+            if span_pred.end < equal_start_span.end:
                 confusion_matrix[j][label2index["O"]] += 1  # False Negative
-            elif end > end_true:
+            elif span_pred.end > equal_start_span.end:
                 confusion_matrix[label2index["O"]][j] += 1  # False Positive
 
             if equal_start_span in spans_true_missed_in_pred:
                 spans_true_missed_in_pred.remove(equal_start_span)
 
         for equal_end_span in equal_end:  # If end matches
-            start_true = equal_end_span[0]
-            if start > start_true:
+            if span_pred.start > equal_end_span.start:
                 confusion_matrix[j][label2index["O"]] += 1  # False Negative
-            elif start < start_true:
+            elif span_pred.start < equal_end_span.start:
                 confusion_matrix[label2index["O"]][j] += 1  # False Positive
 
             if equal_end_span in spans_true_missed_in_pred:
@@ -135,8 +136,7 @@ def update_confusion_matrix(
 
     # Treat not predicted spans as False Negative
     for span in spans_true_missed_in_pred:
-        _, _, label = span
-        confusion_matrix[label2index[label]][label2index["O"]] += 1
+        confusion_matrix[label2index[span.label]][label2index["O"]] += 1
 
     return confusion_matrix
 

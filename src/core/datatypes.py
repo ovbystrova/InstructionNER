@@ -4,7 +4,7 @@ from typing import Dict, List, Optional, Tuple
 from dataclasses import dataclass
 
 
-@dataclass()
+@dataclass(frozen=True, eq=True)
 class Span:
     """
     Core Span dataclass
@@ -25,6 +25,14 @@ class Span:
             start=int(data["start"]),
             end=int(data["end"]),
             label=data["label"]
+        )
+
+    @staticmethod
+    def from_tuple(data):
+        return Span(
+            start=int(data[0]),
+            end=int(data[1]),
+            label=data[2]
         )
 
 

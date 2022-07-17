@@ -1,9 +1,11 @@
 import json
 from pathlib import Path
+from typing import List, Tuple
 from unittest import TestCase
 
 from parameterized import parameterized
 
+from src.core.datatypes import Span
 from src.metrics import calculate_metrics
 
 
@@ -20,6 +22,9 @@ class TestMetrics(TestCase):
         )
     ])
     def test_everything_correct(self, spans_pred, spans_true, metrics_true_filepath, options):
+
+        spans_pred = self._convert_to_span_object(spans_pred)
+        spans_true = self._convert_to_span_object(spans_true)
 
         metrics_pred = calculate_metrics(
             spans_pred=spans_pred,
@@ -45,6 +50,8 @@ class TestMetrics(TestCase):
         )
     ])
     def test_everything_wrong(self, spans_true, spans_pred, metrics_true_filepath, options):
+        spans_pred = self._convert_to_span_object(spans_pred)
+        spans_true = self._convert_to_span_object(spans_true)
 
         metrics_pred = calculate_metrics(
             spans_pred=spans_pred,
@@ -71,6 +78,9 @@ class TestMetrics(TestCase):
     ])
     def test_equals_start_end(self, spans_true, spans_pred, metrics_true_filepath, options):
 
+        spans_pred = self._convert_to_span_object(spans_pred)
+        spans_true = self._convert_to_span_object(spans_true)
+
         metrics_pred = calculate_metrics(
             spans_pred=spans_pred,
             spans_true=spans_true,
@@ -92,3 +102,16 @@ class TestMetrics(TestCase):
             data = json.load(f)
         return data
 
+    @staticmethod
+    def _convert_to_span_object(spans: List[List[Tuple[int, int, str]]]):
+
+        new_span_list = []
+
+        for span_list in spans:
+            new_list = []
+            for span in span_list:
+                new_list.append(Span.from_tuple(span))
+
+            new_span_list.append(new_list)
+
+        return new_span_list
