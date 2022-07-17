@@ -137,7 +137,8 @@ def train_epoch(
                 tokenizer=tokenizer,
                 dataloader=test_dataloader,
                 device=device,
-                generation_kwargs=generation_kwargs
+                generation_kwargs=generation_kwargs,
+                options=options
             )
 
     avg_loss = np.mean(epoch_loss)
@@ -199,12 +200,8 @@ def evaluate(
                 options=options
             )
 
-            # TODO refactor
             for metric_class, metric_dict in batch_metrics.items():
-                writer.add_scalars(metric_class, metric_dict)
-                # for metric_name, value in metric_dict.items():
-                #     tag = f"{metric_class}_{metric_name}"
-                #     writer.add_scalar(tag, value)
+                writer.add_scalars(metric_class, metric_dict, epoch * len(dataloader) + i)
 
             epoch_loss.append(loss.item())
             writer.add_scalar(
@@ -226,6 +223,7 @@ def get_sample_text_prediction(
         tokenizer: T5Tokenizer,
         generation_kwargs,
         device,
+        options,
         n=3
 ):
     model.eval()
@@ -247,4 +245,11 @@ def get_sample_text_prediction(
         answer = model.generate(input_ids, **generation_kwargs)
         answer = tokenizer.decode(answer[0], skip_special_tokens=True)  # TODO change to false
 
+        answer_spans = prediction_span_formatter.format_answer_spans(
+            context=dataset_item.context,
+            prediction=answer,
+            options=options
+        )
+
         print(f"Prediction: {answer}")
+        print(f"Found {len(answer_spans)} spans. {answer_spans}\n")

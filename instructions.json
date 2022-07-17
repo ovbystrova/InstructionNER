@@ -1,5 +1,10 @@
 {
-  "NER": "please extract entities and their types from the input sentence, all entity types are in options",
-  "EntityTyping": "please type these entity words according to the sentence",
-  "EntityExtractor": "please extract entity words from the input sentence"
+  "train": {
+    "NER": "please extract entities and their types from the input sentence, all entity types are in options",
+    "EntityTyping": "please type these entity words according to the sentence",
+    "EntityExtractor": "please extract entity words from the input sentence"
+  },
+  "test": {
+    "NER": "please extract entities and their types from the input sentence, all entity types are in options"
+  }
 }

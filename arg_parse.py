@@ -27,6 +27,7 @@ def get_train_args() -> argparse.Namespace:
     parser.add_argument(
         "--log_dir",
         type=str,
+        default="runs",
         help="where to log tensorboard",
     )
 

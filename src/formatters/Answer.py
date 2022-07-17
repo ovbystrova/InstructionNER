@@ -30,7 +30,7 @@ class AnswerFormatter:
 
         for entity_label, values in entity_values.items():
 
-            if entity_label.lower().startswith("a"):
+            if entity_label.lower()[0] in ["a", "e", "u", "o"]:
                 answers.extend([cls.patterns[language].format(value, "an", entity_label) for value in values])
             else:
                 answers.extend([cls.patterns[language].format(value, "a", entity_label) for value in values])

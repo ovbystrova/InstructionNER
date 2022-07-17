@@ -41,17 +41,17 @@ if __name__ == "__main__":
     # Create Datasets
     train_dataset = T5NERDataset(
         data=data_train,
-        instructions=instructions,
+        instructions=instructions["train"],
         options=options
     )
     valid_dataset = T5NERDataset(
         data=data_valid,
-        instructions=instructions,
+        instructions=instructions["test"],
         options=options
     )
     test_dataset = T5NERDataset(
         data=data_test,
-        instructions=instructions,
+        instructions=instructions["test"],
         options=options
     )
 
@@ -60,9 +60,11 @@ if __name__ == "__main__":
 
     # load model
     tokenizer = T5Tokenizer.from_pretrained(config["model"]["name"])
-    tokenizer_kwargs = dict(config["tokenizer"])
     model = T5ForConditionalGeneration.from_pretrained(config["model"]["name"])
     model.to(device)
+
+    tokenizer_kwargs = dict(config["tokenizer"])
+    generation_kwargs = dict(config["generation"])
 
     if config["replace_labels_with_special_tokens"]:
         # TODO add special tokens to tokenizer and model
@@ -70,7 +72,7 @@ if __name__ == "__main__":
 
     optimizer = torch.optim.Adam(
         model.parameters(),
-        lr=float(config["model"]["learning_rate"]),
+        lr=float(config["training"]["learning_rate"]),
     )
 
     collator = Collator(
@@ -80,21 +82,21 @@ if __name__ == "__main__":
 
     train_dataloader = DataLoader(
         dataset=train_dataset,
-        batch_size=int(config["model"]["batch_size"]),
+        batch_size=int(config["training"]["batch_size"]),
         shuffle=True,
         collate_fn=collator,
     )
 
     valid_dataloader = DataLoader(
         dataset=valid_dataset,
-        batch_size=int(config["model"]["batch_size"]),
+        batch_size=int(config["training"]["batch_size"]),
         shuffle=True,
         collate_fn=collator,
     )
 
     test_dataloader = DataLoader(
         dataset=test_dataset,
-        batch_size=int(config["model"]["batch_size"]),
+        batch_size=int(config["training"]["batch_size"]),
         shuffle=True,
         collate_fn=collator,
     )
@@ -103,7 +105,7 @@ if __name__ == "__main__":
     pred_every_n_batches = args.pred_every_n_batches
 
     train(
-        n_epochs=int(config["model"]["n_epoch"]),
+        n_epochs=int(config["training"]["n_epoch"]),
         model=model,
         tokenizer=tokenizer,
         train_dataloader=train_dataloader,
@@ -113,8 +115,6 @@ if __name__ == "__main__":
         device=device,
         eval_every_n_batches=eval_every_n_batches,
         pred_every_n_batches=pred_every_n_batches,
-        generation_kwargs={
-            "num_beams": int(config["model"]["beam_size"])
-        },
+        generation_kwargs=generation_kwargs,
         options=options
     )
