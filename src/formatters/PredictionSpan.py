@@ -1,6 +1,6 @@
 from typing import List, Tuple, Optional
 
-from src.core.datatypes import Preffix
+from src.core.datatypes import Preffix, Span
 
 
 class PredictionSpanFormatter:
@@ -9,7 +9,7 @@ class PredictionSpanFormatter:
     """
     answer_templates = ["is a", "is an"]  # TODO move this (get rid of literals)
 
-    def format_answer_spans(self, context: str, prediction: str) -> List[Tuple[int, int, str]]:
+    def format_answer_spans(self, context: str, prediction: str) -> List[Span]:
         """
         Based on model prediction and context create entity spans
         :param context:
@@ -34,7 +34,7 @@ class PredictionSpanFormatter:
 
         return entity_spans
 
-    def _get_span_from_part(self, prediction_part: str, source_sentence: str) -> Optional[Tuple[int, int, str]]:
+    def _get_span_from_part(self, prediction_part: str, source_sentence: str) -> Optional[Span]:
         """
         Gets entity span from part of prediction
         :param prediction_part: Olga is a PER
@@ -65,7 +65,12 @@ class PredictionSpanFormatter:
 
             start = source_sentence.find(value)
             end = start + len(value)
-            span = (start, end, label)
+            span = Span(
+                start=start,
+                end=end,
+                label=label
+            )
+            # span = (start, end, label)
             return span
 
         return None

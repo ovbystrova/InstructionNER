@@ -1,3 +1,4 @@
+from dataclasses import astuple
 import json
 from pathlib import Path
 from unittest import TestCase
@@ -35,6 +36,8 @@ class TestSpanFormatter(TestCase):
             context=context,
             prediction=prediction
         )
+
+        spans_pred = [astuple(span) for span in spans_pred]
 
         self.assertListEqual(
             spans_pred,
