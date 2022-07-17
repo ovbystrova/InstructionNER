@@ -93,7 +93,7 @@ class TestReader(TestCase):
     ):
 
         entity_values = None
-        entity_spans = None
+        entity_spans = [{"start": 0, "end": 5, "label": "LOC"}]
 
         options = ["LOC", "PER", "MISC"]
 
@@ -126,7 +126,7 @@ class TestReader(TestCase):
             output_true: str
     ):
         entity_values = {"LOC": ["EMPTY"]}
-        entity_spans = None
+        entity_spans = [{"start": 0, "end": 5, "label": "LOC"}]
 
         options = ["LOC", "PER", "MISC"]
 
@@ -159,7 +159,7 @@ class TestReader(TestCase):
             output_true: str
     ):
         entity_values = {"LOC": ["EMPTY"]}
-        entity_spans = None
+        entity_spans = [{"start": 0, "end": 5, "label": "LOC"}]
 
         options = ["LOC", "PER", "MISC"]
 

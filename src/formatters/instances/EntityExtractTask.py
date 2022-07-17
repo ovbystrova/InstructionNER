@@ -1,6 +1,6 @@
-from typing import Dict, List, Tuple, Optional
+from typing import Dict, List, Union, Optional
 
-from src.core.datatypes import Instance, Preffix
+from src.core.datatypes import Instance, Preffix, Span
 from src.formatters.instances import InstanceFormatter
 
 
@@ -12,7 +12,7 @@ class EntityExtractTaskFormatter(InstanceFormatter):
             self,
             context: str,
             entity_values: Optional[Dict[str, List[str]]],
-            entity_spans: Optional[List[Tuple[int, int, str]]],
+            entity_spans: Optional[List[Dict[str, Union[int, str]]]],
             instruction: str,
             options: List[str]
     ) -> Instance:
@@ -26,6 +26,9 @@ class EntityExtractTaskFormatter(InstanceFormatter):
             for _entity_values in entity_values.values():
                 answers.extend(_entity_values)
             answer = ", ".join(answers) + "."
+
+        if entity_spans is not None:
+            entity_spans = [Span.from_json(span)for span in entity_spans]
 
         instance = Instance(
             context=Preffix.CONTEXT.value + context,

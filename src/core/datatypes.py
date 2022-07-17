@@ -5,29 +5,6 @@ from dataclasses import dataclass
 
 
 @dataclass()
-class Instance:
-    """
-    Core Instance dataclass.
-    :param context (str): initial text
-    :param question (str): question for QA model
-    :param answer (optional): raw answer from QA model
-    :param spans (optional): List of Spans
-    """
-    context: str
-    question: str
-    answer: Optional[str]
-    entity_spans: Optional[List[Tuple[int, int, str]]]
-    entity_values: Optional[Dict[str, List[str]]]
-
-    def __str__(self):
-
-        if self.answer is not None:
-            return self.context + " " + self.question + " " + self.answer
-
-        return self.context + " " + self.question
-
-
-@dataclass()
 class Span:
     """
     Core Span dataclass
@@ -49,6 +26,29 @@ class Span:
             end=int(data["end"]),
             label=data["label"]
         )
+
+
+@dataclass()
+class Instance:
+    """
+    Core Instance dataclass.
+    :param context (str): initial text
+    :param question (str): question for QA model
+    :param answer (optional): raw answer from QA model
+    :param spans (optional): List of Spans
+    """
+    context: str
+    question: str
+    answer: Optional[str]
+    entity_spans: Optional[List[Span]]
+    entity_values: Optional[Dict[str, List[str]]]
+
+    def __str__(self):
+
+        if self.answer is not None:
+            return self.context + " " + self.question + " " + self.answer
+
+        return self.context + " " + self.question
 
 
 class DatasetType(Enum):
