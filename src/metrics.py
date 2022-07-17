@@ -1,4 +1,4 @@
-from typing import Dict, List, Tuple
+from typing import Dict, List
 
 import numpy as np
 
@@ -162,13 +162,13 @@ def calculate_metrics_from_confusion_matrix(
         metrics_per_label = {}
 
         true_positive = confusion_matrix[idx][idx]
-        precision = true_positive / (np.sum(confusion_matrix[:][idx])) if true_positive > 0 else 0
-        recall = true_positive / (np.sum(confusion_matrix[idx][:])) if true_positive > 0 else 0
+        precision = true_positive / (np.sum(confusion_matrix[:, idx])) if true_positive > 0 else 0
+        recall = true_positive / (np.sum(confusion_matrix[idx, :])) if true_positive > 0 else 0
 
         metrics_per_label["precision"] = precision
         metrics_per_label["recall"] = recall
         metrics_per_label["f1-score"] = 2 * precision * recall / (precision + recall) \
-            if precision > 0 or recall > 0 else 0
+            if precision > 0 and recall > 0 else 0
         metrics_per_label["support"] = np.sum(confusion_matrix[idx][:])
 
         metrics[label] = metrics_per_label
