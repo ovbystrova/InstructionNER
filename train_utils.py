@@ -189,7 +189,7 @@ def evaluate(
             prediction_texts = tokenizer.batch_decode(prediction_texts, skip_special_tokens=True)
             writer.add_text("sample_prediction", prediction_texts[0])
 
-            spans_pred_batch = [prediction_span_formatter.format_answer_spans(context, prediction)
+            spans_pred_batch = [prediction_span_formatter.format_answer_spans(context, prediction, options)
                                 for context, prediction in zip(contexts, prediction_texts)]
             spans_pred.extend(spans_pred_batch)
 
@@ -198,7 +198,6 @@ def evaluate(
                 spans_true_batch,
                 options=options
             )
-            writer.add_custom_scalars(batch_metrics)
 
             # TODO refactor
             for metric_class, metric_dict in batch_metrics.items():
