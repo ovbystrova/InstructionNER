@@ -25,7 +25,7 @@ if __name__ == "__main__":
 
     writer = None
     if args.log_dir is not None:
-        log_dir = args.log_dir + datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
+        log_dir = args.log_dir + "/" + datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
         writer = SummaryWriter(log_dir=log_dir)
 
     # load all helper files
