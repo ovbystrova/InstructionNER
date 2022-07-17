@@ -30,21 +30,21 @@ Every sentence is like this:
     "context": "SOCCER - JAPAN GET LUCKY WIN , CHINA IN SURPRISE DEFEAT .",
     "entity_values": {
             "LOC": [
-                "JAPAN "
+                "JAPAN"
             ],
             "PER": [
-                "CHINA "
+                "CHINA"
             ]
         },
     "entity_spans": [
             {
                 "start": 9,
-                "end": 15,
+                "end": 14,
                 "label": "LOC"
             },
             {
                 "start": 31,
-                "end": 37,
+                "end": 36,
                 "label": "PER"
             }
         ]
