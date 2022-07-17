@@ -1,4 +1,5 @@
 import datetime
+from pathlib import Path
 
 import torch
 from torch.utils.data import DataLoader
@@ -118,3 +119,9 @@ if __name__ == "__main__":
         generation_kwargs=generation_kwargs,
         options=options
     )
+
+    path_to_save_trained_model = Path(args.path_to_model_save)
+    if not path_to_save_trained_model.exists():
+        path_to_save_trained_model.mkdir(parents=True, exist_ok=True)
+    model.save_pretrained(path_to_save_trained_model)
+    tokenizer.save_pretrained(path_to_save_trained_model)
