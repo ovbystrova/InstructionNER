@@ -81,6 +81,38 @@ Options: ORG, PER, LOC
 
 Prediction (raw text): Spain is a LOC.
 ```
+# Inference 
+```python
+from src.Model import Model
+
+model = Model(
+    model_path_or_name="../runs/model",
+    tokenizer_path_or_name="../runs/model"
+)
+
+options = ["LOC", "PER", "ORG", "MISC"]
+
+instruction = "please extract entities and their types from the input sentence, " \
+              "all entity types are in options"
+
+text = "The protest , which attracted several thousand supporters , coincided with the 18th anniversary of Spain 's constitution ."
+
+generation_kwargs = {
+    "num_beams": 2,
+    "max_length": 128
+}
+
+pred_spans = model.predict(
+    text=text,
+    generation_kwargs=generation_kwargs,
+    instruction=instruction,
+    options=options
+)
+
+>>> [(99, 104, 'LOC')]
+```
+
+
 
 # Citation
 ```bibtex
