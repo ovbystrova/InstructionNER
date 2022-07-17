@@ -1,3 +1,5 @@
+import datetime
+
 import torch
 from torch.utils.data import DataLoader
 from torch.utils.tensorboard import SummaryWriter
@@ -21,7 +23,8 @@ if __name__ == "__main__":
 
     writer = None
     if args.log_dir is not None:
-        writer = SummaryWriter(log_dir=args.log_dir)
+        log_dir = args.log_dir + datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
+        writer = SummaryWriter(log_dir=log_dir)
 
     # load all helper files
     options = load_json(args.path_to_options)
@@ -110,5 +113,6 @@ if __name__ == "__main__":
         pred_every_n_batches=pred_every_n_batches,
         generation_kwargs={
             "num_beams": int(config["model"]["beam_size"])
-        }
+        },
+        options=options
     )

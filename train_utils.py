@@ -1,4 +1,5 @@
 import random
+from typing import List, Dict, Any
 
 import numpy as np
 import torch
@@ -6,25 +7,26 @@ from torch.utils.tensorboard import SummaryWriter
 from tqdm import tqdm
 from transformers import T5ForConditionalGeneration, T5Tokenizer
 
-from metrics import calculate_metrics
+from src.metrics import calculate_metrics
 from src.formatters.PredictionSpan import PredictionSpanFormatter
+from src.utils import show_classification_report
 
 prediction_span_formatter = PredictionSpanFormatter()
 
 
-# TODO: add metrics calculation
 def train(
         n_epochs: int,
         model: T5ForConditionalGeneration,
-        tokenizer,
+        tokenizer: T5Tokenizer,
         train_dataloader: torch.utils.data.DataLoader,
         test_dataloader: torch.utils.data.DataLoader,
         optimizer: torch.optim.Optimizer,
         writer: SummaryWriter,
         device: torch.device,
-        eval_every_n_batches,
-        pred_every_n_batches,
-        generation_kwargs
+        eval_every_n_batches: int,
+        pred_every_n_batches: int,
+        generation_kwargs: Dict[str, Any],
+        options: List[str]
 ) -> None:
     for epoch in range(n_epochs):
         print(f"Epoch [{epoch + 1} / {n_epochs}]\n")
@@ -41,6 +43,7 @@ def train(
             eval_every_n_batches=eval_every_n_batches,
             pred_every_n_batches=pred_every_n_batches,
             generation_kwargs=generation_kwargs,
+            options=options
         )
 
         evaluate(
@@ -50,7 +53,8 @@ def train(
             writer=writer,
             device=device,
             epoch=epoch,
-            generation_kwargs=generation_kwargs
+            generation_kwargs=generation_kwargs,
+            options=options
         )
 
 
@@ -65,21 +69,23 @@ def train_epoch(
         eval_every_n_batches,
         pred_every_n_batches,
         generation_kwargs,
+        options: List[str],
         test_dataloader: torch.utils.data.DataLoader = None,
 
 ) -> None:
     """
     One training cycle (loop).
     Args:
+        :param options: list of labels in dataset
         :param generation_kwargs:
         :param test_dataloader:
         :param train_dataloader:
-        :param pred_every_n_batches:
-        :param eval_every_n_batches:
+        :param pred_every_n_batches: do sample prediction every n batches
+        :param eval_every_n_batches: do evaluation every n batches
         :param model:
         :param optimizer:
         :param writer:
-        :param epoch:
+        :param epoch: current epoch
         :param device:
         :param tokenizer:
     """
@@ -89,7 +95,7 @@ def train_epoch(
     for i, inputs in tqdm(
             enumerate(train_dataloader),
             total=len(train_dataloader),
-            desc="loop over train batches",
+            desc="Training",
     ):
         model.train()
         optimizer.zero_grad()
@@ -122,7 +128,8 @@ def train_epoch(
                     writer=writer,
                     device=device,
                     epoch=epoch,
-                    generation_kwargs=generation_kwargs
+                    generation_kwargs=generation_kwargs,
+                    options=options
                 )
         if i % pred_every_n_batches == 0 and i >= pred_every_n_batches:
             get_sample_text_prediction(
@@ -144,8 +151,9 @@ def evaluate(
         dataloader: torch.utils.data.DataLoader,
         writer: SummaryWriter,
         device: torch.device,
-        generation_kwargs,
+        generation_kwargs: Dict[str, Any],
         epoch: int,
+        options: List[str]
 ):
     model.eval()
 
@@ -158,7 +166,7 @@ def evaluate(
         for i, inputs in tqdm(
                 enumerate(dataloader),
                 total=len(dataloader),
-                desc="loop over test batches",
+                desc="Evaluating",
         ):
 
             instances = inputs.pop("instances")
@@ -178,7 +186,8 @@ def evaluate(
             loss = outputs.loss
 
             prediction_texts = model.generate(**inputs, **generation_kwargs)
-            prediction_texts = tokenizer.decode(prediction_texts, skip_special_tokens=True)
+            prediction_texts = tokenizer.batch_decode(prediction_texts, skip_special_tokens=True)
+            writer.add_text("sample_prediction", prediction_texts[0])
 
             spans_pred_batch = [prediction_span_formatter.format_answer_spans(context, prediction)
                                 for context, prediction in zip(contexts, prediction_texts)]
@@ -187,8 +196,16 @@ def evaluate(
             batch_metrics = calculate_metrics(
                 spans_pred_batch,
                 spans_true_batch,
-                options=[]  # TODO fill it right
+                options=options
             )
+            writer.add_custom_scalars(batch_metrics)
+
+            # TODO refactor
+            for metric_class, metric_dict in batch_metrics.items():
+                writer.add_scalars(metric_class, metric_dict)
+                # for metric_name, value in metric_dict.items():
+                #     tag = f"{metric_class}_{metric_name}"
+                #     writer.add_scalar(tag, value)
 
             epoch_loss.append(loss.item())
             writer.add_scalar(
@@ -198,10 +215,10 @@ def evaluate(
         epoch_metrics = calculate_metrics(
             spans_pred,
             spans_true,
-            options=[]  # TODO fill it right
+            options=options
         )
 
-        # TODO add classification report visualization
+        show_classification_report(epoch_metrics)
 
 
 def get_sample_text_prediction(
