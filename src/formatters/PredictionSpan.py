@@ -8,7 +8,7 @@ class PredictionSpanFormatter:
     """
     Turns raw Model output into NER spans (start_idx, end_idx, label)
     """
-    answer_templates = ["is a", "is an"]  # TODO move this (get rid of literals)
+    answer_templates = ["is an", "is a"]  # TODO move this (get rid of literals)
 
     def format_answer_spans(self, context: str, prediction: str, options: List[str]) -> List[Span]:
         """
@@ -59,7 +59,11 @@ class PredictionSpanFormatter:
             value = value.strip(" ").rstrip(" ")
             label = label.strip(" ").rstrip(" ")
 
-            matches = re.finditer(value, source_sentence)
+            try:
+                matches = re.finditer(value, source_sentence)
+            except re.error:  # unbalanced parenthesis at position
+                return None
+
             matches = list(matches)
 
             if len(matches) == 0:
