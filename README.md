@@ -83,7 +83,7 @@ Prediction (raw text): Spain is a LOC.
 ```
 ## Inference 
 ```python
-from src.Model import Model
+from instruction_ner.model import Model
 
 model = Model(
     model_path_or_name="olgaduchovny/t5-base-qa-ner-conll",
