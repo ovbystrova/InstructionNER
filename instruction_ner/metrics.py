@@ -2,7 +2,7 @@ from typing import Dict, List
 
 import numpy as np
 
-from src.core.datatypes import Span
+from instruction_ner.core.datatypes import Span
 
 
 def calculate_metrics(

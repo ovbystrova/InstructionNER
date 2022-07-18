@@ -3,8 +3,8 @@ from unittest import TestCase
 
 from parameterized import parameterized
 
-from src.formatters.Answer import AnswerFormatter
-from src.formatters import (
+from instruction_ner.formatters.Answer import AnswerFormatter
+from instruction_ner.formatters import (
     NERTaskFormatter,
     EntityExtractTaskFormatter,
     EntityTypeTaskFormatter

@@ -5,8 +5,8 @@ from unittest import TestCase
 
 from parameterized import parameterized
 
-from src.core.datatypes import Span
-from src.metrics import calculate_metrics
+from instruction_ner.core.datatypes import Span
+from instruction_ner.metrics import calculate_metrics
 
 
 class TestMetrics(TestCase):

@@ -1,8 +1,8 @@
 from pathlib import Path
 from arg_parse import get_data_args
 
-from src.core.datatypes import DatasetType
-from src.readers import CONLLReader
+from instruction_ner.core.datatypes import DatasetType
+from instruction_ner.readers import CONLLReader
 
 dataset2reader = {
     DatasetType.CONLL2003.value: CONLLReader

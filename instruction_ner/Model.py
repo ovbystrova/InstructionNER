@@ -4,7 +4,7 @@ from dataclasses import astuple
 import torch
 from transformers import T5Tokenizer, T5ForConditionalGeneration
 
-from src.formatters import (
+from instruction_ner.formatters import (
     NERTaskFormatter,
     PredictionSpanFormatter
 )

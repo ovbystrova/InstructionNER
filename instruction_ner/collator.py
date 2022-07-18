@@ -2,7 +2,7 @@ from typing import Any, Dict, List
 
 import transformers
 
-from src.core.datatypes import Instance
+from instruction_ner.core.datatypes import Instance
 
 
 class Collator:

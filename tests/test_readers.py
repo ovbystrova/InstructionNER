@@ -4,8 +4,8 @@ from typing import List
 from unittest import TestCase
 from parameterized import parameterized
 
-from src.core.datatypes import Span, DatasetField
-from src.readers import CONLLReader
+from instruction_ner.core.datatypes import Span, DatasetField
+from instruction_ner.readers import CONLLReader
 
 
 class TestReader(TestCase):

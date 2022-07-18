@@ -2,8 +2,8 @@ import json
 from pathlib import Path
 from typing import Any, Dict, List, Union, Tuple
 
-from src.core.datatypes import DatasetField, Span
-from src.core.reader import Reader
+from instruction_ner.core.datatypes import DatasetField, Span
+from instruction_ner.core.reader import Reader
 
 
 class CONLLReader(Reader):

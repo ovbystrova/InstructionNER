@@ -9,9 +9,9 @@ from transformers import T5Tokenizer, T5ForConditionalGeneration
 from arg_parse import get_train_args
 from train_utils import train
 
-from src.collator import Collator
-from src.dataset import T5NERDataset
-from src.utils import set_global_seed, load_config, load_json, loads_json
+from instruction_ner.collator import Collator
+from instruction_ner.dataset import T5NERDataset
+from instruction_ner.utils import set_global_seed, load_config, load_json, loads_json
 
 import warnings
 warnings.filterwarnings("ignore")

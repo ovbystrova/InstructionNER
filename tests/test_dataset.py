@@ -4,8 +4,8 @@ from unittest import TestCase
 
 from parameterized import parameterized
 
-from src.dataset import T5NERDataset
-from src.core.datatypes import Instance
+from instruction_ner.dataset import T5NERDataset
+from instruction_ner.core.datatypes import Instance
 
 
 def _make_instance(data):

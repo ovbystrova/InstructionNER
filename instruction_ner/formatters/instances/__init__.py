@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 from typing import Dict, List, Tuple, Optional
 
-from src.core.datatypes import Instance
+from instruction_ner.core.datatypes import Instance
 
 
 class InstanceFormatter(ABC):

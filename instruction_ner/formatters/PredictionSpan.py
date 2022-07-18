@@ -1,7 +1,7 @@
 import re
 from typing import List, Optional
 
-from src.core.datatypes import Preffix, Span
+from instruction_ner.core.datatypes import Preffix, Span
 
 
 class PredictionSpanFormatter:

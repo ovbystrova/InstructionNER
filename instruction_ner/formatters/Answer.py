@@ -1,6 +1,6 @@
 from typing import Dict, List, Tuple, Optional
 
-from src.core.datatypes import Language
+from instruction_ner.core.datatypes import Language
 
 
 # TODO Think about adding Preffix.Answer

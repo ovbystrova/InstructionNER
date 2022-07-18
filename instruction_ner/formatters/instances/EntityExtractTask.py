@@ -1,7 +1,7 @@
 from typing import Dict, List, Union, Optional
 
-from src.core.datatypes import Instance, Preffix, Span
-from src.formatters.instances import InstanceFormatter
+from instruction_ner.core.datatypes import Instance, Preffix, Span
+from instruction_ner.formatters.instances import InstanceFormatter
 
 
 class EntityExtractTaskFormatter(InstanceFormatter):

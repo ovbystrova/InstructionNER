@@ -5,7 +5,7 @@ from unittest import TestCase
 
 from parameterized import parameterized
 
-from src.formatters import PredictionSpanFormatter
+from instruction_ner.formatters import PredictionSpanFormatter
 
 
 class TestSpanFormatter(TestCase):

@@ -3,8 +3,8 @@ from typing import Dict, List, Any
 from torch.utils.data import Dataset
 from tqdm import tqdm
 
-from src.core.datatypes import Instance, TaskType
-from src.formatters import (
+from instruction_ner.core.datatypes import Instance, TaskType
+from instruction_ner.formatters import (
     EntityExtractTaskFormatter,
     EntityTypeTaskFormatter,
     NERTaskFormatter

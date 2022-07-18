@@ -1,13 +1,13 @@
 from typing import Dict, List, Union, Optional
 
-from src.core.datatypes import Instance, Preffix, Span
-from src.formatters.instances import InstanceFormatter
-from src.formatters.Answer import AnswerFormatter
+from instruction_ner.core.datatypes import Instance, Preffix, Span
+from instruction_ner.formatters.Answer import AnswerFormatter
+from instruction_ner.formatters.instances import InstanceFormatter
 
 
-class NERTaskFormatter(InstanceFormatter):
+class EntityTypeTaskFormatter(InstanceFormatter):
     """
-    Task: Given sentence extract entity values and map them with entity labels
+    Task: Given sentence and entity values map them with entity labels
     """
     def format_instance(
             self,
@@ -18,7 +18,13 @@ class NERTaskFormatter(InstanceFormatter):
             options: List[str]
     ) -> Instance:
 
-        instruction = Preffix.INSTRUCTION.value + instruction
+        entity_values_total = None
+        if entity_values is not None:
+            entity_values_total = []
+            for values in entity_values.values():
+                entity_values_total.extend(values)
+
+        instruction = Preffix.INSTRUCTION.value + instruction + ": " + ", ".join(entity_values_total)
         options = Preffix.OPTIONS.value + ", ".join(options)
         question = instruction + " " + options
 
@@ -29,8 +35,8 @@ class NERTaskFormatter(InstanceFormatter):
             context=Preffix.CONTEXT.value + context,
             question=question,
             answer=AnswerFormatter.from_values(entity_values),
-            entity_values=entity_values,
-            entity_spans=entity_spans
+            entity_spans=entity_spans,
+            entity_values=entity_values
         )
 
         return instance

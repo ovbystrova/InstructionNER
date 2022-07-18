@@ -7,9 +7,9 @@ from torch.utils.tensorboard import SummaryWriter
 from tqdm import tqdm
 from transformers import T5ForConditionalGeneration, T5Tokenizer
 
-from src.metrics import calculate_metrics
-from src.formatters.PredictionSpan import PredictionSpanFormatter
-from src.utils import show_classification_report
+from instruction_ner.metrics import calculate_metrics
+from instruction_ner.formatters.PredictionSpan import PredictionSpanFormatter
+from instruction_ner.utils import show_classification_report
 
 prediction_span_formatter = PredictionSpanFormatter()
 
