@@ -81,13 +81,13 @@ Options: ORG, PER, LOC
 
 Prediction (raw text): Spain is a LOC.
 ```
-# Inference 
+## Inference 
 ```python
 from src.Model import Model
 
 model = Model(
-    model_path_or_name="../runs/model",
-    tokenizer_path_or_name="../runs/model"
+    model_path_or_name="olgaduchovny/t5-base-qa-ner-conll",
+    tokenizer_path_or_name="olgaduchovny/t5-base-qa-ner-conll"
 )
 
 options = ["LOC", "PER", "ORG", "MISC"]
