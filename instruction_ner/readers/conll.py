@@ -31,7 +31,7 @@ class CONLLReader(Reader):
         data_processed = []
         for sentence in sentences:
             text, entity_spans = self._get_text_and_spans_from_sentence(sentence)
-            entity_values = self._get_entity_values_from_sentence(text, entity_spans)
+            entity_values = self._get_entity_values_from_text(text, entity_spans)
 
             dataset_item = {
                 DatasetField.CONTEXT.value: text,
@@ -169,27 +169,3 @@ class CONLLReader(Reader):
         text = " ".join(text_tokens)
 
         return text, entity_spans
-
-    @staticmethod
-    def _get_entity_values_from_sentence(sentence: str, entity_spans: List[Span]):
-        """
-        Get dict of {label: [values]} from sentence and entity Spans
-        :param sentence: text in string format  (eg. 'London is the capital of Great Britain')
-        :param entity_spans: List of Span object
-        :return:
-        """
-
-        entity_values = {}
-
-        for entity in entity_spans:
-            start, end, label = entity.start, entity.end, entity.label
-
-            entity_value = sentence[start: end]
-
-            if label not in entity_values:
-                entity_values[label] = []
-
-            if entity_value not in entity_values[label]:
-                entity_values[label].append(entity_value)
-
-        return entity_values

@@ -3,7 +3,7 @@ import json
 from pathlib import Path
 from typing import Any, Union, List, Dict
 
-from instruction_ner.core.datatypes import DatasetField
+from instruction_ner.core.datatypes import DatasetField, Span
 
 
 class Reader(ABC):
@@ -42,3 +42,27 @@ class Reader(ABC):
             f.write(json_string)
 
         print(f"Saved to {path}")
+
+    @staticmethod
+    def _get_entity_values_from_text(sentence: str, entity_spans: List[Span]):
+        """
+        Get dict of {label: [values]} from sentence and entity Spans
+        :param sentence: text in string format  (eg. 'London is the capital of Great Britain')
+        :param entity_spans: List of Span object
+        :return:
+        """
+
+        entity_values = {}
+
+        for entity in entity_spans:
+            start, end, label = entity.start, entity.end, entity.label
+
+            entity_value = sentence[start: end]
+
+            if label not in entity_values:
+                entity_values[label] = []
+
+            if entity_value not in entity_values[label]:
+                entity_values[label].append(entity_value)
+
+        return entity_values
