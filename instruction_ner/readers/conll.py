@@ -1,4 +1,3 @@
-import json
 from pathlib import Path
 from typing import Any, Dict, List, Union, Tuple
 
@@ -32,7 +31,7 @@ class CONLLReader(Reader):
         data_processed = []
         for sentence in sentences:
             text, entity_spans = self._get_text_and_spans_from_sentence(sentence)
-            entity_values = self._get_entity_values_from_sentence(text, entity_spans)
+            entity_values = self._get_entity_values_from_text(text, entity_spans)
 
             dataset_item = {
                 DatasetField.CONTEXT.value: text,
@@ -43,35 +42,10 @@ class CONLLReader(Reader):
 
         return data_processed
 
-    @staticmethod
-    def save_to_json(data: List[Dict[str, Any]], path: Union[str, Path]):
-        """
-        Save processed data to json file
-        :param data: List of sentences with entities
-        :param path: where to save the file
-        :return:
-        """
-
-        if not isinstance(path, str):
-            path = str(path)
-
-        for item in data:
-
-            spans = item[DatasetField.ENTITY_SPANS.value]
-
-            spans_json = [span.to_json() for span in spans]
-            item[DatasetField.ENTITY_SPANS.value] = spans_json
-
-        with open(path, "w", encoding="utf-8") as f:
-            json_string = json.dumps(data, ensure_ascii=False, indent=4)
-            f.write(json_string)
-
-        print(f"Saved to {path}")
-
     def read_from_file(self, path_to_file: Union[str, Path]):
         """
-        Wrapper around self.read(). Read 'path_to_conll_file' and run self.read()
-        :param path_to_file:
+        Wrapper around self.read(). Read 'path_to_file' and run self.read()
+        :param path_to_file: string or Path
         :return: List of Dicts where each element is a sentence with entities
         """
 
@@ -195,27 +169,3 @@ class CONLLReader(Reader):
         text = " ".join(text_tokens)
 
         return text, entity_spans
-
-    @staticmethod
-    def _get_entity_values_from_sentence(sentence: str, entity_spans: List[Span]):
-        """
-        Get dict of {label: [values]} from sentence and entity Spans
-        :param sentence: List of tokens (eg. ['-DOCSTART- -X- -X- O', '\n', '\n', 'JAPAN NNP B-NP B-LOC'])
-        :param entity_spans: List of Span object
-        :return:
-        """
-
-        entity_values = {}
-
-        for entity in entity_spans:
-            start, end, label = entity.start, entity.end, entity.label
-
-            entity_value = sentence[start: end]
-
-            if label not in entity_values:
-                entity_values[label] = []
-
-            if entity_value not in entity_values[label]:
-                entity_values[label].append(entity_value)
-
-        return entity_values

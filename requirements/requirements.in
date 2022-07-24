@@ -1,4 +1,5 @@
 dataclasses==0.6
+openpyxl==3.0.10
 pandas==1.4.3
 pyyaml==6.0
 SentencePiece==0.1.96

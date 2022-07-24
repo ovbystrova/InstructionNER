@@ -8,8 +8,9 @@ Python >=3.8
 
 ## Installation
 ```shell
-pip install -r requirements.in
-pip install -r requirements_test.in
+pip install -r requirements/requirements.in # for training purposes
+pip install -r requirements/requirements_test.in # for tests
+pip install -r requirements/requirements_dev.in # for inference only
 ```
 
 ## Data Preparation

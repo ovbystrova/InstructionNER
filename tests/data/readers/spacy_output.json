@@ -1,0 +1,79 @@
+[
+    {
+        "context": "SOCCER - JAPAN GET LUCKY WIN , CHINA IN SURPRISE DEFEAT .",
+        "entity_values": {
+            "LOC": [
+                "JAPAN"
+            ],
+            "PER": [
+                "CHINA"
+            ]
+        },
+        "entity_spans": [
+            {
+                "start": 9,
+                "end": 14,
+                "label": "LOC"
+            },
+            {
+                "start": 31,
+                "end": 36,
+                "label": "PER"
+            }
+        ]
+    },
+    {
+        "context": "AL-AIN , United Arab Emirates 1996-12-06",
+        "entity_values": {
+            "LOC": [
+                "AL-AIN",
+                "United Arab Emirates"
+            ]
+        },
+        "entity_spans": [
+            {
+                "start": 0,
+                "end": 6,
+                "label": "LOC"
+            },
+            {
+                "start": 9,
+                "end": 29,
+                "label": "LOC"
+            }
+        ]
+    },
+    {
+        "context": "Hosts UAE play Kuwait and South Korea take on Indonesia on Saturday in Group A matches .",
+        "entity_values": {
+            "LOC": [
+                "UAE",
+                "Kuwait",
+                "South Korea",
+                "Indonesia"
+            ]
+        },
+        "entity_spans": [
+            {
+                "start": 6,
+                "end": 9,
+                "label": "LOC"
+            },
+            {
+                "start": 15,
+                "end": 21,
+                "label": "LOC"
+            },
+            {
+                "start": 26,
+                "end": 37,
+                "label": "LOC"
+            },
+            {
+                "start": 46,
+                "end": 55,
+                "label": "LOC"
+            }
+        ]
+    }
+]
