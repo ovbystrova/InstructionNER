@@ -44,8 +44,8 @@ class CONLLReader(Reader):
 
     def read_from_file(self, path_to_file: Union[str, Path]):
         """
-        Wrapper around self.read(). Read 'path_to_conll_file' and run self.read()
-        :param path_to_file:
+        Wrapper around self.read(). Read 'path_to_file' and run self.read()
+        :param path_to_file: string or Path
         :return: List of Dicts where each element is a sentence with entities
         """
 
