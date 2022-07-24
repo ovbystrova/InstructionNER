@@ -174,7 +174,7 @@ class CONLLReader(Reader):
     def _get_entity_values_from_sentence(sentence: str, entity_spans: List[Span]):
         """
         Get dict of {label: [values]} from sentence and entity Spans
-        :param sentence: List of tokens (eg. ['-DOCSTART- -X- -X- O', '\n', '\n', 'JAPAN NNP B-NP B-LOC'])
+        :param sentence: text in string format  (eg. 'London is the capital of Great Britain')
         :param entity_spans: List of Span object
         :return:
         """
