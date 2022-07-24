@@ -64,6 +64,7 @@ class DatasetType(Enum):
     AITS = "atis"
     MIT_MOVIE = "mit_movie"
     MIT_RESTAURANT = "mit_restaurant"
+    SPACY = "spacy"
 
 
 class Preffix(Enum):
