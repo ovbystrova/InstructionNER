@@ -17,6 +17,9 @@ training:
   learning_rate: 5e-5
   n_epoch: 10
 
+evaluation:
+  batch_size: 16
+
 generation:
   num_beams: 2
   max_length: 128
