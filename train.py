@@ -7,11 +7,10 @@ from torch.utils.tensorboard import SummaryWriter
 from transformers import T5Tokenizer, T5ForConditionalGeneration
 
 from arg_parse import get_train_args
-from train_utils import train
-
 from instruction_ner.collator import Collator
 from instruction_ner.dataset import T5NERDataset
 from instruction_ner.utils import set_global_seed, load_config, load_json, loads_json
+from utils.train_utils import train
 
 import warnings
 warnings.filterwarnings("ignore")
@@ -37,7 +36,6 @@ if __name__ == "__main__":
     # load data files
     data_train = loads_json(config["data"]["train"])
     data_valid = loads_json(config["data"]["valid"])
-    data_test = loads_json(config["data"]["test"])
 
     # Create Datasets
     train_dataset = T5NERDataset(
@@ -47,11 +45,6 @@ if __name__ == "__main__":
     )
     valid_dataset = T5NERDataset(
         data=data_valid,
-        instructions=instructions["test"],
-        options=options
-    )
-    test_dataset = T5NERDataset(
-        data=data_test,
         instructions=instructions["test"],
         options=options
     )
@@ -95,13 +88,6 @@ if __name__ == "__main__":
         collate_fn=collator,
     )
 
-    test_dataloader = DataLoader(
-        dataset=test_dataset,
-        batch_size=int(config["training"]["batch_size"]),
-        shuffle=True,
-        collate_fn=collator,
-    )
-
     eval_every_n_batches = args.eval_every_n_batches
     pred_every_n_batches = args.pred_every_n_batches
 
@@ -110,7 +96,7 @@ if __name__ == "__main__":
         model=model,
         tokenizer=tokenizer,
         train_dataloader=train_dataloader,
-        test_dataloader=test_dataloader,
+        test_dataloader=valid_dataloader,
         optimizer=optimizer,
         writer=writer,
         device=device,

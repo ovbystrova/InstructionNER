@@ -71,8 +71,24 @@ Arguments:
 - **--log_dir** - where to log tensorboard
 - **--eval_every_n_batches** - do evaluation every n batches
 - **--pred_every_n_batches** - write n sample prediction every n batches
-- **--config.yaml** - path to all necessary information for model
+- **--path_to_model_config** - path to all necessary information for model
 - **--path_to_model_save** - where to save model
+
+## Evaluation
+Script for evaluation of the trained model:
+```
+python evaluate.py \
+--model_path_or_name 'olgaduchovny/t5-base-qa-ner-conll' \
+--path_to_model_config 'config.yaml' \
+--path_to_instructions 'instructions.json' \
+--path_to_options 'options.json' \
+```
+
+Arguments:
+- **--model_path_or_name** - path to trained model or HF model name
+- **--path_to_model_config** - path to all necessary information for model
+- **--path_to_instructions** - file with instruction prompts
+- **--path_to_options** - file with mapping dataset to its entities
 
 ## Prediction Sample
 ```
