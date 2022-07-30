@@ -98,3 +98,47 @@ def get_data_args() -> argparse.Namespace:
     args = parser.parse_args()
 
     return args
+
+
+def get_evaluate_args() -> argparse.Namespace:
+    """
+    Evaluation Argument Parser.
+    Returns:
+        Namespace: Parsed arguments.
+    """
+
+    parser = argparse.ArgumentParser()
+
+    parser.add_argument(
+        "--model_path_or_name",
+        type=str,
+        required=True,
+        default="olgaduchovny/t5-base-qa-ner-conll",
+        help="path to trained model or HF model name",
+    )
+
+    parser.add_argument(
+        "--path_to_model_config",
+        type=str,
+        required=True,
+        default="configs/config.yaml",
+        help="path to all necessary information for model",
+    )
+
+    parser.add_argument(
+        "--path_to_options",
+        type=str,
+        default="options.json",
+        help="file with mapping dataset to its entities",
+    )
+
+    parser.add_argument(
+        "--path_to_instructions",
+        type=str,
+        default="instructions.json",
+        help="file with instruction prompts",
+    )
+
+    args = parser.parse_args()
+
+    return args
