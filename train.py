@@ -34,6 +34,7 @@ if __name__ == "__main__":
     instructions = load_json(args.path_to_instructions)
 
     # load data files
+    # TODO add train/val split if there is no valid data
     data_train = loads_json(config["data"]["train"])
     data_valid = loads_json(config["data"]["valid"])
 
