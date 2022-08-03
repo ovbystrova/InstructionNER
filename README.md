@@ -90,6 +90,14 @@ Arguments:
 - **--path_to_instructions** - file with instruction prompts
 - **--path_to_options** - file with mapping dataset to its entities
 
+## Evaluation Results
+
+
+
+Dataset | Precision | Recall | F1-Score (weighted)
+--- | --- | --- | --- | 
+CONLL-2003 | 0.859 | 0.844 | 0.851 
+
 ## Prediction Sample
 ```
 Sentence: The protest , which attracted several thousand supporters , coincided with the 18th anniversary of Spain 's constitution .
