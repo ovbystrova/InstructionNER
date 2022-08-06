@@ -2,11 +2,13 @@ from pathlib import Path
 from arg_parse import get_data_args
 
 from instruction_ner.core.datatypes import DatasetType
-from instruction_ner.readers import CONLLReader, SpacyReader
+from instruction_ner.readers import CONLLReader, SpacyReader, MITReader
 
 dataset2reader = {
     DatasetType.CONLL2003.value: CONLLReader,
-    DatasetType.SPACY.value: SpacyReader
+    DatasetType.SPACY.value: SpacyReader,
+    DatasetType.MIT_RESTAURANT.value: MITReader,
+    DatasetType.MIT_MOVIE.value: MITReader
 }
 
 
@@ -22,6 +24,8 @@ if __name__ == "__main__":
     if output_dir is None:
         output_dir = filepath.parent
         print(f"--output_dir not specified. Going to save at {filepath.parent.as_posix()}")
+    else:
+        output_dir = Path(output_dir)
 
     if dataset not in dataset2reader:
         raise ValueError(f"Expected dataset to be on of {dataset2reader.keys()}")

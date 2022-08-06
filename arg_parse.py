@@ -85,7 +85,7 @@ def get_data_args() -> argparse.Namespace:
         "--dataset_type",
         type=str,
         required=True,
-        choices=["conll2003"],
+        choices=["conll2003", "spacy", "mit_restaurant", "mit_movie"],
         help="dataset type to map it with relevant Reader",
     )
 
