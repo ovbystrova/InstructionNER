@@ -7,8 +7,7 @@ from instruction_ner.readers import CONLLReader, SpacyReader, MITReader
 dataset2reader = {
     DatasetType.CONLL2003.value: CONLLReader,
     DatasetType.SPACY.value: SpacyReader,
-    DatasetType.MIT_RESTAURANT.value: MITReader,
-    DatasetType.MIT_MOVIE.value: MITReader
+    DatasetType.MIT.value: MITReader,
 }
 
 

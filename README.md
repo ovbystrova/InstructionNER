@@ -15,7 +15,7 @@ pip install -r requirements/requirements_dev.in # for inference only
 
 ## Data Preparation
 In order to make a unified training interface, 
-you can convert your raw input data (supported dataset formats: **conll**, **spacy**, **mit_movie**, **mit_restaurant**)
+you can convert your raw input data (supported dataset formats: **conll**, **spacy**, **mit**)
 with the following script:
 ```
 python prepare_data.py \

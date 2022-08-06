@@ -62,8 +62,7 @@ class Instance:
 class DatasetType(Enum):
     CONLL2003 = "conll2003"
     AITS = "atis"
-    MIT_MOVIE = "mit_movie"
-    MIT_RESTAURANT = "mit_restaurant"
+    MIT = "mit"
     SPACY = "spacy"
 
 
