@@ -161,8 +161,12 @@ def update_best_checkpoint(
     :param path_to_save_model:
     :return:
     """
+
     metric_current_value = metrics_new[metric_avg][metric_name]
-    metric_best_value = metrics_best[metric_avg][metric_name]
+
+    metric_best_value = 0
+    if len(metrics_best) > 0:
+        metric_best_value = metrics_best[metric_avg][metric_name]
 
     if metric_current_value > metric_best_value:
         print(f"Got Better results for {metric_name}. \n"
