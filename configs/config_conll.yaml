@@ -16,6 +16,9 @@ training:
   batch_size: 16
   learning_rate: 5e-5
   n_epoch: 10
+  do_save_best_checkpoint: true
+  metric_name: "f1-score"
+  metric_avg: "weighted_avg"
 
 evaluation:
   batch_size: 16
