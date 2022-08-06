@@ -1,0 +1,20 @@
+O	a
+B-Rating	four
+I-Rating	star
+O	restaurant
+B-Location	with
+I-Location	a
+B-Amenity	bar
+
+O	any
+B-Cuisine	asian
+O	cuisine
+B-Location	around
+
+O	any
+B-Cuisine	bbq
+O	places
+B-Hours	open
+I-Hours	before
+I-Hours	5
+B-Location	nearby

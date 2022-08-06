@@ -1,0 +1,87 @@
+[
+    {
+        "context": "a four star restaurant with a bar",
+        "entity_values": {
+            "Rating": [
+                "four star"
+            ],
+            "Location": [
+                "with a"
+            ],
+            "Amenity": [
+                "bar"
+            ]
+        },
+        "entity_spans": [
+            {
+                "start": 2,
+                "end": 11,
+                "label": "Rating"
+            },
+            {
+                "start": 23,
+                "end": 29,
+                "label": "Location"
+            },
+            {
+                "start": 30,
+                "end": 33,
+                "label": "Amenity"
+            }
+        ]
+    },
+    {
+        "context": "any asian cuisine around",
+        "entity_values": {
+            "Cuisine": [
+                "asian"
+            ],
+            "Location": [
+                "around"
+            ]
+        },
+        "entity_spans": [
+            {
+                "start": 4,
+                "end": 9,
+                "label": "Cuisine"
+            },
+            {
+                "start": 18,
+                "end": 24,
+                "label": "Location"
+            }
+        ]
+    },
+    {
+        "context": "any bbq places open before 5 nearby",
+        "entity_values": {
+            "Cuisine": [
+                "bbq"
+            ],
+            "Hours": [
+                "open before 5"
+            ],
+            "Location": [
+                "nearby"
+            ]
+        },
+        "entity_spans": [
+            {
+                "start": 4,
+                "end": 7,
+                "label": "Cuisine"
+            },
+            {
+                "start": 15,
+                "end": 28,
+                "label": "Hours"
+            },
+            {
+                "start": 29,
+                "end": 35,
+                "label": "Location"
+            }
+        ]
+    }
+]
