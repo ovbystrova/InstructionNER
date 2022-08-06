@@ -96,7 +96,7 @@ Arguments:
 
 Dataset | Precision | Recall | F1-Score (weighted)
 --- | --- | --- | --- | 
-CONLL-2003 | 0.859 | 0.844 | 0.851 
+CONLL-2003 | 0.862 | 0.843 | 0.852 
 
 ## Prediction Sample
 ```
