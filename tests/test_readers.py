@@ -10,7 +10,7 @@ from instruction_ner.core.datatypes import Span, DatasetField
 from instruction_ner.readers import CONLLReader, SpacyReader, MITReader
 
 
-# TODO optimize this tests: looks like they can be simplified
+# TODO optimize these tests: looks like they can be simplified
 class TestConllReader(TestCase):
     maxDiff = None
 
