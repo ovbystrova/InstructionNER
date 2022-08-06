@@ -1,3 +1,4 @@
+import json
 import random
 from typing import List, Dict, Any, Optional
 
@@ -87,6 +88,8 @@ def evaluate(
 
         show_classification_report(epoch_metrics)
 
+        return epoch_metrics
+
 
 def get_sample_text_prediction(
         model: T5ForConditionalGeneration,
@@ -135,3 +138,43 @@ def get_sample_text_prediction(
 
         print(f"Prediction: {answer}")
         print(f"Found {len(answer_spans)} spans. {answer_spans}\n")
+
+
+def update_best_checkpoint(
+        metrics_new: Dict[str, Dict[str, float]],
+        metrics_best: Dict[str, Dict[str, float]],
+        metric_name: str,
+        metric_avg: str,
+        model: T5ForConditionalGeneration,
+        tokenizer: T5Tokenizer,
+        path_to_save_model: str
+):
+    """
+    Compares specific metric in two metric dictionaries: current and best.
+    If new metric value is better -> new best model checkpoint saved
+    :param metrics_new:
+    :param metrics_best:
+    :param metric_name:
+    :param metric_avg:
+    :param model:
+    :param tokenizer:
+    :param path_to_save_model:
+    :return:
+    """
+    metric_current_value = metrics_new[metric_avg][metric_name]
+    metric_best_value = metrics_best[metric_avg][metric_name]
+
+    if metric_current_value > metric_best_value:
+        print(f"Got Better results for {metric_name}. \n"
+              f"{metric_current_value} > {metric_best_value}. Updating the best checkpoint")
+        metrics_best = metrics_new
+
+        model.save_pretrained(path_to_save_model)
+        tokenizer.save_pretrained(path_to_save_model)
+
+        save_metrics_path = path_to_save_model + "/metrics.json"
+
+        with open(save_metrics_path, "w", encoding="utf-8") as f:
+            json.dump(metrics_best, ensure_ascii=False, indent=4, fp=f)
+
+    return metrics_best

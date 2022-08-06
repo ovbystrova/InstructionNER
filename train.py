@@ -92,6 +92,15 @@ if __name__ == "__main__":
     eval_every_n_batches = args.eval_every_n_batches
     pred_every_n_batches = args.pred_every_n_batches
 
+    path_to_save_trained_model = Path(args.path_to_model_save)
+    path_to_save_trained_model.mkdir(parents=True, exist_ok=True)
+
+    do_save_best_checkpoint = bool(config["training"]["do_save_best_checkpoint"])
+    path_to_save_best_checkpoint = None
+    if do_save_best_checkpoint:
+        path_to_save_best_checkpoint = path_to_save_trained_model / "best"
+        path_to_save_best_checkpoint.mkdir(exist_ok=True)
+
     train(
         n_epochs=int(config["training"]["n_epoch"]),
         model=model,
@@ -104,11 +113,14 @@ if __name__ == "__main__":
         eval_every_n_batches=eval_every_n_batches,
         pred_every_n_batches=pred_every_n_batches,
         generation_kwargs=generation_kwargs,
-        options=options
+        options=options,
+        path_to_save_model=path_to_save_best_checkpoint.as_posix(),
+        metric_name_to_choose_best=config["training"]["metric_name"],
+        metric_avg_to_choose_best=config["training"]["metric_avg"]
     )
 
-    path_to_save_trained_model = Path(args.path_to_model_save)
-    if not path_to_save_trained_model.exists():
-        path_to_save_trained_model.mkdir(parents=True, exist_ok=True)
+    path_to_save_model_last = path_to_save_trained_model / "last"
+    path_to_save_model_last.mkdir(exist_ok=True)
+
     model.save_pretrained(path_to_save_trained_model)
     tokenizer.save_pretrained(path_to_save_trained_model)

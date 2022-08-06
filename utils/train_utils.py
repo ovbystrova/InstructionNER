@@ -6,7 +6,7 @@ from torch.utils.tensorboard import SummaryWriter
 from tqdm import tqdm
 from transformers import T5ForConditionalGeneration, T5Tokenizer
 
-from utils.evaluate_utils import evaluate, get_sample_text_prediction
+from utils.evaluate_utils import evaluate, get_sample_text_prediction, update_best_checkpoint
 
 
 def train(
@@ -21,12 +21,18 @@ def train(
         eval_every_n_batches: int,
         pred_every_n_batches: int,
         generation_kwargs: Dict[str, Any],
-        options: List[str]
+        options: List[str],
+        path_to_save_model: Optional[str],
+        metric_name_to_choose_best: Optional[str],
+        metric_avg_to_choose_best: Optional[str]
 ) -> None:
+
+    metrics_best = {}
+
     for epoch in range(n_epochs):
         print(f"Epoch [{epoch + 1} / {n_epochs}]\n")
 
-        train_epoch(
+        metrics_best = train_epoch(
             model=model,
             tokenizer=tokenizer,
             train_dataloader=train_dataloader,
@@ -38,10 +44,14 @@ def train(
             eval_every_n_batches=eval_every_n_batches,
             pred_every_n_batches=pred_every_n_batches,
             generation_kwargs=generation_kwargs,
-            options=options
+            options=options,
+            path_to_save_model=path_to_save_model,
+            metrics_best=metrics_best,
+            metric_name_to_choose_best=metric_name_to_choose_best,
+            metric_avg_to_choose_best=metric_avg_to_choose_best
         )
 
-        evaluate(
+        evaluate_metrics = evaluate(
             model=model,
             tokenizer=tokenizer,
             dataloader=test_dataloader,
@@ -50,6 +60,19 @@ def train(
             epoch=epoch,
             generation_kwargs=generation_kwargs,
             options=options
+        )
+
+        if path_to_save_model is None:
+            continue
+
+        metrics_best = update_best_checkpoint(
+            metrics_best=metrics_best,
+            metrics_new=evaluate_metrics,
+            metric_name=metric_name_to_choose_best,
+            metric_avg=metric_avg_to_choose_best,
+            model=model,
+            tokenizer=tokenizer,
+            path_to_save_model=path_to_save_model
         )
 
 
@@ -65,11 +88,20 @@ def train_epoch(
         pred_every_n_batches: int,
         generation_kwargs: Dict[str, Any],
         options: List[str],
+        path_to_save_model: Optional[str],
+        metrics_best: Dict[str, Dict[str, float]],
+        metric_name_to_choose_best: Optional[str],
+        metric_avg_to_choose_best: Optional[str],
         test_dataloader: torch.utils.data.DataLoader = None,
-) -> None:
+
+) -> Dict[str, Dict[str, float]]:
     """
     One training cycle (loop).
     Args:
+        :param metric_avg_to_choose_best:
+        :param metric_name_to_choose_best:
+        :param metrics_best:
+        :param path_to_save_model:
         :param options: list of labels in dataset
         :param generation_kwargs: arguments for generation (ex., beam_size)
         :param test_dataloader:
@@ -116,7 +148,7 @@ def train_epoch(
 
         if i % eval_every_n_batches == 0 and i >= eval_every_n_batches:
             if test_dataloader is not None:
-                evaluate(
+                evaluate_metrics = evaluate(
                     model=model,
                     tokenizer=tokenizer,
                     dataloader=test_dataloader,
@@ -126,6 +158,17 @@ def train_epoch(
                     generation_kwargs=generation_kwargs,
                     options=options
                 )
+
+                metrics_best = update_best_checkpoint(
+                    metrics_best=metrics_best,
+                    metrics_new=evaluate_metrics,
+                    metric_name=metric_name_to_choose_best,
+                    metric_avg=metric_avg_to_choose_best,
+                    model=model,
+                    tokenizer=tokenizer,
+                    path_to_save_model=path_to_save_model
+                )
+
         if i % pred_every_n_batches == 0 and i >= pred_every_n_batches:
             get_sample_text_prediction(
                 model=model,
@@ -140,3 +183,5 @@ def train_epoch(
     print(f"Train loss: {avg_loss}\n")
     if writer:
         writer.add_scalar("loss / train", avg_loss, epoch)
+
+    return metrics_best
