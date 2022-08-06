@@ -34,14 +34,14 @@ def get_train_args() -> argparse.Namespace:
     parser.add_argument(
         "--eval_every_n_batches",
         type=int,
-        default=200,
+        default=500,
         help="do evaluation every n batches",
     )
 
     parser.add_argument(
         "--pred_every_n_batches",
         type=int,
-        default=200,
+        default=500,
         help="write random sample sample predictions every n batches",
     )
 
