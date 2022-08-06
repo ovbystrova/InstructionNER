@@ -498,6 +498,9 @@
         "entity_values": {
             "LOC": [
                 "Italy"
+            ],
+            "PER": [
+                "Marcello Cuttitta"
             ]
         },
         "entity_spans": [
@@ -505,6 +508,11 @@
                 "start": 0,
                 "end": 5,
                 "label": "LOC"
+            },
+            {
+                "start": 15,
+                "end": 32,
+                "label": "PER"
             }
         ]
     },
@@ -1317,8 +1325,18 @@
     },
     {
         "context": "Results of the World Cup",
-        "entity_values": {},
-        "entity_spans": []
+        "entity_values": {
+            "MISC": [
+                "World Cup"
+            ]
+        },
+        "entity_spans": [
+            {
+                "start": 15,
+                "end": 24,
+                "label": "MISC"
+            }
+        ]
     },
     {
         "context": "freestyle skiing moguls competition on Friday :",
@@ -2092,13 +2110,19 @@
         "context": "one-day cricket international between Pakistan and New Zealand",
         "entity_values": {
             "LOC": [
-                "Pakistan"
+                "Pakistan",
+                "New Zealand"
             ]
         },
         "entity_spans": [
             {
                 "start": 38,
                 "end": 46,
+                "label": "LOC"
+            },
+            {
+                "start": 51,
+                "end": 62,
                 "label": "LOC"
             }
         ]
@@ -2698,13 +2722,19 @@
         "context": "Bowling : Wasim Akram 8.1-0-43-3 ( 9w , 1nb ) , Waqar Younis",
         "entity_values": {
             "PER": [
-                "Wasim Akram"
+                "Wasim Akram",
+                "Waqar Younis"
             ]
         },
         "entity_spans": [
             {
                 "start": 10,
                 "end": 21,
+                "label": "PER"
+            },
+            {
+                "start": 48,
+                "end": 60,
                 "label": "PER"
             }
         ]
@@ -2713,13 +2743,19 @@
         "context": "6-0-32-2 ( 2w , 1nb ) , Saqlain Mushtaq 8-0-54-2 , Mushtaq Ahmad",
         "entity_values": {
             "PER": [
-                "Saqlain Mushtaq"
+                "Saqlain Mushtaq",
+                "Mushtaq Ahmad"
             ]
         },
         "entity_spans": [
             {
                 "start": 24,
                 "end": 39,
+                "label": "PER"
+            },
+            {
+                "start": 51,
+                "end": 64,
                 "label": "PER"
             }
         ]
@@ -2807,8 +2843,18 @@
     },
     {
         "context": "Result of an English F.A. Challenge",
-        "entity_values": {},
-        "entity_spans": []
+        "entity_values": {
+            "MISC": [
+                "English F.A. Challenge"
+            ]
+        },
+        "entity_spans": [
+            {
+                "start": 13,
+                "end": 35,
+                "label": "MISC"
+            }
+        ]
     },
     {
         "context": "Cup second round match on Friday :",
@@ -3203,8 +3249,18 @@
     },
     {
         "context": "Standings in the men 's EuroLeague",
-        "entity_values": {},
-        "entity_spans": []
+        "entity_values": {
+            "MISC": [
+                "EuroLeague"
+            ]
+        },
+        "entity_spans": [
+            {
+                "start": 24,
+                "end": 34,
+                "label": "MISC"
+            }
+        ]
     },
     {
         "context": "basketball championship after Thursday 's matches ( tabulate under",
@@ -3839,7 +3895,10 @@
         "entity_values": {
             "PER": [
                 "Little",
-                "Queenslander Daniel Herbert"
+                "Daniel Herbert"
+            ],
+            "MISC": [
+                "Queenslander"
             ]
         },
         "entity_spans": [
@@ -3850,6 +3909,11 @@
             },
             {
                 "start": 132,
+                "end": 144,
+                "label": "MISC"
+            },
+            {
+                "start": 145,
                 "end": 159,
                 "label": "PER"
             }
@@ -4504,7 +4568,8 @@
                 "Mark Murless",
                 "Hennie Swart",
                 "Andrew Park",
-                "Schalk van der Merwe"
+                "Schalk van der Merwe",
+                "Desvonde"
             ],
             "LOC": [
                 "U.S.",
@@ -4557,6 +4622,11 @@
                 "start": 154,
                 "end": 161,
                 "label": "LOC"
+            },
+            {
+                "start": 172,
+                "end": 180,
+                "label": "PER"
             }
         ]
     },
@@ -5434,10 +5504,11 @@
         "context": "CRICKET - AUSTRALIA V WEST INDIES WORLD SERIES SCOREBOARD .",
         "entity_values": {
             "LOC": [
-                "AUSTRALIA"
+                "AUSTRALIA",
+                "WEST INDIES"
             ],
             "MISC": [
-                "WEST INDIES WORLD SERIES"
+                "WORLD SERIES"
             ]
         },
         "entity_spans": [
@@ -5448,6 +5519,11 @@
             },
             {
                 "start": 22,
+                "end": 33,
+                "label": "LOC"
+            },
+            {
+                "start": 34,
                 "end": 46,
                 "label": "MISC"
             }
@@ -5455,8 +5531,18 @@
     },
     {
         "context": "Scoreboard in the World Series",
-        "entity_values": {},
-        "entity_spans": []
+        "entity_values": {
+            "MISC": [
+                "World Series"
+            ]
+        },
+        "entity_spans": [
+            {
+                "start": 18,
+                "end": 30,
+                "label": "MISC"
+            }
+        ]
     },
     {
         "context": "limited overs match between Australia and West Indies on Friday :",
@@ -6021,7 +6107,8 @@
         "entity_values": {
             "PER": [
                 "Benjamin",
-                "Hooper"
+                "Hooper",
+                "McLean"
             ]
         },
         "entity_spans": [
@@ -6033,6 +6120,11 @@
             {
                 "start": 33,
                 "end": 39,
+                "label": "PER"
+            },
+            {
+                "start": 60,
+                "end": 66,
                 "label": "PER"
             }
         ]
@@ -7180,7 +7272,8 @@
         "context": "Semifinals ( on Saturday ) : Fung Permadi ( Taiwan ) v Indra",
         "entity_values": {
             "PER": [
-                "Fung Permadi"
+                "Fung Permadi",
+                "Indra"
             ],
             "LOC": [
                 "Taiwan"
@@ -7196,6 +7289,11 @@
                 "start": 44,
                 "end": 50,
                 "label": "LOC"
+            },
+            {
+                "start": 55,
+                "end": 60,
+                "label": "PER"
             }
         ]
     },
@@ -7204,7 +7302,8 @@
         "entity_values": {
             "PER": [
                 "Wijaya",
-                "Sun Jun"
+                "Sun Jun",
+                "Allan Budi Kusuma"
             ],
             "LOC": [
                 "Indonesia",
@@ -7231,6 +7330,11 @@
                 "start": 33,
                 "end": 38,
                 "label": "LOC"
+            },
+            {
+                "start": 43,
+                "end": 60,
+                "label": "PER"
             }
         ]
     },
@@ -7545,8 +7649,18 @@
     },
     {
         "context": "Standings of National Hockey",
-        "entity_values": {},
-        "entity_spans": []
+        "entity_values": {
+            "ORG": [
+                "National Hockey"
+            ]
+        },
+        "entity_spans": [
+            {
+                "start": 13,
+                "end": 28,
+                "label": "ORG"
+            }
+        ]
     },
     {
         "context": "League teams after games played on Thursday ( tabulate under",
@@ -7987,13 +8101,19 @@
         "context": "TORONTO AT NY RANGERS",
         "entity_values": {
             "ORG": [
-                "TORONTO"
+                "TORONTO",
+                "NY RANGERS"
             ]
         },
         "entity_spans": [
             {
                 "start": 0,
                 "end": 7,
+                "label": "ORG"
+            },
+            {
+                "start": 11,
+                "end": 21,
                 "label": "ORG"
             }
         ]
@@ -8003,6 +8123,9 @@
         "entity_values": {
             "ORG": [
                 "ST LOUIS"
+            ],
+            "LOC": [
+                "COLORADO"
             ]
         },
         "entity_spans": [
@@ -8010,6 +8133,11 @@
                 "start": 0,
                 "end": 8,
                 "label": "ORG"
+            },
+            {
+                "start": 12,
+                "end": 20,
+                "label": "LOC"
             }
         ]
     },
@@ -8078,8 +8206,18 @@
     },
     {
         "context": "Results of National Hockey",
-        "entity_values": {},
-        "entity_spans": []
+        "entity_values": {
+            "ORG": [
+                "National Hockey"
+            ]
+        },
+        "entity_spans": [
+            {
+                "start": 11,
+                "end": 26,
+                "label": "ORG"
+            }
+        ]
     },
     {
         "context": "League games on Thursday ( home team in CAPS ) :",
@@ -9099,6 +9237,9 @@
         "entity_values": {
             "ORG": [
                 "NEW JERSEY"
+            ],
+            "LOC": [
+                "BOSTON"
             ]
         },
         "entity_spans": [
@@ -9106,6 +9247,11 @@
                 "start": 0,
                 "end": 10,
                 "label": "ORG"
+            },
+            {
+                "start": 14,
+                "end": 20,
+                "label": "LOC"
             }
         ]
     },
@@ -9114,6 +9260,9 @@
         "entity_values": {
             "ORG": [
                 "NEW YORK"
+            ],
+            "LOC": [
+                "MIAMI"
             ]
         },
         "entity_spans": [
@@ -9121,6 +9270,11 @@
                 "start": 0,
                 "end": 8,
                 "label": "ORG"
+            },
+            {
+                "start": 12,
+                "end": 17,
+                "label": "LOC"
             }
         ]
     },
@@ -9129,6 +9283,9 @@
         "entity_values": {
             "ORG": [
                 "VANCOUVER"
+            ],
+            "LOC": [
+                "SAN ANTONIO"
             ]
         },
         "entity_spans": [
@@ -9136,6 +9293,11 @@
                 "start": 0,
                 "end": 9,
                 "label": "ORG"
+            },
+            {
+                "start": 13,
+                "end": 24,
+                "label": "LOC"
             }
         ]
     },
@@ -9144,6 +9306,9 @@
         "entity_values": {
             "ORG": [
                 "INDIANA"
+            ],
+            "LOC": [
+                "GOLDEN STATE"
             ]
         },
         "entity_spans": [
@@ -9151,6 +9316,11 @@
                 "start": 0,
                 "end": 7,
                 "label": "ORG"
+            },
+            {
+                "start": 11,
+                "end": 23,
+                "label": "LOC"
             }
         ]
     },
@@ -9159,6 +9329,9 @@
         "entity_values": {
             "ORG": [
                 "ORLANDO"
+            ],
+            "LOC": [
+                "LA LAKERS"
             ]
         },
         "entity_spans": [
@@ -9166,6 +9339,11 @@
                 "start": 0,
                 "end": 7,
                 "label": "ORG"
+            },
+            {
+                "start": 11,
+                "end": 20,
+                "label": "LOC"
             }
         ]
     },
@@ -9276,8 +9454,18 @@
     },
     {
         "context": "W L T PF PA",
-        "entity_values": {},
-        "entity_spans": []
+        "entity_values": {
+            "ORG": [
+                "PA"
+            ]
+        },
+        "entity_spans": [
+            {
+                "start": 9,
+                "end": 11,
+                "label": "ORG"
+            }
+        ]
     },
     {
         "context": "PITTSBURGH 9 4 0 299 211",
@@ -9694,6 +9882,9 @@
         "entity_values": {
             "ORG": [
                 "ST LOUIS"
+            ],
+            "LOC": [
+                "CHICAGO"
             ]
         },
         "entity_spans": [
@@ -9701,6 +9892,11 @@
                 "start": 0,
                 "end": 8,
                 "label": "ORG"
+            },
+            {
+                "start": 12,
+                "end": 19,
+                "label": "LOC"
             }
         ]
     },
@@ -9709,6 +9905,9 @@
         "entity_values": {
             "ORG": [
                 "DENVER"
+            ],
+            "LOC": [
+                "GREEN BAY"
             ]
         },
         "entity_spans": [
@@ -9716,6 +9915,11 @@
                 "start": 0,
                 "end": 6,
                 "label": "ORG"
+            },
+            {
+                "start": 10,
+                "end": 19,
+                "label": "LOC"
             }
         ]
     },
@@ -9724,6 +9928,9 @@
         "entity_values": {
             "ORG": [
                 "NY GIANTS"
+            ],
+            "LOC": [
+                "MIAMI"
             ]
         },
         "entity_spans": [
@@ -9731,6 +9938,11 @@
                 "start": 0,
                 "end": 9,
                 "label": "ORG"
+            },
+            {
+                "start": 13,
+                "end": 18,
+                "label": "LOC"
             }
         ]
     },
@@ -9739,6 +9951,9 @@
         "entity_values": {
             "ORG": [
                 "ATLANTA"
+            ],
+            "LOC": [
+                "NEW ORLEANS"
             ]
         },
         "entity_spans": [
@@ -9746,6 +9961,11 @@
                 "start": 0,
                 "end": 7,
                 "label": "ORG"
+            },
+            {
+                "start": 11,
+                "end": 22,
+                "label": "LOC"
             }
         ]
     },
@@ -9754,6 +9974,9 @@
         "entity_values": {
             "ORG": [
                 "SAN DIEGO"
+            ],
+            "LOC": [
+                "PITTSBURGH"
             ]
         },
         "entity_spans": [
@@ -9761,6 +9984,11 @@
                 "start": 0,
                 "end": 9,
                 "label": "ORG"
+            },
+            {
+                "start": 13,
+                "end": 23,
+                "label": "LOC"
             }
         ]
     },
@@ -9769,6 +9997,9 @@
         "entity_values": {
             "ORG": [
                 "WASHINGTON"
+            ],
+            "LOC": [
+                "TAMPA BAY"
             ]
         },
         "entity_spans": [
@@ -9776,6 +10007,11 @@
                 "start": 0,
                 "end": 10,
                 "label": "ORG"
+            },
+            {
+                "start": 14,
+                "end": 23,
+                "label": "LOC"
             }
         ]
     },
@@ -9784,6 +10020,9 @@
         "entity_values": {
             "ORG": [
                 "NY JETS"
+            ],
+            "LOC": [
+                "NEW ENGLAND"
             ]
         },
         "entity_spans": [
@@ -9791,6 +10030,11 @@
                 "start": 0,
                 "end": 7,
                 "label": "ORG"
+            },
+            {
+                "start": 11,
+                "end": 22,
+                "label": "LOC"
             }
         ]
     },
@@ -9799,6 +10043,9 @@
         "entity_values": {
             "ORG": [
                 "CAROLINA"
+            ],
+            "LOC": [
+                "SAN FRANCISCO"
             ]
         },
         "entity_spans": [
@@ -9806,6 +10053,11 @@
                 "start": 0,
                 "end": 8,
                 "label": "ORG"
+            },
+            {
+                "start": 12,
+                "end": 25,
+                "label": "LOC"
             }
         ]
     },
@@ -9819,6 +10071,9 @@
         "entity_values": {
             "ORG": [
                 "KANSAS CITY"
+            ],
+            "LOC": [
+                "OAKLAND"
             ]
         },
         "entity_spans": [
@@ -9826,6 +10081,11 @@
                 "start": 0,
                 "end": 11,
                 "label": "ORG"
+            },
+            {
+                "start": 15,
+                "end": 22,
+                "label": "LOC"
             }
         ]
     },
@@ -9846,8 +10106,26 @@
     },
     {
         "context": "Result of National Football",
-        "entity_values": {},
-        "entity_spans": []
+        "entity_values": {
+            "ORG": [
+                "National"
+            ],
+            "LOC": [
+                "Football"
+            ]
+        },
+        "entity_spans": [
+            {
+                "start": 10,
+                "end": 18,
+                "label": "ORG"
+            },
+            {
+                "start": 19,
+                "end": 27,
+                "label": "LOC"
+            }
+        ]
     },
     {
         "context": "League game on Thursday ( home team in CAPS ) :",
@@ -10887,7 +11165,8 @@
             ],
             "PER": [
                 "Japhet N'Doram",
-                "Claude Makelele"
+                "Claude Makelele",
+                "Jocelyn"
             ]
         },
         "entity_spans": [
@@ -10909,6 +11188,11 @@
             {
                 "start": 37,
                 "end": 52,
+                "label": "PER"
+            },
+            {
+                "start": 58,
+                "end": 65,
                 "label": "PER"
             }
         ]
@@ -10942,7 +11226,8 @@
                 "Nancy"
             ],
             "PER": [
-                "Bruno N'Gotty"
+                "Bruno N'Gotty",
+                "Paul Fischer"
             ]
         },
         "entity_spans": [
@@ -10960,6 +11245,11 @@
                 "start": 39,
                 "end": 44,
                 "label": "ORG"
+            },
+            {
+                "start": 49,
+                "end": 61,
+                "label": "PER"
             }
         ]
     },
@@ -12357,13 +12647,19 @@
         "context": "To win : 6-5 Real Madrid ; 7-4 Barcelona",
         "entity_values": {
             "ORG": [
-                "Real Madrid"
+                "Real Madrid",
+                "Barcelona"
             ]
         },
         "entity_spans": [
             {
                 "start": 13,
                 "end": 24,
+                "label": "ORG"
+            },
+            {
+                "start": 31,
+                "end": 40,
                 "label": "ORG"
             }
         ]
@@ -12436,8 +12732,23 @@
     },
     {
         "context": "5-2 Real Madrid Real Madrid",
-        "entity_values": {},
-        "entity_spans": []
+        "entity_values": {
+            "ORG": [
+                "Real Madrid"
+            ]
+        },
+        "entity_spans": [
+            {
+                "start": 4,
+                "end": 15,
+                "label": "ORG"
+            },
+            {
+                "start": 16,
+                "end": 27,
+                "label": "ORG"
+            }
+        ]
     },
     {
         "context": "14-1 Real Madrid Draw",
@@ -12456,18 +12767,60 @@
     },
     {
         "context": "28-1 Real Madrid Barcelona",
-        "entity_values": {},
-        "entity_spans": []
+        "entity_values": {
+            "ORG": [
+                "Real Madrid",
+                "Barcelona"
+            ]
+        },
+        "entity_spans": [
+            {
+                "start": 5,
+                "end": 16,
+                "label": "ORG"
+            },
+            {
+                "start": 17,
+                "end": 26,
+                "label": "ORG"
+            }
+        ]
     },
     {
         "context": "5-1 Draw Real Madrid",
-        "entity_values": {},
-        "entity_spans": []
+        "entity_values": {
+            "ORG": [
+                "Real Madrid"
+            ]
+        },
+        "entity_spans": [
+            {
+                "start": 9,
+                "end": 20,
+                "label": "ORG"
+            }
+        ]
     },
     {
         "context": "25-1 Barcelona Real Madrid",
-        "entity_values": {},
-        "entity_spans": []
+        "entity_values": {
+            "ORG": [
+                "Barcelona",
+                "Real Madrid"
+            ]
+        },
+        "entity_spans": [
+            {
+                "start": 5,
+                "end": 14,
+                "label": "ORG"
+            },
+            {
+                "start": 15,
+                "end": 26,
+                "label": "ORG"
+            }
+        ]
     },
     {
         "context": "First goalscorer of match :",
@@ -12478,13 +12831,19 @@
         "context": "9-2 Davor Suker 9-2 Ronaldo",
         "entity_values": {
             "PER": [
-                "Davor Suker"
+                "Davor Suker",
+                "Ronaldo"
             ]
         },
         "entity_spans": [
             {
                 "start": 4,
                 "end": 15,
+                "label": "PER"
+            },
+            {
+                "start": 20,
+                "end": 27,
                 "label": "PER"
             }
         ]
@@ -12493,13 +12852,19 @@
         "context": "5-1 Pedrag Mijatovic 7-1 Luis Figo",
         "entity_values": {
             "PER": [
-                "Pedrag Mijatovic"
+                "Pedrag Mijatovic",
+                "Luis Figo"
             ]
         },
         "entity_spans": [
             {
                 "start": 4,
                 "end": 20,
+                "label": "PER"
+            },
+            {
+                "start": 25,
+                "end": 34,
                 "label": "PER"
             }
         ]
@@ -12508,13 +12873,19 @@
         "context": "7-1 Raul Gonzalez 7-1 Juan Pizzi",
         "entity_values": {
             "PER": [
-                "Raul Gonzalez"
+                "Raul Gonzalez",
+                "Juan Pizzi"
             ]
         },
         "entity_spans": [
             {
                 "start": 4,
                 "end": 17,
+                "label": "PER"
+            },
+            {
+                "start": 22,
+                "end": 32,
                 "label": "PER"
             }
         ]
@@ -12523,13 +12894,19 @@
         "context": "12-1 Fernando Redondo 9-1 Giovanni",
         "entity_values": {
             "PER": [
-                "Fernando Redondo"
+                "Fernando Redondo",
+                "Giovanni"
             ]
         },
         "entity_spans": [
             {
                 "start": 5,
                 "end": 21,
+                "label": "PER"
+            },
+            {
+                "start": 26,
+                "end": 34,
                 "label": "PER"
             }
         ]
@@ -12538,13 +12915,19 @@
         "context": "14-1 Victor Sanchez 12-1 Guillermo",
         "entity_values": {
             "PER": [
-                "Victor Sanchez"
+                "Victor Sanchez",
+                "Guillermo"
             ]
         },
         "entity_spans": [
             {
                 "start": 5,
                 "end": 19,
+                "label": "PER"
+            },
+            {
+                "start": 25,
+                "end": 34,
                 "label": "PER"
             }
         ]
@@ -12553,13 +12936,19 @@
         "context": "16-1 Jose Amavisca 14-1 Roger Garcia",
         "entity_values": {
             "PER": [
-                "Jose Amavisca"
+                "Jose Amavisca",
+                "Roger Garcia"
             ]
         },
         "entity_spans": [
             {
                 "start": 5,
                 "end": 18,
+                "label": "PER"
+            },
+            {
+                "start": 24,
+                "end": 36,
                 "label": "PER"
             }
         ]
@@ -12568,13 +12957,19 @@
         "context": "16-1 Manolo Sanchis 14-1 Gheorghe",
         "entity_values": {
             "PER": [
-                "Manolo Sanchis"
+                "Manolo Sanchis",
+                "Gheorghe"
             ]
         },
         "entity_spans": [
             {
                 "start": 5,
                 "end": 19,
+                "label": "PER"
+            },
+            {
+                "start": 25,
+                "end": 33,
                 "label": "PER"
             }
         ]
@@ -12598,13 +12993,19 @@
         "context": "20-1 Fernando Hierro 20-1 Ivan de",
         "entity_values": {
             "PER": [
-                "Fernando Hierro"
+                "Fernando Hierro",
+                "Ivan de"
             ]
         },
         "entity_spans": [
             {
                 "start": 5,
                 "end": 20,
+                "label": "PER"
+            },
+            {
+                "start": 26,
+                "end": 33,
                 "label": "PER"
             }
         ]
@@ -12613,13 +13014,19 @@
         "context": "20-1 Luis Milla 25-1 Luis",
         "entity_values": {
             "PER": [
-                "Luis Milla"
+                "Luis Milla",
+                "Luis"
             ]
         },
         "entity_spans": [
             {
                 "start": 5,
                 "end": 15,
+                "label": "PER"
+            },
+            {
+                "start": 21,
+                "end": 25,
                 "label": "PER"
             }
         ]
@@ -12643,13 +13050,19 @@
         "context": "40-1 Carlos Secretario 28-1 Sergi Barjuan",
         "entity_values": {
             "PER": [
-                "Carlos Secretario"
+                "Carlos Secretario",
+                "Sergi Barjuan"
             ]
         },
         "entity_spans": [
             {
                 "start": 5,
                 "end": 22,
+                "label": "PER"
+            },
+            {
+                "start": 28,
+                "end": 41,
                 "label": "PER"
             }
         ]
@@ -12658,13 +13071,19 @@
         "context": "40-1 Rafael Alkorta 33-1 Albert",
         "entity_values": {
             "PER": [
-                "Rafael Alkorta"
+                "Rafael Alkorta",
+                "Albert"
             ]
         },
         "entity_spans": [
             {
                 "start": 5,
                 "end": 19,
+                "label": "PER"
+            },
+            {
+                "start": 25,
+                "end": 31,
                 "label": "PER"
             }
         ]
@@ -12673,13 +13092,19 @@
         "context": "40-1 Chendo Porlan 33-1 Miguel Nadal",
         "entity_values": {
             "PER": [
-                "Chendo Porlan"
+                "Chendo Porlan",
+                "Miguel Nadal"
             ]
         },
         "entity_spans": [
             {
                 "start": 5,
                 "end": 18,
+                "label": "PER"
+            },
+            {
+                "start": 24,
+                "end": 36,
                 "label": "PER"
             }
         ]
@@ -13277,11 +13702,12 @@
         "entity_values": {
             "ORG": [
                 "FIFA",
+                "AC Milan",
                 "Porto"
             ],
             "PER": [
                 "Joao Havelange",
-                "AC Milan George Weah",
+                "George Weah",
                 "Jorge Costa"
             ]
         },
@@ -13298,6 +13724,11 @@
             },
             {
                 "start": 72,
+                "end": 80,
+                "label": "ORG"
+            },
+            {
+                "start": 81,
                 "end": 92,
                 "label": "PER"
             },
@@ -13712,13 +14143,19 @@
         "context": "Italian Serie A games to be played on Sunday ( league positions in parentheses , all kick- off times GMT ) :",
         "entity_values": {
             "MISC": [
-                "Italian Serie A",
+                "Italian",
+                "Serie A",
                 "GMT"
             ]
         },
         "entity_spans": [
             {
                 "start": 0,
+                "end": 7,
+                "label": "MISC"
+            },
+            {
+                "start": 8,
                 "end": 15,
                 "label": "MISC"
             },
@@ -13782,9 +14219,13 @@
     {
         "context": "Led as usual by Swede Kennet Andersson and Russian Igor Kolyvanov in attack , Bologna can expect a tough home match against a Piacenza side still exultant after a 3-2 league win over AC Milan last Sunday .",
         "entity_values": {
+            "MISC": [
+                "Swede",
+                "Russian"
+            ],
             "PER": [
-                "Swede Kennet Andersson",
-                "Russian Igor Kolyvanov"
+                "Kennet Andersson",
+                "Igor Kolyvanov"
             ],
             "ORG": [
                 "Bologna",
@@ -13795,11 +14236,21 @@
         "entity_spans": [
             {
                 "start": 16,
+                "end": 21,
+                "label": "MISC"
+            },
+            {
+                "start": 22,
                 "end": 38,
                 "label": "PER"
             },
             {
                 "start": 43,
+                "end": 50,
+                "label": "MISC"
+            },
+            {
+                "start": 51,
                 "end": 65,
                 "label": "PER"
             },
@@ -13890,8 +14341,11 @@
             "ORG": [
                 "Reggiana"
             ],
+            "MISC": [
+                "German"
+            ],
             "PER": [
-                "German Dietmar Beiersdorfer"
+                "Dietmar Beiersdorfer"
             ]
         },
         "entity_spans": [
@@ -13902,6 +14356,11 @@
             },
             {
                 "start": 61,
+                "end": 67,
+                "label": "MISC"
+            },
+            {
+                "start": 68,
                 "end": 88,
                 "label": "PER"
             }
@@ -14056,12 +14515,15 @@
                 "Pierluigi Casiraghi",
                 "Pavel Nedved",
                 "Paolo Negro",
-                "Argentine Abel Balbo",
+                "Abel Balbo",
                 "Marco Delvecchio",
                 "Francesco Totti"
             ],
             "LOC": [
                 "Czech"
+            ],
+            "MISC": [
+                "Argentine"
             ]
         },
         "entity_spans": [
@@ -14097,6 +14559,11 @@
             },
             {
                 "start": 165,
+                "end": 174,
+                "label": "MISC"
+            },
+            {
+                "start": 175,
                 "end": 185,
                 "label": "PER"
             },
@@ -14181,12 +14648,13 @@
         "context": "Liberian striker George Weah makes a welcome return for Milan alongside Roberto Baggio , with Montenegrin Dejan Savicevic in midfield .",
         "entity_values": {
             "MISC": [
-                "Liberian"
+                "Liberian",
+                "Montenegrin"
             ],
             "PER": [
                 "George Weah",
                 "Roberto Baggio",
-                "Montenegrin Dejan Savicevic"
+                "Dejan Savicevic"
             ],
             "ORG": [
                 "Milan"
@@ -14215,6 +14683,11 @@
             },
             {
                 "start": 94,
+                "end": 105,
+                "label": "MISC"
+            },
+            {
+                "start": 106,
                 "end": 121,
                 "label": "PER"
             }
@@ -14403,12 +14876,13 @@
                 "Parma"
             ],
             "MISC": [
-                "French"
+                "French",
+                "Argentine"
             ],
             "PER": [
                 "Daniel Bravo",
                 "Fabio Cannavaro",
-                "Argentine Nestor Sensini"
+                "Nestor Sensini"
             ]
         },
         "entity_spans": [
@@ -14434,6 +14908,11 @@
             },
             {
                 "start": 89,
+                "end": 98,
+                "label": "MISC"
+            },
+            {
+                "start": 99,
                 "end": 113,
                 "label": "PER"
             }
@@ -14490,12 +14969,13 @@
                 "Juventus"
             ],
             "MISC": [
-                "Portuguese"
+                "Portuguese",
+                "Croat"
             ],
             "PER": [
                 "Dimas",
                 "Alessandro Del Piero",
-                "Croat Alen Boksic"
+                "Alen Boksic"
             ]
         },
         "entity_spans": [
@@ -14521,6 +15001,11 @@
             },
             {
                 "start": 117,
+                "end": 122,
+                "label": "MISC"
+            },
+            {
+                "start": 123,
                 "end": 134,
                 "label": "PER"
             }
@@ -14596,8 +15081,11 @@
                 "Vicenza",
                 "Inter"
             ],
+            "MISC": [
+                "Uruguayan"
+            ],
             "PER": [
-                "Uruguayan Marcelo Otero"
+                "Marcelo Otero"
             ]
         },
         "entity_spans": [
@@ -14608,6 +15096,11 @@
             },
             {
                 "start": 31,
+                "end": 40,
+                "label": "MISC"
+            },
+            {
+                "start": 41,
                 "end": 54,
                 "label": "PER"
             },
@@ -14938,10 +15431,11 @@
         "context": "The Australian brushed aside unseeded Englishman Mark Cairns 15-7 15-6 15-8 .",
         "entity_values": {
             "MISC": [
-                "Australian"
+                "Australian",
+                "Englishman"
             ],
             "PER": [
-                "Englishman Mark Cairns"
+                "Mark Cairns"
             ]
         },
         "entity_spans": [
@@ -14952,6 +15446,11 @@
             },
             {
                 "start": 38,
+                "end": 48,
+                "label": "MISC"
+            },
+            {
+                "start": 49,
                 "end": 60,
                 "label": "PER"
             }
@@ -16291,7 +16790,8 @@
             ],
             "MISC": [
                 "Swiss",
-                "Polish Jews",
+                "Polish",
+                "Jews",
                 "Holocaust",
                 "World War Two"
             ]
@@ -16309,6 +16809,11 @@
             },
             {
                 "start": 81,
+                "end": 87,
+                "label": "MISC"
+            },
+            {
+                "start": 88,
                 "end": 92,
                 "label": "MISC"
             },
@@ -16452,7 +16957,8 @@
         "entity_values": {
             "MISC": [
                 "Jews",
-                "Nazi German"
+                "Nazi",
+                "German"
             ],
             "LOC": [
                 "Poland"
@@ -16466,6 +16972,11 @@
             },
             {
                 "start": 64,
+                "end": 68,
+                "label": "MISC"
+            },
+            {
+                "start": 69,
                 "end": 75,
                 "label": "MISC"
             },
@@ -17152,13 +17663,21 @@
     {
         "context": "He said his firm would be better off concentrating on its leading brand , Zywiec Full Light , which accounts for 85 percent of sales and is the country 's largest-selling brand .",
         "entity_values": {
+            "ORG": [
+                "Zywiec"
+            ],
             "MISC": [
-                "Zywiec Full Light"
+                "Full Light"
             ]
         },
         "entity_spans": [
             {
                 "start": 74,
+                "end": 80,
+                "label": "ORG"
+            },
+            {
+                "start": 81,
                 "end": 91,
                 "label": "MISC"
             }
@@ -17382,16 +17901,22 @@
     {
         "context": "The UK Department of Transport on Friday said that the latest round of \" open skies \" talks with the U.S. had ended with no deal on liberalising the transatlantic flight market and no date set for when talks would restart .",
         "entity_values": {
-            "ORG": [
-                "UK Department of Transport"
-            ],
             "LOC": [
+                "UK",
                 "U.S."
+            ],
+            "ORG": [
+                "Department of Transport"
             ]
         },
         "entity_spans": [
             {
                 "start": 4,
+                "end": 6,
+                "label": "LOC"
+            },
+            {
+                "start": 7,
                 "end": 30,
                 "label": "ORG"
             },
@@ -23021,13 +23546,21 @@
     {
         "context": "Estonian Tallinna Pank 11-mo net 46.6 mln kroons .",
         "entity_values": {
+            "MISC": [
+                "Estonian"
+            ],
             "ORG": [
-                "Estonian Tallinna Pank"
+                "Tallinna Pank"
             ]
         },
         "entity_spans": [
             {
                 "start": 0,
+                "end": 8,
+                "label": "MISC"
+            },
+            {
+                "start": 9,
                 "end": 22,
                 "label": "ORG"
             }
@@ -23340,7 +23873,8 @@
                 "NATO"
             ],
             "MISC": [
-                "Soviet-led Warsaw Pact"
+                "Soviet-led",
+                "Warsaw Pact"
             ]
         },
         "entity_spans": [
@@ -23361,6 +23895,11 @@
             },
             {
                 "start": 109,
+                "end": 119,
+                "label": "MISC"
+            },
+            {
+                "start": 120,
                 "end": 131,
                 "label": "MISC"
             }
@@ -24126,7 +24665,8 @@
         "context": "Traders also remarked that Mexican ADRs suffered in New York .",
         "entity_values": {
             "MISC": [
-                "Mexican ADRs"
+                "Mexican",
+                "ADRs"
             ],
             "LOC": [
                 "New York"
@@ -24135,6 +24675,11 @@
         "entity_spans": [
             {
                 "start": 27,
+                "end": 34,
+                "label": "MISC"
+            },
+            {
+                "start": 35,
                 "end": 39,
                 "label": "MISC"
             },
@@ -24602,8 +25147,36 @@
     },
     {
         "context": "Buenos Aires Quequen Rosario Bahia Blanca",
-        "entity_values": {},
-        "entity_spans": []
+        "entity_values": {
+            "LOC": [
+                "Buenos Aires",
+                "Quequen",
+                "Rosario",
+                "Bahia Blanca"
+            ]
+        },
+        "entity_spans": [
+            {
+                "start": 0,
+                "end": 12,
+                "label": "LOC"
+            },
+            {
+                "start": 13,
+                "end": 20,
+                "label": "LOC"
+            },
+            {
+                "start": 21,
+                "end": 28,
+                "label": "LOC"
+            },
+            {
+                "start": 29,
+                "end": 41,
+                "label": "LOC"
+            }
+        ]
     },
     {
         "context": "Oats unq unq unq unq",
@@ -25225,7 +25798,8 @@
         "context": "East Timorese Roman Catholic Bishop Carlos Belo left Dili on Friday on his way to Norway for the awards ceremony as co-recipient of the 1996 Nobel Peace Prize .",
         "entity_values": {
             "MISC": [
-                "East Timorese Roman Catholic",
+                "East Timorese",
+                "Roman Catholic",
                 "Nobel Peace Prize"
             ],
             "PER": [
@@ -25239,6 +25813,11 @@
         "entity_spans": [
             {
                 "start": 0,
+                "end": 13,
+                "label": "MISC"
+            },
+            {
+                "start": 14,
                 "end": 28,
                 "label": "MISC"
             },
@@ -27673,7 +28252,8 @@
                 "SLA"
             ],
             "MISC": [
-                "Christian-Shi'ite Moslem",
+                "Christian-Shi'ite",
+                "Moslem",
                 "Jewish"
             ]
         },
@@ -27695,6 +28275,11 @@
             },
             {
                 "start": 82,
+                "end": 99,
+                "label": "MISC"
+            },
+            {
+                "start": 100,
                 "end": 106,
                 "label": "MISC"
             },
@@ -27869,11 +28454,12 @@
             "PER": [
                 "Etian Saqr"
             ],
-            "ORG": [
-                "pro-Israeli Guardians of the Cedars"
-            ],
             "MISC": [
+                "pro-Israeli",
                 "Christian"
+            ],
+            "ORG": [
+                "Guardians of the Cedars"
             ]
         },
         "entity_spans": [
@@ -27889,6 +28475,11 @@
             },
             {
                 "start": 101,
+                "end": 112,
+                "label": "MISC"
+            },
+            {
+                "start": 113,
                 "end": 136,
                 "label": "ORG"
             },
@@ -28063,13 +28654,19 @@
         "context": "Est daily livestock slaughter under Fed inspection - USDA",
         "entity_values": {
             "ORG": [
-                "Fed"
+                "Fed",
+                "USDA"
             ]
         },
         "entity_spans": [
             {
                 "start": 36,
                 "end": 39,
+                "label": "ORG"
+            },
+            {
+                "start": 53,
+                "end": 57,
                 "label": "ORG"
             }
         ]
@@ -28174,13 +28771,19 @@
         "context": "CITY OF HARTFORD , CONNECTICUT",
         "entity_values": {
             "LOC": [
-                "HARTFORD"
+                "HARTFORD",
+                "CONNECTICUT"
             ]
         },
         "entity_spans": [
             {
                 "start": 8,
                 "end": 16,
+                "label": "LOC"
+            },
+            {
+                "start": 19,
+                "end": 30,
                 "label": "LOC"
             }
         ]
@@ -28293,14 +28896,27 @@
     },
     {
         "context": "State Street Bank and Trust Company",
-        "entity_values": {},
-        "entity_spans": []
+        "entity_values": {
+            "ORG": [
+                "State Street Bank and Trust Company"
+            ]
+        },
+        "entity_spans": [
+            {
+                "start": 0,
+                "end": 35,
+                "label": "ORG"
+            }
+        ]
     },
     {
         "context": "First Union Capital Markets Corp. - NJ",
         "entity_values": {
             "ORG": [
                 "First Union Capital Markets Corp."
+            ],
+            "LOC": [
+                "NJ"
             ]
         },
         "entity_spans": [
@@ -28308,6 +28924,11 @@
                 "start": 0,
                 "end": 33,
                 "label": "ORG"
+            },
+            {
+                "start": 36,
+                "end": 38,
+                "label": "LOC"
             }
         ]
     },
@@ -28773,7 +29394,8 @@
         "context": "Iowa-S Minn fed cattle market quiet , no sales-USDA .",
         "entity_values": {
             "LOC": [
-                "Iowa-S Minn"
+                "Iowa-S",
+                "Minn"
             ],
             "MISC": [
                 "sales-USDA"
@@ -28782,6 +29404,11 @@
         "entity_spans": [
             {
                 "start": 0,
+                "end": 6,
+                "label": "LOC"
+            },
+            {
+                "start": 7,
                 "end": 11,
                 "label": "LOC"
             },
@@ -29027,8 +29654,18 @@
     },
     {
         "context": "- Canadian Grain Commission",
-        "entity_values": {},
-        "entity_spans": []
+        "entity_values": {
+            "ORG": [
+                "Canadian Grain Commission"
+            ]
+        },
+        "entity_spans": [
+            {
+                "start": 2,
+                "end": 27,
+                "label": "ORG"
+            }
+        ]
     },
     {
         "context": "Visible Supplies Farmers Deliveries",
@@ -29206,16 +29843,22 @@
     {
         "context": "NYMEX Henry Hub natgas futures settled significantly lower Friday , pressured early by profit taking and driven even lower late by the National Weather Service 's bearish six to 10 day forecast , sources said .",
         "entity_values": {
-            "LOC": [
-                "NYMEX Henry Hub"
-            ],
             "ORG": [
+                "NYMEX",
                 "National Weather Service"
+            ],
+            "LOC": [
+                "Henry Hub"
             ]
         },
         "entity_spans": [
             {
                 "start": 0,
+                "end": 5,
+                "label": "ORG"
+            },
+            {
+                "start": 6,
                 "end": 15,
                 "label": "LOC"
             },
@@ -29357,13 +30000,21 @@
     {
         "context": "NYMEX Alberta natgas remained untraded , with January settling at $ 1.65 , off 10 cents from Thursday .",
         "entity_values": {
+            "ORG": [
+                "NYMEX"
+            ],
             "LOC": [
-                "NYMEX Alberta"
+                "Alberta"
             ]
         },
         "entity_spans": [
             {
                 "start": 0,
+                "end": 5,
+                "label": "ORG"
+            },
+            {
+                "start": 6,
                 "end": 13,
                 "label": "LOC"
             }
@@ -29403,13 +30054,21 @@
     {
         "context": "NYMEX Permian natgas , also untraded , ended 10 cents lower at $ 2.90 .",
         "entity_values": {
+            "ORG": [
+                "NYMEX"
+            ],
             "MISC": [
-                "NYMEX Permian"
+                "Permian"
             ]
         },
         "entity_spans": [
             {
                 "start": 0,
+                "end": 5,
+                "label": "ORG"
+            },
+            {
+                "start": 6,
                 "end": 13,
                 "label": "MISC"
             }
@@ -30123,7 +30782,8 @@
         "context": "Iowa-S Minn feedlot cattle market not tested- USDA .",
         "entity_values": {
             "LOC": [
-                "Iowa-S Minn"
+                "Iowa-S",
+                "Minn"
             ],
             "ORG": [
                 "USDA"
@@ -30132,6 +30792,11 @@
         "entity_spans": [
             {
                 "start": 0,
+                "end": 6,
+                "label": "LOC"
+            },
+            {
+                "start": 7,
                 "end": 11,
                 "label": "LOC"
             },
@@ -30908,13 +31573,21 @@
     {
         "context": "German Santa in bank nearly gets arrested .",
         "entity_values": {
+            "MISC": [
+                "German"
+            ],
             "PER": [
-                "German Santa"
+                "Santa"
             ]
         },
         "entity_spans": [
             {
                 "start": 0,
+                "end": 6,
+                "label": "MISC"
+            },
+            {
+                "start": 7,
                 "end": 12,
                 "label": "PER"
             }
@@ -34487,7 +35160,10 @@
         "entity_values": {
             "PER": [
                 "James Love",
-                "Washington-based Consumer Project"
+                "Consumer Project"
+            ],
+            "MISC": [
+                "Washington-based"
             ]
         },
         "entity_spans": [
@@ -34498,6 +35174,11 @@
             },
             {
                 "start": 133,
+                "end": 149,
+                "label": "MISC"
+            },
+            {
+                "start": 150,
                 "end": 166,
                 "label": "PER"
             }
@@ -34788,13 +35469,14 @@
         "context": "\" There are 500 million messages transmitted through the Internet everyday , \" said Tim Casey of the U.S.-based MCI Communications Corporation . \"",
         "entity_values": {
             "MISC": [
-                "Internet"
+                "Internet",
+                "U.S.-based"
             ],
             "PER": [
                 "Tim Casey"
             ],
             "ORG": [
-                "U.S.-based MCI Communications Corporation"
+                "MCI Communications Corporation"
             ]
         },
         "entity_spans": [
@@ -34810,6 +35492,11 @@
             },
             {
                 "start": 101,
+                "end": 111,
+                "label": "MISC"
+            },
+            {
+                "start": 112,
                 "end": 142,
                 "label": "ORG"
             }
@@ -35009,19 +35696,24 @@
     {
         "context": "Moroccan Mohamed Benchaou , the third person to die after a bombing on a Paris train , was a 25-year-old student about to submit a mathematics doctorate , the Moroccan embassy said on Friday .",
         "entity_values": {
+            "MISC": [
+                "Moroccan"
+            ],
             "PER": [
-                "Moroccan Mohamed Benchaou"
+                "Mohamed Benchaou"
             ],
             "LOC": [
                 "Paris"
-            ],
-            "MISC": [
-                "Moroccan"
             ]
         },
         "entity_spans": [
             {
                 "start": 0,
+                "end": 8,
+                "label": "MISC"
+            },
+            {
+                "start": 9,
                 "end": 25,
                 "label": "PER"
             },
@@ -35102,12 +35794,18 @@
         "context": "Investigators have said the explosion bore the hallmarks of Algerian Moslem fundamentalists who staged a series of bombings last year which killed eight people and injured more than 160 .",
         "entity_values": {
             "MISC": [
-                "Algerian Moslem"
+                "Algerian",
+                "Moslem"
             ]
         },
         "entity_spans": [
             {
                 "start": 60,
+                "end": 68,
+                "label": "MISC"
+            },
+            {
+                "start": 69,
                 "end": 75,
                 "label": "MISC"
             }
@@ -35928,13 +36626,21 @@
     {
         "context": "Muenchener Rueckversicherungs AG , the world 's largest reinsurer , said on Friday it expected to switch its shares to a lower par value by September 1997 at the earliest .",
         "entity_values": {
+            "MISC": [
+                "Muenchener"
+            ],
             "ORG": [
-                "Muenchener Rueckversicherungs AG"
+                "Rueckversicherungs AG"
             ]
         },
         "entity_spans": [
             {
                 "start": 0,
+                "end": 10,
+                "label": "MISC"
+            },
+            {
+                "start": 11,
                 "end": 32,
                 "label": "ORG"
             }
@@ -36525,7 +37231,10 @@
         "entity_values": {
             "PER": [
                 "Clarke",
-                "pro-European Michael Heseltine"
+                "Michael Heseltine"
+            ],
+            "MISC": [
+                "pro-European"
             ]
         },
         "entity_spans": [
@@ -36536,6 +37245,11 @@
             },
             {
                 "start": 77,
+                "end": 89,
+                "label": "MISC"
+            },
+            {
+                "start": 90,
                 "end": 107,
                 "label": "PER"
             }
@@ -36545,7 +37259,8 @@
         "context": "Pro-European Conservative MP Edwina Currie told the BBC that if Clarke resigned , other ministers would go with him .",
         "entity_values": {
             "MISC": [
-                "Pro-European Conservative"
+                "Pro-European",
+                "Conservative"
             ],
             "PER": [
                 "Edwina Currie",
@@ -36558,6 +37273,11 @@
         "entity_spans": [
             {
                 "start": 0,
+                "end": 12,
+                "label": "MISC"
+            },
+            {
+                "start": 13,
                 "end": 25,
                 "label": "MISC"
             },
@@ -37561,16 +38281,21 @@
     {
         "context": "The Thai Commerce Ministry detailed rice loading at Thai ports as follows ( in tonnes ) :",
         "entity_values": {
-            "ORG": [
-                "Thai Commerce Ministry"
-            ],
             "MISC": [
                 "Thai"
+            ],
+            "ORG": [
+                "Commerce Ministry"
             ]
         },
         "entity_spans": [
             {
                 "start": 4,
+                "end": 8,
+                "label": "MISC"
+            },
+            {
+                "start": 9,
                 "end": 26,
                 "label": "ORG"
             },
@@ -37591,6 +38316,9 @@
         "entity_values": {
             "MISC": [
                 "Iran Sabr"
+            ],
+            "LOC": [
+                "Iran"
             ]
         },
         "entity_spans": [
@@ -37598,6 +38326,11 @@
                 "start": 0,
                 "end": 9,
                 "label": "MISC"
+            },
+            {
+                "start": 25,
+                "end": 29,
+                "label": "LOC"
             }
         ]
     },
@@ -37606,6 +38339,9 @@
         "entity_values": {
             "MISC": [
                 "Princess of Loine"
+            ],
+            "LOC": [
+                "Philippines"
             ]
         },
         "entity_spans": [
@@ -37613,6 +38349,11 @@
                 "start": 0,
                 "end": 17,
                 "label": "MISC"
+            },
+            {
+                "start": 34,
+                "end": 45,
+                "label": "LOC"
             }
         ]
     },
@@ -37621,6 +38362,9 @@
         "entity_values": {
             "MISC": [
                 "Deligst"
+            ],
+            "LOC": [
+                "Indonesia"
             ]
         },
         "entity_spans": [
@@ -37628,6 +38372,11 @@
                 "start": 0,
                 "end": 7,
                 "label": "MISC"
+            },
+            {
+                "start": 23,
+                "end": 32,
+                "label": "LOC"
             }
         ]
     },
@@ -37636,6 +38385,9 @@
         "entity_values": {
             "MISC": [
                 "Seagramd"
+            ],
+            "LOC": [
+                "Japan"
             ]
         },
         "entity_spans": [
@@ -37643,6 +38395,11 @@
                 "start": 0,
                 "end": 8,
                 "label": "MISC"
+            },
+            {
+                "start": 28,
+                "end": 33,
+                "label": "LOC"
             }
         ]
     },
@@ -37651,6 +38408,9 @@
         "entity_values": {
             "MISC": [
                 "Lucky Emdldm"
+            ],
+            "LOC": [
+                "Japan"
             ]
         },
         "entity_spans": [
@@ -37658,6 +38418,11 @@
                 "start": 0,
                 "end": 12,
                 "label": "MISC"
+            },
+            {
+                "start": 28,
+                "end": 33,
+                "label": "LOC"
             }
         ]
     },
@@ -37666,6 +38431,9 @@
         "entity_values": {
             "MISC": [
                 "Algoa Day"
+            ],
+            "LOC": [
+                "Africa"
             ]
         },
         "entity_spans": [
@@ -37673,6 +38441,11 @@
                 "start": 0,
                 "end": 9,
                 "label": "MISC"
+            },
+            {
+                "start": 25,
+                "end": 31,
+                "label": "LOC"
             }
         ]
     },
@@ -37681,6 +38454,9 @@
         "entity_values": {
             "MISC": [
                 "Sangthai Glory"
+            ],
+            "LOC": [
+                "Singapore"
             ]
         },
         "entity_spans": [
@@ -37688,6 +38464,11 @@
                 "start": 0,
                 "end": 14,
                 "label": "MISC"
+            },
+            {
+                "start": 30,
+                "end": 39,
+                "label": "LOC"
             }
         ]
     },
@@ -37696,6 +38477,9 @@
         "entity_values": {
             "MISC": [
                 "Myos Yang"
+            ],
+            "LOC": [
+                "Indonesia"
             ]
         },
         "entity_spans": [
@@ -37703,6 +38487,11 @@
                 "start": 0,
                 "end": 9,
                 "label": "MISC"
+            },
+            {
+                "start": 27,
+                "end": 36,
+                "label": "LOC"
             }
         ]
     },
@@ -37711,6 +38500,9 @@
         "entity_values": {
             "MISC": [
                 "Budisuryana"
+            ],
+            "LOC": [
+                "Malaysia"
             ]
         },
         "entity_spans": [
@@ -37718,6 +38510,11 @@
                 "start": 0,
                 "end": 11,
                 "label": "MISC"
+            },
+            {
+                "start": 27,
+                "end": 35,
+                "label": "LOC"
             }
         ]
     },
@@ -37726,6 +38523,9 @@
         "entity_values": {
             "MISC": [
                 "King Ace"
+            ],
+            "LOC": [
+                "Japan"
             ]
         },
         "entity_spans": [
@@ -37733,6 +38533,11 @@
                 "start": 0,
                 "end": 8,
                 "label": "MISC"
+            },
+            {
+                "start": 24,
+                "end": 29,
+                "label": "LOC"
             }
         ]
     },
@@ -37741,6 +38546,9 @@
         "entity_values": {
             "MISC": [
                 "Tong Shun"
+            ],
+            "LOC": [
+                "Vietnam"
             ]
         },
         "entity_spans": [
@@ -37748,6 +38556,11 @@
                 "start": 0,
                 "end": 9,
                 "label": "MISC"
+            },
+            {
+                "start": 25,
+                "end": 32,
+                "label": "LOC"
             }
         ]
     },
@@ -37756,6 +38569,9 @@
         "entity_values": {
             "MISC": [
                 "But"
+            ],
+            "LOC": [
+                "Burma"
             ]
         },
         "entity_spans": [
@@ -37763,6 +38579,11 @@
                 "start": 0,
                 "end": 3,
                 "label": "MISC"
+            },
+            {
+                "start": 21,
+                "end": 26,
+                "label": "LOC"
             }
         ]
     },
@@ -39279,13 +40100,21 @@
     {
         "context": "Japan NTT says hopes to start int'l business soon .",
         "entity_values": {
+            "LOC": [
+                "Japan"
+            ],
             "ORG": [
-                "Japan NTT"
+                "NTT"
             ]
         },
         "entity_spans": [
             {
                 "start": 0,
+                "end": 5,
+                "label": "LOC"
+            },
+            {
+                "start": 6,
                 "end": 9,
                 "label": "ORG"
             }
@@ -39768,8 +40597,18 @@
     },
     {
         "context": "Name : Svetlana Gladishiva",
-        "entity_values": {},
-        "entity_spans": []
+        "entity_values": {
+            "PER": [
+                "Svetlana Gladishiva"
+            ]
+        },
+        "entity_spans": [
+            {
+                "start": 7,
+                "end": 26,
+                "label": "PER"
+            }
+        ]
     },
     {
         "context": "Previous World Cup victories : None",
@@ -39792,8 +40631,11 @@
             "PER": [
                 "Gladishiva"
             ],
+            "LOC": [
+                "Lillehammer"
+            ],
             "MISC": [
-                "Lillehammer Winter Olympics",
+                "Winter Olympics",
                 "World Championships"
             ]
         },
@@ -39805,6 +40647,11 @@
             },
             {
                 "start": 67,
+                "end": 78,
+                "label": "LOC"
+            },
+            {
+                "start": 79,
                 "end": 94,
                 "label": "MISC"
             },
@@ -40880,14 +41727,25 @@
     },
     {
         "context": "Name : Renate Goetschl",
-        "entity_values": {},
-        "entity_spans": []
+        "entity_values": {
+            "PER": [
+                "Renate Goetschl"
+            ]
+        },
+        "entity_spans": [
+            {
+                "start": 7,
+                "end": 22,
+                "label": "PER"
+            }
+        ]
     },
     {
         "context": "Previous victories ( two ) : slalom , Lillehammer Norway , 1993 ; super G , Flachau , Austria , 1995 .",
         "entity_values": {
             "LOC": [
-                "Lillehammer Norway",
+                "Lillehammer",
+                "Norway",
                 "Flachau",
                 "Austria"
             ]
@@ -40895,6 +41753,11 @@
         "entity_spans": [
             {
                 "start": 38,
+                "end": 49,
+                "label": "LOC"
+            },
+            {
+                "start": 50,
                 "end": 56,
                 "label": "LOC"
             },
@@ -40983,8 +41846,18 @@
     },
     {
         "context": "Women 's World Cup",
-        "entity_values": {},
-        "entity_spans": []
+        "entity_values": {
+            "MISC": [
+                "World Cup"
+            ]
+        },
+        "entity_spans": [
+            {
+                "start": 9,
+                "end": 18,
+                "label": "MISC"
+            }
+        ]
     },
     {
         "context": "standings after Saturday 's downhill race :",
@@ -41247,16 +42120,22 @@
     {
         "context": "10= Florence Masnada ( France ) 51",
         "entity_values": {
-            "PER": [
-                "Florence Masnada"
-            ],
             "LOC": [
+                "Florence",
                 "France"
+            ],
+            "PER": [
+                "Masnada"
             ]
         },
         "entity_spans": [
             {
                 "start": 4,
+                "end": 12,
+                "label": "LOC"
+            },
+            {
+                "start": 13,
                 "end": 20,
                 "label": "PER"
             },
@@ -41727,16 +42606,22 @@
     {
         "context": "11. Florence Masnada ( France ) 133",
         "entity_values": {
-            "PER": [
-                "Florence Masnada"
-            ],
             "LOC": [
+                "Florence",
                 "France"
+            ],
+            "PER": [
+                "Masnada"
             ]
         },
         "entity_spans": [
             {
                 "start": 4,
+                "end": 12,
+                "label": "LOC"
+            },
+            {
+                "start": 13,
                 "end": 20,
                 "label": "PER"
             },
@@ -44557,7 +45442,8 @@
                 "United States I"
             ],
             "PER": [
-                "Jim Herberich"
+                "Jim Herberich",
+                "Garrett"
             ]
         },
         "entity_spans": [
@@ -44570,6 +45456,11 @@
                 "start": 18,
                 "end": 31,
                 "label": "PER"
+            },
+            {
+                "start": 34,
+                "end": 41,
+                "label": "PER"
             }
         ]
     },
@@ -44578,6 +45469,9 @@
         "entity_values": {
             "PER": [
                 "Hines"
+            ],
+            "ORG": [
+                "Austria III"
             ]
         },
         "entity_spans": [
@@ -44585,6 +45479,11 @@
                 "start": 0,
                 "end": 5,
                 "label": "PER"
+            },
+            {
+                "start": 38,
+                "end": 49,
+                "label": "ORG"
             }
         ]
     },
@@ -44985,8 +45884,18 @@
     },
     {
         "context": "Results of the World Cup",
-        "entity_values": {},
-        "entity_spans": []
+        "entity_values": {
+            "MISC": [
+                "World Cup"
+            ]
+        },
+        "entity_spans": [
+            {
+                "start": 15,
+                "end": 24,
+                "label": "MISC"
+            }
+        ]
     },
     {
         "context": "freestyle skiing aerials competition on Saturday :",
@@ -45203,13 +46112,21 @@
     {
         "context": "10. Dmitri Dashinski Belarus ) 190.70",
         "entity_values": {
+            "PER": [
+                "Dmitri Dashinski"
+            ],
             "LOC": [
-                "Dmitri Dashinski Belarus"
+                "Belarus"
             ]
         },
         "entity_spans": [
             {
                 "start": 4,
+                "end": 20,
+                "label": "PER"
+            },
+            {
+                "start": 21,
                 "end": 28,
                 "label": "LOC"
             }
@@ -47282,7 +48199,8 @@
         "context": "Brian Laudrup ( Rangers ) , Darren Jackson",
         "entity_values": {
             "PER": [
-                "Brian Laudrup"
+                "Brian Laudrup",
+                "Darren Jackson"
             ],
             "ORG": [
                 "Rangers"
@@ -47298,6 +48216,11 @@
                 "start": 16,
                 "end": 23,
                 "label": "ORG"
+            },
+            {
+                "start": 28,
+                "end": 42,
+                "label": "PER"
             }
         ]
     },
@@ -47305,7 +48228,8 @@
         "context": "5 - Peter van Vossen ( Rangers ) , Gerry Britton",
         "entity_values": {
             "PER": [
-                "Peter van Vossen"
+                "Peter van Vossen",
+                "Gerry Britton"
             ],
             "ORG": [
                 "Rangers"
@@ -47321,6 +48245,11 @@
                 "start": 23,
                 "end": 30,
                 "label": "ORG"
+            },
+            {
+                "start": 35,
+                "end": 48,
+                "label": "PER"
             }
         ]
     },
@@ -47332,7 +48261,8 @@
                 "Hearts"
             ],
             "PER": [
-                "Colin Cameron"
+                "Colin Cameron",
+                "Robert"
             ]
         },
         "entity_spans": [
@@ -47350,6 +48280,11 @@
                 "start": 34,
                 "end": 40,
                 "label": "ORG"
+            },
+            {
+                "start": 45,
+                "end": 51,
+                "label": "PER"
             }
         ]
     },
@@ -47405,8 +48340,18 @@
     },
     {
         "context": "Leading goalscorers in the English",
-        "entity_values": {},
-        "entity_spans": []
+        "entity_values": {
+            "MISC": [
+                "English"
+            ]
+        },
+        "entity_spans": [
+            {
+                "start": 27,
+                "end": 34,
+                "label": "MISC"
+            }
+        ]
     },
     {
         "context": "premier league after Saturday 's matches :",
@@ -47440,7 +48385,8 @@
         "context": "9 - Fabrizio Ravanelli ( Middlesbrough ) , Alan Shearer",
         "entity_values": {
             "PER": [
-                "Fabrizio Ravanelli"
+                "Fabrizio Ravanelli",
+                "Alan Shearer"
             ],
             "ORG": [
                 "Middlesbrough"
@@ -47456,6 +48402,11 @@
                 "start": 25,
                 "end": 38,
                 "label": "ORG"
+            },
+            {
+                "start": 43,
+                "end": 55,
+                "label": "PER"
             }
         ]
     },
@@ -47467,7 +48418,8 @@
                 "Dwight Yorke"
             ],
             "ORG": [
-                "Southampton"
+                "Southampton",
+                "Aston"
             ]
         },
         "entity_spans": [
@@ -47485,6 +48437,11 @@
                 "start": 41,
                 "end": 53,
                 "label": "PER"
+            },
+            {
+                "start": 56,
+                "end": 61,
+                "label": "ORG"
             }
         ]
     },
@@ -47596,7 +48553,8 @@
         "entity_values": {
             "PER": [
                 "Marcus Gayle",
-                "Gary Speed"
+                "Gary Speed",
+                "Chris"
             ],
             "LOC": [
                 "Wimbledon"
@@ -47625,6 +48583,11 @@
                 "start": 46,
                 "end": 53,
                 "label": "ORG"
+            },
+            {
+                "start": 58,
+                "end": 63,
+                "label": "PER"
             }
         ]
     },
@@ -48721,7 +49684,8 @@
             "PER": [
                 "Adams",
                 "Vieira",
-                "Sturridge"
+                "Sturridge",
+                "Powell"
             ]
         },
         "entity_spans": [
@@ -48748,6 +49712,11 @@
             {
                 "start": 45,
                 "end": 54,
+                "label": "PER"
+            },
+            {
+                "start": 60,
+                "end": 66,
                 "label": "PER"
             }
         ]
@@ -48971,7 +49940,8 @@
             ],
             "PER": [
                 "Melville",
-                "Ekoku"
+                "Ekoku",
+                "Holdsworth"
             ],
             "LOC": [
                 "Wimbledon"
@@ -48996,6 +49966,11 @@
             {
                 "start": 43,
                 "end": 48,
+                "label": "PER"
+            },
+            {
+                "start": 58,
+                "end": 68,
                 "label": "PER"
             }
         ]
@@ -51086,11 +52061,12 @@
     {
         "context": "Frenchman Patrick Vieira blasted a last-minute goal to salvage a 2-2 draw for English premier league leaders Arsenal at home to Derby on Saturday .",
         "entity_values": {
-            "PER": [
-                "Frenchman Patrick Vieira"
-            ],
             "MISC": [
+                "Frenchman",
                 "English"
+            ],
+            "PER": [
+                "Patrick Vieira"
             ],
             "ORG": [
                 "Arsenal",
@@ -51100,6 +52076,11 @@
         "entity_spans": [
             {
                 "start": 0,
+                "end": 9,
+                "label": "MISC"
+            },
+            {
+                "start": 10,
                 "end": 24,
                 "label": "PER"
             },
@@ -51441,7 +52422,8 @@
         "entity_values": {
             "ORG": [
                 "Airdrieonians",
-                "Clydebank"
+                "Clydebank",
+                "East"
             ]
         },
         "entity_spans": [
@@ -51453,6 +52435,11 @@
             {
                 "start": 28,
                 "end": 37,
+                "label": "ORG"
+            },
+            {
+                "start": 57,
+                "end": 61,
                 "label": "ORG"
             }
         ]
@@ -51559,7 +52546,8 @@
             "ORG": [
                 "Forfar",
                 "Alloa",
-                "Inverness Thistle"
+                "Inverness Thistle",
+                "Queen 's Park"
             ]
         },
         "entity_spans": [
@@ -51576,6 +52564,11 @@
             {
                 "start": 29,
                 "end": 46,
+                "label": "ORG"
+            },
+            {
+                "start": 49,
+                "end": 62,
                 "label": "ORG"
             }
         ]
@@ -52108,13 +53101,19 @@
         "context": "Playing Sunday : West Bromwich v Bolton",
         "entity_values": {
             "ORG": [
-                "West Bromwich"
+                "West Bromwich",
+                "Bolton"
             ]
         },
         "entity_spans": [
             {
                 "start": 17,
                 "end": 30,
+                "label": "ORG"
+            },
+            {
+                "start": 33,
+                "end": 39,
                 "label": "ORG"
             }
         ]
@@ -53035,7 +54034,8 @@
         "entity_values": {
             "PER": [
                 "Hugh Baiocchi",
-                "Greg Reid"
+                "Greg Reid",
+                "Mark"
             ]
         },
         "entity_spans": [
@@ -53047,6 +54047,11 @@
             {
                 "start": 29,
                 "end": 38,
+                "label": "PER"
+            },
+            {
+                "start": 50,
+                "end": 54,
                 "label": "PER"
             }
         ]
@@ -53070,7 +54075,8 @@
         "context": "212 Trevor Dodds ( Namibia ) 72 69 71 , Schalk van der",
         "entity_values": {
             "PER": [
-                "Trevor Dodds"
+                "Trevor Dodds",
+                "Schalk van der"
             ],
             "LOC": [
                 "Namibia"
@@ -53086,6 +54092,11 @@
                 "start": 19,
                 "end": 26,
                 "label": "LOC"
+            },
+            {
+                "start": 40,
+                "end": 54,
+                "label": "PER"
             }
         ]
     },
@@ -53145,7 +54156,8 @@
         "context": "213 Sean Farrell ( Zimbabwe ) 77 68 68 , Glen Cayeux",
         "entity_values": {
             "PER": [
-                "Sean Farrell"
+                "Sean Farrell",
+                "Glen Cayeux"
             ],
             "LOC": [
                 "Zimbabwe"
@@ -53161,6 +54173,11 @@
                 "start": 19,
                 "end": 27,
                 "label": "LOC"
+            },
+            {
+                "start": 41,
+                "end": 52,
+                "label": "PER"
             }
         ]
     },
@@ -53171,7 +54188,8 @@
                 "Zimbabwe"
             ],
             "PER": [
-                "Nic Henning"
+                "Nic Henning",
+                "Dion"
             ]
         },
         "entity_spans": [
@@ -53183,6 +54201,11 @@
             {
                 "start": 24,
                 "end": 35,
+                "label": "PER"
+            },
+            {
+                "start": 47,
+                "end": 51,
                 "label": "PER"
             }
         ]
@@ -53439,13 +54462,19 @@
         "context": "Goalkeepers - Blendi Nallbani , Armir Grima",
         "entity_values": {
             "PER": [
-                "Blendi Nallbani"
+                "Blendi Nallbani",
+                "Armir Grima"
             ]
         },
         "entity_spans": [
             {
                 "start": 14,
                 "end": 29,
+                "label": "PER"
+            },
+            {
+                "start": 32,
+                "end": 43,
                 "label": "PER"
             }
         ]
@@ -53459,7 +54488,8 @@
                 "Arjan Xhumba",
                 "Ilir Shulku",
                 "Afrim Tole",
-                "Nevil Dede"
+                "Nevil Dede",
+                "Arjan Bellai"
             ]
         },
         "entity_spans": [
@@ -53492,6 +54522,11 @@
                 "start": 81,
                 "end": 91,
                 "label": "PER"
+            },
+            {
+                "start": 94,
+                "end": 106,
+                "label": "PER"
             }
         ]
     },
@@ -53501,7 +54536,8 @@
             "PER": [
                 "Bledar Kola",
                 "Altin Haxhi",
-                "Sokol Prenga"
+                "Sokol Prenga",
+                "Ervin Fakaj"
             ]
         },
         "entity_spans": [
@@ -53518,6 +54554,11 @@
             {
                 "start": 42,
                 "end": 54,
+                "label": "PER"
+            },
+            {
+                "start": 57,
+                "end": 68,
                 "label": "PER"
             }
         ]
@@ -54962,7 +56003,8 @@
             ],
             "PER": [
                 "Kim Do Hoon",
-                "Hwang Sun Hong"
+                "Hwang Sun Hong",
+                "Koo"
             ]
         },
         "entity_spans": [
@@ -54979,6 +56021,11 @@
             {
                 "start": 30,
                 "end": 44,
+                "label": "PER"
+            },
+            {
+                "start": 56,
+                "end": 59,
                 "label": "PER"
             }
         ]
@@ -55582,6 +56629,9 @@
         "entity_values": {
             "ORG": [
                 "LA CLIPPERS"
+            ],
+            "LOC": [
+                "NEW YORK"
             ]
         },
         "entity_spans": [
@@ -55589,6 +56639,11 @@
                 "start": 0,
                 "end": 11,
                 "label": "ORG"
+            },
+            {
+                "start": 15,
+                "end": 23,
+                "label": "LOC"
             }
         ]
     },
@@ -55597,6 +56652,9 @@
         "entity_values": {
             "ORG": [
                 "DETROIT"
+            ],
+            "LOC": [
+                "NEW JERSEY"
             ]
         },
         "entity_spans": [
@@ -55604,6 +56662,11 @@
                 "start": 0,
                 "end": 7,
                 "label": "ORG"
+            },
+            {
+                "start": 11,
+                "end": 21,
+                "label": "LOC"
             }
         ]
     },
@@ -55624,8 +56687,18 @@
     },
     {
         "context": "Results of National Basketball",
-        "entity_values": {},
-        "entity_spans": []
+        "entity_values": {
+            "ORG": [
+                "National Basketball"
+            ]
+        },
+        "entity_spans": [
+            {
+                "start": 11,
+                "end": 30,
+                "label": "ORG"
+            }
+        ]
     },
     {
         "context": "Association games on Friday ( home team in CAPS ) :",
@@ -55848,8 +56921,18 @@
     },
     {
         "context": "Standings of National Hockey",
-        "entity_values": {},
-        "entity_spans": []
+        "entity_values": {
+            "ORG": [
+                "National Hockey"
+            ]
+        },
+        "entity_spans": [
+            {
+                "start": 13,
+                "end": 28,
+                "label": "ORG"
+            }
+        ]
     },
     {
         "context": "League teams after games played on Friday ( tabulate under won ,",
@@ -56291,6 +57374,9 @@
         "entity_values": {
             "ORG": [
                 "PHOENIX"
+            ],
+            "LOC": [
+                "NEW JERSEY"
             ]
         },
         "entity_spans": [
@@ -56298,6 +57384,11 @@
                 "start": 0,
                 "end": 7,
                 "label": "ORG"
+            },
+            {
+                "start": 11,
+                "end": 21,
+                "label": "LOC"
             }
         ]
     },
@@ -56306,6 +57397,9 @@
         "entity_values": {
             "ORG": [
                 "WASHINGTON"
+            ],
+            "LOC": [
+                "NY ISLANDERS"
             ]
         },
         "entity_spans": [
@@ -56313,6 +57407,11 @@
                 "start": 0,
                 "end": 10,
                 "label": "ORG"
+            },
+            {
+                "start": 14,
+                "end": 26,
+                "label": "LOC"
             }
         ]
     },
@@ -56321,6 +57420,9 @@
         "entity_values": {
             "ORG": [
                 "NY RANGERS"
+            ],
+            "LOC": [
+                "TORONTO"
             ]
         },
         "entity_spans": [
@@ -56328,6 +57430,11 @@
                 "start": 0,
                 "end": 10,
                 "label": "ORG"
+            },
+            {
+                "start": 14,
+                "end": 21,
+                "label": "LOC"
             }
         ]
     },
@@ -56336,6 +57443,9 @@
         "entity_values": {
             "ORG": [
                 "COLORADO"
+            ],
+            "LOC": [
+                "LOS ANGELES"
             ]
         },
         "entity_spans": [
@@ -56343,6 +57453,11 @@
                 "start": 0,
                 "end": 8,
                 "label": "ORG"
+            },
+            {
+                "start": 12,
+                "end": 23,
+                "label": "LOC"
             }
         ]
     },
@@ -56351,6 +57466,9 @@
         "entity_values": {
             "ORG": [
                 "TAMPA BAY"
+            ],
+            "LOC": [
+                "SAN JOSE"
             ]
         },
         "entity_spans": [
@@ -56358,6 +57476,11 @@
                 "start": 0,
                 "end": 9,
                 "label": "ORG"
+            },
+            {
+                "start": 13,
+                "end": 21,
+                "label": "LOC"
             }
         ]
     },
@@ -56378,8 +57501,18 @@
     },
     {
         "context": "Results of National Hockey",
-        "entity_values": {},
-        "entity_spans": []
+        "entity_values": {
+            "ORG": [
+                "National Hockey"
+            ]
+        },
+        "entity_spans": [
+            {
+                "start": 11,
+                "end": 26,
+                "label": "ORG"
+            }
+        ]
     },
     {
         "context": "League games on Friday ( home team in CAPS ) :",
@@ -56774,8 +57907,11 @@
     {
         "context": "German Axel Schulz outpointed Cuba 's Jose Ribalta in their International Boxing Federation non-title 10-round heavyweight fight on Saturday .",
         "entity_values": {
+            "MISC": [
+                "German"
+            ],
             "PER": [
-                "German Axel Schulz",
+                "Axel Schulz",
                 "Jose Ribalta"
             ],
             "LOC": [
@@ -56788,6 +57924,11 @@
         "entity_spans": [
             {
                 "start": 0,
+                "end": 6,
+                "label": "MISC"
+            },
+            {
+                "start": 7,
                 "end": 18,
                 "label": "PER"
             },
@@ -57310,8 +58451,18 @@
     },
     {
         "context": "Result of Saturday 's only Spanish",
-        "entity_values": {},
-        "entity_spans": []
+        "entity_values": {
+            "MISC": [
+                "Spanish"
+            ]
+        },
+        "entity_spans": [
+            {
+                "start": 27,
+                "end": 34,
+                "label": "MISC"
+            }
+        ]
     },
     {
         "context": "first division match :",
@@ -57682,16 +58833,22 @@
     {
         "context": "SOCCER - ENGLISHMAN CHARLTON IS MADE AN HONORARY IRISHMAN .",
         "entity_values": {
-            "PER": [
-                "ENGLISHMAN CHARLTON"
-            ],
             "MISC": [
+                "ENGLISHMAN",
                 "IRISHMAN"
+            ],
+            "PER": [
+                "CHARLTON"
             ]
         },
         "entity_spans": [
             {
                 "start": 9,
+                "end": 19,
+                "label": "MISC"
+            },
+            {
+                "start": 20,
                 "end": 28,
                 "label": "PER"
             },

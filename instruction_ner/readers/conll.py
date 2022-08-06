@@ -5,6 +5,7 @@ from instruction_ner.core.datatypes import DatasetField, Span
 from instruction_ner.core.reader import Reader
 
 
+
 class CONLLReader(Reader):
 
     token_doc_start = "-DOCSTART-"
@@ -12,6 +13,9 @@ class CONLLReader(Reader):
     sentence_separator = ""
     label_prefix = "-"
     MIN_SENTENCE_LENGTH = 3
+
+    C_B = 0
+    C_LAST = 0
 
     def read(self, data: List[str]) -> List[Dict[str, Any]]:
         """
@@ -39,7 +43,8 @@ class CONLLReader(Reader):
                 DatasetField.ENTITY_SPANS.value: entity_spans
             }
             data_processed.append(dataset_item)
-
+        print(f"COUNTER B: {self.C_B}")
+        print(f"COUNTER LAST: {self.C_LAST}")
         return data_processed
 
     def read_from_file(self, path_to_file: Union[str, Path]):
@@ -163,8 +168,33 @@ class CONLLReader(Reader):
                 current_start_idx += 1  # Because in the end we join them with space symbol
                 continue
 
+            # If we have two entities one after another
+            if label.startswith("B" + self.label_prefix) and entity_label is not None:
+
+                self.C_B += 1
+
+                entity_span = Span(
+                    start=current_start_idx,
+                    end=current_start_idx + entity_length - 1,
+                    label=entity_label
+                )
+                entity_spans.append(entity_span)
+
+                entity_length = 0
+                current_start_idx = entity_span.end + 1
+
             tag, entity_label = label.split(self.label_prefix, maxsplit=1)
             entity_length += len(token) + 1
+
+        # if last tokens of sentence are entity
+        if entity_length is not None and entity_label is not None:
+            self.C_LAST += 1
+            entity_span = Span(
+                start=current_start_idx,
+                end=current_start_idx + entity_length - 1,
+                label=entity_label
+            )
+            entity_spans.append(entity_span)
 
         text = " ".join(text_tokens)
 

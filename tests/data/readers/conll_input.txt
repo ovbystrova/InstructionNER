@@ -214,3 +214,13 @@ Group NNP B-NP O
 A NNP I-NP O
 matches VBZ B-VP O
 . . O O
+
+2. CD B-NP O
+Andrei NNP B-NP B-PER
+Ivanov NNP I-NP I-PER
+Andrei NNP B-NP B-PER
+Ivanov NNP I-NP I-PER
+( ( O O
+Russia NNP B-NP B-LOC
+) ) O O
+24.88 CD B-NP B-LOC

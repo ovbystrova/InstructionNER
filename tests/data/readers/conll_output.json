@@ -268,5 +268,39 @@
                 "label": "LOC"
             }
         ]
+    },
+    {
+        "context": "2. Andrei Ivanov Andrei Ivanov ( Russia ) 24.88",
+        "entity_values": {
+            "PER": [
+                "Andrei Ivanov"
+            ],
+            "LOC": [
+                "Russia",
+                "24.88"
+            ]
+        },
+        "entity_spans": [
+            {
+                "start": 3,
+                "end": 16,
+                "label": "PER"
+            },
+            {
+                "start": 17,
+                "end": 30,
+                "label": "PER"
+            },
+            {
+                "start": 33,
+                "end": 39,
+                "label": "LOC"
+            },
+            {
+                "start": 42,
+                "end": 47,
+                "label": "LOC"
+            }
+        ]
     }
 ]

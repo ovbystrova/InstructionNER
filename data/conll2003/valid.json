@@ -351,8 +351,11 @@
     {
         "context": "Australian Tom Moody took six for 82 but Chris Adams , 123 , and Tim O'Gorman , 109 , took Derbyshire to 471 and a first innings lead of 233 .",
         "entity_values": {
+            "MISC": [
+                "Australian"
+            ],
             "PER": [
-                "Australian Tom Moody",
+                "Tom Moody",
                 "Chris Adams",
                 "Tim O'Gorman"
             ],
@@ -363,6 +366,11 @@
         "entity_spans": [
             {
                 "start": 0,
+                "end": 10,
+                "label": "MISC"
+            },
+            {
+                "start": 11,
                 "end": 20,
                 "label": "PER"
             },
@@ -985,8 +993,18 @@
     },
     {
         "context": "starting on May 13 next year , the Test and County Cricket Board",
-        "entity_values": {},
-        "entity_spans": []
+        "entity_values": {
+            "ORG": [
+                "Test and County Cricket Board"
+            ]
+        },
+        "entity_spans": [
+            {
+                "start": 35,
+                "end": 64,
+                "label": "ORG"
+            }
+        ]
     },
     {
         "context": "said on Friday .",
@@ -1058,13 +1076,33 @@
     },
     {
         "context": "May 13 Arrive in London",
-        "entity_values": {},
-        "entity_spans": []
+        "entity_values": {
+            "LOC": [
+                "London"
+            ]
+        },
+        "entity_spans": [
+            {
+                "start": 17,
+                "end": 23,
+                "label": "LOC"
+            }
+        ]
     },
     {
         "context": "May 14 Practice at Lord 's",
-        "entity_values": {},
-        "entity_spans": []
+        "entity_values": {
+            "LOC": [
+                "Lord 's"
+            ]
+        },
+        "entity_spans": [
+            {
+                "start": 19,
+                "end": 26,
+                "label": "LOC"
+            }
+        ]
     },
     {
         "context": "May 15 v Duke of Norfolk 's XI ( at Arundel )",
@@ -1091,18 +1129,48 @@
     },
     {
         "context": "May 17 v Northampton",
-        "entity_values": {},
-        "entity_spans": []
+        "entity_values": {
+            "ORG": [
+                "Northampton"
+            ]
+        },
+        "entity_spans": [
+            {
+                "start": 9,
+                "end": 20,
+                "label": "ORG"
+            }
+        ]
     },
     {
         "context": "May 18 v Worcestershire",
-        "entity_values": {},
-        "entity_spans": []
+        "entity_values": {
+            "ORG": [
+                "Worcestershire"
+            ]
+        },
+        "entity_spans": [
+            {
+                "start": 9,
+                "end": 23,
+                "label": "ORG"
+            }
+        ]
     },
     {
         "context": "May 20 v Durham",
-        "entity_values": {},
-        "entity_spans": []
+        "entity_values": {
+            "ORG": [
+                "Durham"
+            ]
+        },
+        "entity_spans": [
+            {
+                "start": 9,
+                "end": 15,
+                "label": "ORG"
+            }
+        ]
     },
     {
         "context": "May 22 First one-day international ( at Headingley ,",
@@ -1314,13 +1382,33 @@
     },
     {
         "context": "July 9 v Minor Counties XI",
-        "entity_values": {},
-        "entity_spans": []
+        "entity_values": {
+            "ORG": [
+                "Minor Counties XI"
+            ]
+        },
+        "entity_spans": [
+            {
+                "start": 9,
+                "end": 26,
+                "label": "ORG"
+            }
+        ]
     },
     {
         "context": "July 12 v Scotland",
-        "entity_values": {},
-        "entity_spans": []
+        "entity_values": {
+            "LOC": [
+                "Scotland"
+            ]
+        },
+        "entity_spans": [
+            {
+                "start": 10,
+                "end": 18,
+                "label": "LOC"
+            }
+        ]
     },
     {
         "context": "July 16-18 v Glamorgan ( three days )",
@@ -2067,7 +2155,10 @@
         "entity_values": {
             "PER": [
                 "Duran",
-                "Mexican Ariel Cruz"
+                "Ariel Cruz"
+            ],
+            "MISC": [
+                "Mexican"
             ],
             "LOC": [
                 "Panama City"
@@ -2081,6 +2172,11 @@
             },
             {
                 "start": 35,
+                "end": 42,
+                "label": "MISC"
+            },
+            {
+                "start": 43,
                 "end": 53,
                 "label": "PER"
             },
@@ -2170,8 +2266,11 @@
     {
         "context": "If he loses Saturday , it could devalue his position as one of the world 's great boxers , \" Panamanian Boxing Association President Ramon Manzanares said .",
         "entity_values": {
+            "MISC": [
+                "Panamanian"
+            ],
             "ORG": [
-                "Panamanian Boxing Association"
+                "Boxing Association"
             ],
             "PER": [
                 "Ramon Manzanares"
@@ -2180,6 +2279,11 @@
         "entity_spans": [
             {
                 "start": 93,
+                "end": 103,
+                "label": "MISC"
+            },
+            {
+                "start": 104,
                 "end": 122,
                 "label": "ORG"
             },
@@ -2656,8 +2760,18 @@
     },
     {
         "context": "Results of South Korean",
-        "entity_values": {},
-        "entity_spans": []
+        "entity_values": {
+            "MISC": [
+                "South Korean"
+            ]
+        },
+        "entity_spans": [
+            {
+                "start": 11,
+                "end": 23,
+                "label": "MISC"
+            }
+        ]
     },
     {
         "context": "professional baseball games played on Thursday .",
@@ -3699,7 +3813,8 @@
                 "Bohdan Ulihrach"
             ],
             "LOC": [
-                "Czech Republic"
+                "Czech Republic",
+                "Czech"
             ]
         },
         "entity_spans": [
@@ -3717,6 +3832,11 @@
                 "start": 34,
                 "end": 49,
                 "label": "PER"
+            },
+            {
+                "start": 52,
+                "end": 57,
+                "label": "LOC"
             }
         ]
     },
@@ -4084,6 +4204,9 @@
         "entity_values": {
             "ORG": [
                 "KANSAS CITY"
+            ],
+            "LOC": [
+                "DETROIT"
             ]
         },
         "entity_spans": [
@@ -4091,6 +4214,11 @@
                 "start": 0,
                 "end": 11,
                 "label": "ORG"
+            },
+            {
+                "start": 15,
+                "end": 22,
+                "label": "LOC"
             }
         ]
     },
@@ -4099,6 +4227,9 @@
         "entity_values": {
             "ORG": [
                 "NEW YORK"
+            ],
+            "LOC": [
+                "CALIFORNIA"
             ]
         },
         "entity_spans": [
@@ -4106,6 +4237,11 @@
                 "start": 0,
                 "end": 8,
                 "label": "ORG"
+            },
+            {
+                "start": 12,
+                "end": 22,
+                "label": "LOC"
             }
         ]
     },
@@ -4334,6 +4470,9 @@
         "entity_values": {
             "ORG": [
                 "SAN DIEGO"
+            ],
+            "LOC": [
+                "MONTREAL"
             ]
         },
         "entity_spans": [
@@ -4341,6 +4480,11 @@
                 "start": 0,
                 "end": 9,
                 "label": "ORG"
+            },
+            {
+                "start": 13,
+                "end": 21,
+                "label": "LOC"
             }
         ]
     },
@@ -4349,6 +4493,9 @@
         "entity_values": {
             "ORG": [
                 "LOS ANGELES"
+            ],
+            "LOC": [
+                "PHILADELPHIA"
             ]
         },
         "entity_spans": [
@@ -4356,6 +4503,11 @@
                 "start": 0,
                 "end": 11,
                 "label": "ORG"
+            },
+            {
+                "start": 15,
+                "end": 27,
+                "label": "LOC"
             }
         ]
     },
@@ -4364,6 +4516,9 @@
         "entity_values": {
             "ORG": [
                 "SAN FRANCISCO"
+            ],
+            "LOC": [
+                "NEW YORK"
             ]
         },
         "entity_spans": [
@@ -4371,6 +4526,11 @@
                 "start": 0,
                 "end": 13,
                 "label": "ORG"
+            },
+            {
+                "start": 17,
+                "end": 25,
+                "label": "LOC"
             }
         ]
     },
@@ -4379,6 +4539,9 @@
         "entity_values": {
             "ORG": [
                 "COLORADO"
+            ],
+            "LOC": [
+                "ST LOUIS"
             ]
         },
         "entity_spans": [
@@ -4386,6 +4549,11 @@
                 "start": 0,
                 "end": 8,
                 "label": "ORG"
+            },
+            {
+                "start": 12,
+                "end": 20,
+                "label": "LOC"
             }
         ]
     },
@@ -4406,8 +4574,18 @@
     },
     {
         "context": "Results of Major League",
-        "entity_values": {},
-        "entity_spans": []
+        "entity_values": {
+            "MISC": [
+                "Major League"
+            ]
+        },
+        "entity_spans": [
+            {
+                "start": 11,
+                "end": 23,
+                "label": "MISC"
+            }
+        ]
     },
     {
         "context": "Baseball games played on Thursday ( home team in CAPS ) :",
@@ -5232,13 +5410,29 @@
     {
         "context": "NFL AMERICAN FOOTBALL-RANDALL CUNNINGHAM RETIRES .",
         "entity_values": {
+            "ORG": [
+                "NFL"
+            ],
+            "MISC": [
+                "AMERICAN FOOTBALL-RANDALL"
+            ],
             "PER": [
-                "NFL AMERICAN FOOTBALL-RANDALL CUNNINGHAM"
+                "CUNNINGHAM"
             ]
         },
         "entity_spans": [
             {
                 "start": 0,
+                "end": 3,
+                "label": "ORG"
+            },
+            {
+                "start": 4,
+                "end": 29,
+                "label": "MISC"
+            },
+            {
+                "start": 30,
                 "end": 40,
                 "label": "PER"
             }
@@ -5576,7 +5770,8 @@
             "PER": [
                 "Neal Lancaster",
                 "Dave Barr",
-                "Mike Sullivan"
+                "Mike Sullivan",
+                "Willie"
             ],
             "LOC": [
                 "Canada"
@@ -5602,6 +5797,11 @@
                 "start": 43,
                 "end": 56,
                 "label": "PER"
+            },
+            {
+                "start": 59,
+                "end": 65,
+                "label": "PER"
             }
         ]
     },
@@ -5612,7 +5812,8 @@
                 "Wood",
                 "Loren Roberts",
                 "Steve Stricker",
-                "Brian Claar"
+                "Brian Claar",
+                "Russ Cochran"
             ]
         },
         "entity_spans": [
@@ -5635,6 +5836,11 @@
                 "start": 40,
                 "end": 51,
                 "label": "PER"
+            },
+            {
+                "start": 54,
+                "end": 66,
+                "label": "PER"
             }
         ]
     },
@@ -5644,7 +5850,8 @@
             "PER": [
                 "Mark Calcavecchia",
                 "Payne Stewart",
-                "Billy Mayfair"
+                "Billy Mayfair",
+                "Ken"
             ]
         },
         "entity_spans": [
@@ -5661,6 +5868,11 @@
             {
                 "start": 39,
                 "end": 52,
+                "label": "PER"
+            },
+            {
+                "start": 55,
+                "end": 58,
                 "label": "PER"
             }
         ]
@@ -6286,18 +6498,24 @@
     {
         "context": "American Dennis Mitchell outclassed Olympic 100 metres champion Donovan Bailey for the third time at a major post-Games meeting in front of the most experienced sprinting crowd in the world on Friday .",
         "entity_values": {
-            "PER": [
-                "American Dennis Mitchell",
-                "Donovan Bailey"
-            ],
             "MISC": [
+                "American",
                 "Olympic",
                 "post-Games"
+            ],
+            "PER": [
+                "Dennis Mitchell",
+                "Donovan Bailey"
             ]
         },
         "entity_spans": [
             {
                 "start": 0,
+                "end": 8,
+                "label": "MISC"
+            },
+            {
+                "start": 9,
                 "end": 24,
                 "label": "PER"
             },
@@ -6629,8 +6847,18 @@
     },
     {
         "context": "Leading results at the Berlin",
-        "entity_values": {},
-        "entity_spans": []
+        "entity_values": {
+            "MISC": [
+                "Berlin"
+            ]
+        },
+        "entity_spans": [
+            {
+                "start": 23,
+                "end": 29,
+                "label": "MISC"
+            }
+        ]
     },
     {
         "context": "Grand Prix athletics meeting on Friday :",
@@ -9939,7 +10167,8 @@
         "entity_values": {
             "PER": [
                 "Donovan Bailey",
-                "Michael Johnson"
+                "Michael Johnson",
+                "Frankie"
             ],
             "LOC": [
                 "Canada",
@@ -9966,6 +10195,11 @@
                 "start": 49,
                 "end": 53,
                 "label": "LOC"
+            },
+            {
+                "start": 58,
+                "end": 65,
+                "label": "PER"
             }
         ]
     },
@@ -10009,7 +10243,8 @@
         "entity_values": {
             "PER": [
                 "Michael Green",
-                "Osmond Ezinwa"
+                "Osmond Ezinwa",
+                "Oeji Aliu"
             ],
             "LOC": [
                 "Jamaica",
@@ -10036,6 +10271,11 @@
                 "start": 47,
                 "end": 54,
                 "label": "LOC"
+            },
+            {
+                "start": 59,
+                "end": 68,
+                "label": "PER"
             }
         ]
     },
@@ -10072,7 +10312,8 @@
         "entity_values": {
             "PER": [
                 "Peter Karlsson",
-                "Falk Balzer"
+                "Falk Balzer",
+                "George"
             ],
             "LOC": [
                 "Sweden",
@@ -10099,6 +10340,11 @@
                 "start": 45,
                 "end": 52,
                 "label": "LOC"
+            },
+            {
+                "start": 57,
+                "end": 63,
+                "label": "PER"
             }
         ]
     },
@@ -10757,22 +11003,28 @@
     {
         "context": "The move to Bergamo-based Atalanta reunites Lentini , who fell out with ex-Milan coach Fabio Capello last season , with his former coach at Torino , Emiliano Mondonico .",
         "entity_values": {
+            "MISC": [
+                "Bergamo-based",
+                "ex-Milan"
+            ],
             "ORG": [
-                "Bergamo-based Atalanta",
+                "Atalanta",
                 "Torino"
             ],
             "PER": [
                 "Lentini",
                 "Fabio Capello",
                 "Emiliano Mondonico"
-            ],
-            "MISC": [
-                "ex-Milan"
             ]
         },
         "entity_spans": [
             {
                 "start": 12,
+                "end": 25,
+                "label": "MISC"
+            },
+            {
+                "start": 26,
                 "end": 34,
                 "label": "ORG"
             },
@@ -10897,8 +11149,18 @@
     },
     {
         "context": "Scoreboard of the third Singer",
-        "entity_values": {},
-        "entity_spans": []
+        "entity_values": {
+            "MISC": [
+                "Singer"
+            ]
+        },
+        "entity_spans": [
+            {
+                "start": 24,
+                "end": 30,
+                "label": "MISC"
+            }
+        ]
     },
     {
         "context": "World Series cricket match between Australia and Sri Lanka on",
@@ -11198,7 +11460,8 @@
         "entity_values": {
             "PER": [
                 "Vass",
-                "de Silva"
+                "de Silva",
+                "Dharmasena"
             ]
         },
         "entity_spans": [
@@ -11211,6 +11474,11 @@
                 "start": 26,
                 "end": 34,
                 "label": "PER"
+            },
+            {
+                "start": 46,
+                "end": 56,
+                "label": "PER"
             }
         ]
     },
@@ -11219,7 +11487,8 @@
         "entity_values": {
             "PER": [
                 "Muralitharan",
-                "Jayasuriya"
+                "Jayasuriya",
+                "Chandana"
             ]
         },
         "entity_spans": [
@@ -11231,6 +11500,11 @@
             {
                 "start": 36,
                 "end": 46,
+                "label": "PER"
+            },
+            {
+                "start": 59,
+                "end": 67,
                 "label": "PER"
             }
         ]
@@ -11466,7 +11740,8 @@
             "PER": [
                 "Fleming",
                 "Gillespie",
-                "M. Waugh"
+                "M. Waugh",
+                "Lehmann"
             ]
         },
         "entity_spans": [
@@ -11483,6 +11758,11 @@
             {
                 "start": 40,
                 "end": 48,
+                "label": "PER"
+            },
+            {
+                "start": 60,
+                "end": 67,
                 "label": "PER"
             }
         ]
@@ -11504,8 +11784,18 @@
     },
     {
         "context": "Man of the Match : Aravinda de Silva",
-        "entity_values": {},
-        "entity_spans": []
+        "entity_values": {
+            "PER": [
+                "Aravinda de Silva"
+            ]
+        },
+        "entity_spans": [
+            {
+                "start": 19,
+                "end": 36,
+                "label": "PER"
+            }
+        ]
     },
     {
         "context": "Next Series match : India v Zimbabwe , September 1 .",
@@ -11646,7 +11936,8 @@
             ],
             "PER": [
                 "Ian Healy",
-                "Michael Bevan"
+                "Michael Bevan",
+                "Damien"
             ]
         },
         "entity_spans": [
@@ -11664,6 +11955,11 @@
                 "start": 36,
                 "end": 49,
                 "label": "PER"
+            },
+            {
+                "start": 52,
+                "end": 58,
+                "label": "PER"
             }
         ]
     },
@@ -11674,7 +11970,8 @@
                 "Flemming",
                 "Jason Gillespie",
                 "Stuart Law",
-                "Glenn McGrath"
+                "Glenn McGrath",
+                "Ricky"
             ]
         },
         "entity_spans": [
@@ -11697,6 +11994,11 @@
                 "start": 42,
                 "end": 55,
                 "label": "PER"
+            },
+            {
+                "start": 58,
+                "end": 63,
+                "label": "PER"
             }
         ]
     },
@@ -11707,7 +12009,8 @@
                 "Ponting",
                 "Michael Slater",
                 "Darren Lehmann",
-                "Mark Waugh"
+                "Mark Waugh",
+                "Steve"
             ]
         },
         "entity_spans": [
@@ -11729,6 +12032,11 @@
             {
                 "start": 44,
                 "end": 54,
+                "label": "PER"
+            },
+            {
+                "start": 57,
+                "end": 62,
                 "label": "PER"
             }
         ]
@@ -11846,13 +12154,21 @@
     {
         "context": "ROMANIA COMELF H1 PROFIT RISE BELOW TARGET .",
         "entity_values": {
+            "LOC": [
+                "ROMANIA"
+            ],
             "ORG": [
-                "ROMANIA COMELF"
+                "COMELF"
             ]
         },
         "entity_spans": [
             {
                 "start": 0,
+                "end": 7,
+                "label": "LOC"
+            },
+            {
+                "start": 8,
                 "end": 14,
                 "label": "ORG"
             }
@@ -12020,8 +12336,18 @@
     },
     {
         "context": "The National Bank of Poland",
-        "entity_values": {},
-        "entity_spans": []
+        "entity_values": {
+            "ORG": [
+                "National Bank of Poland"
+            ]
+        },
+        "entity_spans": [
+            {
+                "start": 4,
+                "end": 27,
+                "label": "ORG"
+            }
+        ]
     },
     {
         "context": "refrained from staging a reverse repo operation on Friday , the",
@@ -12333,13 +12659,21 @@
     {
         "context": "NYMEX refined product prices lingered at session lows amid slim volume before the close while crude experienced lackluster buying ahead of the U.S. Labor Day weekend , traders said .",
         "entity_values": {
+            "LOC": [
+                "U.S."
+            ],
             "MISC": [
-                "U.S. Labor Day"
+                "Labor Day"
             ]
         },
         "entity_spans": [
             {
                 "start": 143,
+                "end": 147,
+                "label": "LOC"
+            },
+            {
+                "start": 148,
                 "end": 157,
                 "label": "MISC"
             }
@@ -12452,10 +12786,11 @@
         "context": "U.S. debt futures end lower , shaken by Chicago NAPM .",
         "entity_values": {
             "LOC": [
-                "U.S."
+                "U.S.",
+                "Chicago"
             ],
             "ORG": [
-                "Chicago NAPM"
+                "NAPM"
             ]
         },
         "entity_spans": [
@@ -12466,6 +12801,11 @@
             },
             {
                 "start": 40,
+                "end": 47,
+                "label": "LOC"
+            },
+            {
+                "start": 48,
                 "end": 52,
                 "label": "ORG"
             }
@@ -12509,13 +12849,21 @@
     {
         "context": "The August Chicago NAPM rose 8.8 points to 60.0 , its highest level since 62.6 in February 1995 and the largest monthly rise since December 1993 .",
         "entity_values": {
+            "LOC": [
+                "Chicago"
+            ],
             "ORG": [
-                "Chicago NAPM"
+                "NAPM"
             ]
         },
         "entity_spans": [
             {
                 "start": 11,
+                "end": 18,
+                "label": "LOC"
+            },
+            {
+                "start": 19,
                 "end": 23,
                 "label": "ORG"
             }
@@ -12895,11 +13243,12 @@
         "entity_values": {
             "ORG": [
                 "Markham",
-                "Ontario-based Magna",
+                "Magna",
                 "Johnson Controls Inc",
                 "Lear Corp"
             ],
             "MISC": [
+                "Ontario-based",
                 "North American"
             ]
         },
@@ -12911,6 +13260,11 @@
             },
             {
                 "start": 39,
+                "end": 52,
+                "label": "MISC"
+            },
+            {
+                "start": 53,
                 "end": 58,
                 "label": "ORG"
             },
@@ -13682,7 +14036,7 @@
         "entity_values": {
             "MISC": [
                 "EUROBONDS",
-                "U.S. Labour Day"
+                "Labour Day"
             ],
             "LOC": [
                 "U.S."
@@ -13696,6 +14050,11 @@
             },
             {
                 "start": 97,
+                "end": 101,
+                "label": "LOC"
+            },
+            {
+                "start": 102,
                 "end": 112,
                 "label": "MISC"
             },
@@ -13965,7 +14324,10 @@
         "entity_values": {
             "PER": [
                 "Bruno",
-                "American Oliver McCall"
+                "Oliver McCall"
+            ],
+            "MISC": [
+                "American"
             ],
             "LOC": [
                 "Wembley"
@@ -13979,6 +14341,11 @@
             },
             {
                 "start": 80,
+                "end": 88,
+                "label": "MISC"
+            },
+            {
+                "start": 89,
                 "end": 102,
                 "label": "PER"
             },
@@ -14009,7 +14376,10 @@
         "entity_values": {
             "PER": [
                 "Bruno",
-                "American Tyson"
+                "Tyson"
+            ],
+            "MISC": [
+                "American"
             ],
             "LOC": [
                 "Las Vegas"
@@ -14023,6 +14393,11 @@
             },
             {
                 "start": 61,
+                "end": 69,
+                "label": "MISC"
+            },
+            {
+                "start": 70,
                 "end": 75,
                 "label": "PER"
             },
@@ -14501,10 +14876,11 @@
         "context": "Yeltsin endorses Lebed Chechnya peace plan - agency .",
         "entity_values": {
             "PER": [
-                "Yeltsin"
+                "Yeltsin",
+                "Lebed"
             ],
             "LOC": [
-                "Lebed Chechnya"
+                "Chechnya"
             ]
         },
         "entity_spans": [
@@ -14515,6 +14891,11 @@
             },
             {
                 "start": 17,
+                "end": 22,
+                "label": "PER"
+            },
+            {
+                "start": 23,
                 "end": 31,
                 "label": "LOC"
             }
@@ -18591,10 +18972,13 @@
         "entity_values": {
             "PER": [
                 "Ronald Reagan",
-                "Democrat Walter Mondale"
+                "Walter Mondale"
             ],
             "LOC": [
                 "White House"
+            ],
+            "MISC": [
+                "Democrat"
             ]
         },
         "entity_spans": [
@@ -18610,6 +18994,11 @@
             },
             {
                 "start": 92,
+                "end": 100,
+                "label": "MISC"
+            },
+            {
+                "start": 101,
                 "end": 115,
                 "label": "PER"
             }
@@ -19712,13 +20101,14 @@
         "context": "Chicago Cardinal Joseph Bernardin , head of the second-largest U.S. Roman Catholic archdiocese , said on Friday his doctors had diagnosed him as having liver cancer and he had a year or less to live .",
         "entity_values": {
             "LOC": [
-                "Chicago"
+                "Chicago",
+                "U.S."
             ],
             "PER": [
                 "Joseph Bernardin"
             ],
             "MISC": [
-                "U.S. Roman Catholic"
+                "Roman Catholic"
             ]
         },
         "entity_spans": [
@@ -19734,6 +20124,11 @@
             },
             {
                 "start": 63,
+                "end": 67,
+                "label": "LOC"
+            },
+            {
+                "start": 68,
                 "end": 82,
                 "label": "MISC"
             }
@@ -20093,8 +20488,11 @@
     {
         "context": "St. Louis-based Mercantile Bancorp Inc. , a bank holding company with $ 18.04 billion in assets , was seen by many analysts as the most attractive Missouri franchise in size after Boatmen 's .",
         "entity_values": {
+            "MISC": [
+                "St. Louis-based"
+            ],
             "ORG": [
-                "St. Louis-based Mercantile Bancorp Inc.",
+                "Mercantile Bancorp Inc.",
                 "Boatmen 's"
             ],
             "LOC": [
@@ -20104,6 +20502,11 @@
         "entity_spans": [
             {
                 "start": 0,
+                "end": 15,
+                "label": "MISC"
+            },
+            {
+                "start": 16,
                 "end": 39,
                 "label": "ORG"
             },
@@ -20126,8 +20529,11 @@
                 "Kansas City",
                 "Midwest"
             ],
+            "MISC": [
+                "Mo.-based"
+            ],
             "ORG": [
-                "Mo.-based Commerce Bancshares Inc."
+                "Commerce Bancshares Inc."
             ]
         },
         "entity_spans": [
@@ -20138,6 +20544,11 @@
             },
             {
                 "start": 14,
+                "end": 23,
+                "label": "MISC"
+            },
+            {
+                "start": 24,
                 "end": 48,
                 "label": "ORG"
             },
@@ -20194,6 +20605,9 @@
         "entity_values": {
             "ORG": [
                 "Roosevelt Financial Group Inc"
+            ],
+            "MISC": [
+                "asset-St ."
             ]
         },
         "entity_spans": [
@@ -20201,6 +20615,11 @@
                 "start": 0,
                 "end": 29,
                 "label": "ORG"
+            },
+            {
+                "start": 50,
+                "end": 60,
+                "label": "MISC"
             }
         ]
     },
@@ -20270,10 +20689,14 @@
                 "Missouri",
                 "Illinois"
             ],
+            "MISC": [
+                "Minneapolis-based",
+                "Ohio-based"
+            ],
             "ORG": [
-                "Minneapolis-based First Bank System Inc.",
+                "First Bank System Inc.",
                 "Norwest Corp.",
-                "Ohio-based KeyCorp",
+                "KeyCorp",
                 "Banc One Corp.",
                 "First Chicago NBD Corp."
             ]
@@ -20286,6 +20709,11 @@
             },
             {
                 "start": 65,
+                "end": 82,
+                "label": "MISC"
+            },
+            {
+                "start": 83,
                 "end": 105,
                 "label": "ORG"
             },
@@ -20296,6 +20724,11 @@
             },
             {
                 "start": 126,
+                "end": 136,
+                "label": "MISC"
+            },
+            {
+                "start": 137,
                 "end": 144,
                 "label": "ORG"
             },
@@ -21209,7 +21642,8 @@
         "context": "A 20-ton piece of the Titanic 's steel hull , which had been attached by cables to a recovery ship off the coast of Newfoundland , Canada , fell back to the bottom of the sea , said Erin Purcell of Boston-based Reagan Communications that represents two of the ships used in the expedition .",
         "entity_values": {
             "MISC": [
-                "Titanic"
+                "Titanic",
+                "Boston-based"
             ],
             "LOC": [
                 "Newfoundland",
@@ -21219,7 +21653,7 @@
                 "Erin Purcell"
             ],
             "ORG": [
-                "Boston-based Reagan Communications"
+                "Reagan Communications"
             ]
         },
         "entity_spans": [
@@ -21245,6 +21679,11 @@
             },
             {
                 "start": 198,
+                "end": 210,
+                "label": "MISC"
+            },
+            {
+                "start": 211,
                 "end": 232,
                 "label": "ORG"
             }
@@ -21356,11 +21795,12 @@
         "entity_values": {
             "LOC": [
                 "Israel",
-                "Jewish West Bank",
+                "West Bank",
                 "Jerusalem",
                 "East Jerusalem"
             ],
             "MISC": [
+                "Jewish",
                 "Arab"
             ]
         },
@@ -21372,6 +21812,11 @@
             },
             {
                 "start": 44,
+                "end": 50,
+                "label": "MISC"
+            },
+            {
+                "start": 51,
                 "end": 60,
                 "label": "LOC"
             },
@@ -21435,10 +21880,11 @@
         "context": "\" We believe that the Israeli settlement policy in the occupied areas is an obstacle to the establishment of peace , \" German Foreign Ministry spokesman Martin Erdmann said .",
         "entity_values": {
             "MISC": [
-                "Israeli"
+                "Israeli",
+                "German"
             ],
             "ORG": [
-                "German Foreign Ministry"
+                "Foreign Ministry"
             ],
             "PER": [
                 "Martin Erdmann"
@@ -21452,6 +21898,11 @@
             },
             {
                 "start": 119,
+                "end": 125,
+                "label": "MISC"
+            },
+            {
+                "start": 126,
                 "end": 142,
                 "label": "ORG"
             },
@@ -21890,8 +22341,11 @@
         "entity_values": {
             "ORG": [
                 "CFDT",
-                "Communist-led CGT",
+                "CGT",
                 "Air France"
+            ],
+            "MISC": [
+                "Communist-led"
             ],
             "LOC": [
                 "Charles de Gaulle",
@@ -21906,6 +22360,11 @@
             },
             {
                 "start": 39,
+                "end": 52,
+                "label": "MISC"
+            },
+            {
+                "start": 53,
                 "end": 56,
                 "label": "ORG"
             },
@@ -22921,8 +23380,26 @@
     },
     {
         "context": "Company Name Homegate Hospitality Inc",
-        "entity_values": {},
-        "entity_spans": []
+        "entity_values": {
+            "MISC": [
+                "Name"
+            ],
+            "ORG": [
+                "Homegate Hospitality Inc"
+            ]
+        },
+        "entity_spans": [
+            {
+                "start": 8,
+                "end": 12,
+                "label": "MISC"
+            },
+            {
+                "start": 13,
+                "end": 37,
+                "label": "ORG"
+            }
+        ]
     },
     {
         "context": "Nasdaq Stock symbol HMGT",
@@ -22961,8 +23438,18 @@
     },
     {
         "context": "Lead Underwriter Bear Stearns & Co Inc",
-        "entity_values": {},
-        "entity_spans": []
+        "entity_values": {
+            "ORG": [
+                "Bear Stearns & Co Inc"
+            ]
+        },
+        "entity_spans": [
+            {
+                "start": 17,
+                "end": 38,
+                "label": "ORG"
+            }
+        ]
     },
     {
         "context": "Underwriters over-allotment N / A",
@@ -24083,6 +24570,9 @@
         "entity_values": {
             "ORG": [
                 "Bay Co Building Authority"
+            ],
+            "LOC": [
+                "MI"
             ]
         },
         "entity_spans": [
@@ -24090,6 +24580,11 @@
                 "start": 9,
                 "end": 34,
                 "label": "ORG"
+            },
+            {
+                "start": 40,
+                "end": 42,
+                "label": "LOC"
             }
         ]
     },
@@ -24138,6 +24633,9 @@
         "entity_values": {
             "ORG": [
                 "Michigan National Bank"
+            ],
+            "LOC": [
+                "Detroit"
             ]
         },
         "entity_spans": [
@@ -24145,6 +24643,11 @@
                 "start": 15,
                 "end": 37,
                 "label": "ORG"
+            },
+            {
+                "start": 40,
+                "end": 47,
+                "label": "LOC"
             }
         ]
     },
@@ -24153,6 +24656,9 @@
         "entity_values": {
             "ORG": [
                 "Bodman , Longely & Dahling"
+            ],
+            "LOC": [
+                "Detroit"
             ]
         },
         "entity_spans": [
@@ -24160,6 +24666,11 @@
                 "start": 7,
                 "end": 33,
                 "label": "ORG"
+            },
+            {
+                "start": 36,
+                "end": 43,
+                "label": "LOC"
             }
         ]
     },
@@ -24168,6 +24679,9 @@
         "entity_values": {
             "ORG": [
                 "First of Michigan Corp."
+            ],
+            "LOC": [
+                "Detroit"
             ]
         },
         "entity_spans": [
@@ -24175,6 +24689,11 @@
                 "start": 7,
                 "end": 30,
                 "label": "ORG"
+            },
+            {
+                "start": 33,
+                "end": 40,
+                "label": "LOC"
             }
         ]
     },
@@ -25626,12 +26145,14 @@
                 "Swiss"
             ],
             "LOC": [
-                "Chechnya",
-                "OSCE Chechnya"
+                "Chechnya"
             ],
             "PER": [
                 "Tim Guldimann",
                 "Zelimkhan Yandarbiyev"
+            ],
+            "ORG": [
+                "OSCE"
             ]
         },
         "entity_spans": [
@@ -25657,6 +26178,11 @@
             },
             {
                 "start": 96,
+                "end": 100,
+                "label": "ORG"
+            },
+            {
+                "start": 101,
                 "end": 109,
                 "label": "LOC"
             },
@@ -27215,13 +27741,21 @@
     {
         "context": "Speaker of the House of Representatives Wahono has called on those serving in high state institutions to direct their efforts in the coming years towards dismantling all barriers to social justice .",
         "entity_values": {
+            "ORG": [
+                "House of Representatives"
+            ],
             "PER": [
-                "House of Representatives Wahono"
+                "Wahono"
             ]
         },
         "entity_spans": [
             {
                 "start": 15,
+                "end": 39,
+                "label": "ORG"
+            },
+            {
+                "start": 40,
                 "end": 46,
                 "label": "PER"
             }
@@ -28062,8 +28596,11 @@
     {
         "context": "Responding to a letter from the the Palestinian U.N. observer mission , Security Council President Tono Eitel of Germany said that members asked him to convey their views to Israel 's charge d'affaires , David Peleg .",
         "entity_values": {
+            "MISC": [
+                "Palestinian"
+            ],
             "ORG": [
-                "Palestinian U.N.",
+                "U.N.",
                 "Security Council"
             ],
             "PER": [
@@ -28078,6 +28615,11 @@
         "entity_spans": [
             {
                 "start": 36,
+                "end": 47,
+                "label": "MISC"
+            },
+            {
+                "start": 48,
                 "end": 52,
                 "label": "ORG"
             },
@@ -28398,7 +28940,8 @@
                 "Donato"
             ],
             "MISC": [
-                "Brazilian-born Spanish"
+                "Brazilian-born",
+                "Spanish"
             ]
         },
         "entity_spans": [
@@ -28419,6 +28962,11 @@
             },
             {
                 "start": 164,
+                "end": 178,
+                "label": "MISC"
+            },
+            {
+                "start": 179,
                 "end": 186,
                 "label": "MISC"
             },
@@ -29766,8 +30314,18 @@
     },
     {
         "context": "the 205-km sixth and final stage of the Tour of the Netherlands",
-        "entity_values": {},
-        "entity_spans": []
+        "entity_values": {
+            "MISC": [
+                "Tour of the Netherlands"
+            ]
+        },
+        "entity_spans": [
+            {
+                "start": 40,
+                "end": 63,
+                "label": "MISC"
+            }
+        ]
     },
     {
         "context": "between Roermond and Landgraaf on Saturday :",
@@ -30013,6 +30571,9 @@
             ],
             "LOC": [
                 "Spain"
+            ],
+            "ORG": [
+                "MX Onda"
             ]
         },
         "entity_spans": [
@@ -30025,6 +30586,11 @@
                 "start": 23,
                 "end": 28,
                 "label": "LOC"
+            },
+            {
+                "start": 31,
+                "end": 38,
+                "label": "ORG"
             }
         ]
     },
@@ -30036,6 +30602,9 @@
             ],
             "LOC": [
                 "Sweden"
+            ],
+            "ORG": [
+                "Telekom"
             ]
         },
         "entity_spans": [
@@ -30048,6 +30617,11 @@
                 "start": 23,
                 "end": 29,
                 "label": "LOC"
+            },
+            {
+                "start": 32,
+                "end": 39,
+                "label": "ORG"
             }
         ]
     },
@@ -30564,7 +31138,8 @@
         "entity_values": {
             "PER": [
                 "Ata-ur-Rehman",
-                "Saqlain Mushtaq"
+                "Saqlain Mushtaq",
+                "Mushtaq Ahmed"
             ]
         },
         "entity_spans": [
@@ -30576,6 +31151,11 @@
             {
                 "start": 25,
                 "end": 40,
+                "label": "PER"
+            },
+            {
+                "start": 53,
+                "end": 66,
                 "label": "PER"
             }
         ]
@@ -30876,7 +31456,8 @@
         "entity_values": {
             "PER": [
                 "Gough",
-                "Mullally"
+                "Mullally",
+                "Headley"
             ]
         },
         "entity_spans": [
@@ -30888,6 +31469,11 @@
             {
                 "start": 27,
                 "end": 35,
+                "label": "PER"
+            },
+            {
+                "start": 47,
+                "end": 54,
                 "label": "PER"
             }
         ]
@@ -31862,7 +32448,8 @@
         "context": "Marion Clignet ( France ) 3:30.974 ( World Record ) beat Jane",
         "entity_values": {
             "PER": [
-                "Marion Clignet"
+                "Marion Clignet",
+                "Jane"
             ],
             "LOC": [
                 "France"
@@ -31878,6 +32465,11 @@
                 "start": 17,
                 "end": 23,
                 "label": "LOC"
+            },
+            {
+                "start": 57,
+                "end": 61,
+                "label": "PER"
             }
         ]
     },
@@ -31908,7 +32500,8 @@
         "context": "Natalia Karimova ( Russia ) 3:40.036 beat Yvonne McGregor",
         "entity_values": {
             "PER": [
-                "Natalia Karimova"
+                "Natalia Karimova",
+                "Yvonne McGregor"
             ],
             "LOC": [
                 "Russia"
@@ -31924,6 +32517,11 @@
                 "start": 19,
                 "end": 25,
                 "label": "LOC"
+            },
+            {
+                "start": 42,
+                "end": 57,
+                "label": "PER"
             }
         ]
     },
@@ -31946,7 +32544,8 @@
         "context": "Lucy Tyler-Sharman ( Australia ) 3:35.087 beat Svetlana",
         "entity_values": {
             "PER": [
-                "Lucy Tyler-Sharman"
+                "Lucy Tyler-Sharman",
+                "Svetlana"
             ],
             "LOC": [
                 "Australia"
@@ -31962,6 +32561,11 @@
                 "start": 21,
                 "end": 30,
                 "label": "LOC"
+            },
+            {
+                "start": 47,
+                "end": 55,
+                "label": "PER"
             }
         ]
     },
@@ -31992,7 +32596,8 @@
         "context": "Antonella Bellutti ( Italy ) 3:32.174 caught and eliminated Rasa",
         "entity_values": {
             "PER": [
-                "Antonella Bellutti"
+                "Antonella Bellutti",
+                "Rasa"
             ],
             "LOC": [
                 "Italy"
@@ -32008,6 +32613,11 @@
                 "start": 21,
                 "end": 26,
                 "label": "LOC"
+            },
+            {
+                "start": 60,
+                "end": 64,
+                "label": "PER"
             }
         ]
     },
@@ -37149,7 +37759,8 @@
             "ORG": [
                 "Birmingham",
                 "Barnsley",
-                "Manchester City"
+                "Manchester City",
+                "Charlton"
             ]
         },
         "entity_spans": [
@@ -37167,6 +37778,11 @@
                 "start": 36,
                 "end": 51,
                 "label": "ORG"
+            },
+            {
+                "start": 54,
+                "end": 62,
+                "label": "ORG"
             }
         ]
     },
@@ -37174,13 +37790,19 @@
         "context": "Playing Sunday : Queens Park Rangers v Bolton",
         "entity_values": {
             "ORG": [
-                "Queens Park Rangers"
+                "Queens Park Rangers",
+                "Bolton"
             ]
         },
         "entity_spans": [
             {
                 "start": 17,
                 "end": 36,
+                "label": "ORG"
+            },
+            {
+                "start": 39,
+                "end": 45,
                 "label": "ORG"
             }
         ]
@@ -37378,13 +38000,19 @@
         "context": "Postponed : Walsall v Wrexham",
         "entity_values": {
             "ORG": [
-                "Walsall"
+                "Walsall",
+                "Wrexham"
             ]
         },
         "entity_spans": [
             {
                 "start": 12,
                 "end": 19,
+                "label": "ORG"
+            },
+            {
+                "start": 22,
+                "end": 29,
                 "label": "ORG"
             }
         ]
@@ -38196,13 +38824,21 @@
     {
         "context": "MOTOR RACING - LEADING QUALIFIERS FOR VANCOUVER INDYCAR RACE .",
         "entity_values": {
+            "LOC": [
+                "VANCOUVER"
+            ],
             "MISC": [
-                "VANCOUVER INDYCAR"
+                "INDYCAR"
             ]
         },
         "entity_spans": [
             {
                 "start": 38,
+                "end": 47,
+                "label": "LOC"
+            },
+            {
+                "start": 48,
                 "end": 55,
                 "label": "MISC"
             }
@@ -38216,13 +38852,21 @@
     {
         "context": "Sunday 's Vancouver IndyCar race after final qualifying on",
         "entity_values": {
+            "LOC": [
+                "Vancouver"
+            ],
             "MISC": [
-                "Vancouver IndyCar"
+                "IndyCar"
             ]
         },
         "entity_spans": [
             {
                 "start": 10,
+                "end": 19,
+                "label": "LOC"
+            },
+            {
+                "start": 20,
                 "end": 27,
                 "label": "MISC"
             }
@@ -40583,8 +41227,18 @@
     },
     {
         "context": "Results in the Trofej Beograd 96",
-        "entity_values": {},
-        "entity_spans": []
+        "entity_values": {
+            "MISC": [
+                "Trofej Beograd 96"
+            ]
+        },
+        "entity_spans": [
+            {
+                "start": 15,
+                "end": 32,
+                "label": "MISC"
+            }
+        ]
     },
     {
         "context": "international basketball tournament on Saturday :",
@@ -40678,8 +41332,18 @@
     },
     {
         "context": "Results in the Trofej Beograd 96",
-        "entity_values": {},
-        "entity_spans": []
+        "entity_values": {
+            "MISC": [
+                "Trofej Beograd 96"
+            ]
+        },
+        "entity_spans": [
+            {
+                "start": 15,
+                "end": 32,
+                "label": "MISC"
+            }
+        ]
     },
     {
         "context": "international basketball tournament on Saturday :",
@@ -41315,17 +41979,23 @@
     {
         "context": "Controversial Australian Anthony Hill called Jansher Khan a cheat during his acrimonious defeat by the world number one in the Hong Kong Open semifinals on Saturday .",
         "entity_values": {
-            "PER": [
-                "Australian Anthony Hill",
-                "Jansher Khan"
-            ],
             "MISC": [
+                "Australian",
                 "Hong Kong Open"
+            ],
+            "PER": [
+                "Anthony Hill",
+                "Jansher Khan"
             ]
         },
         "entity_spans": [
             {
                 "start": 14,
+                "end": 24,
+                "label": "MISC"
+            },
+            {
+                "start": 25,
                 "end": 37,
                 "label": "PER"
             },
@@ -41514,10 +42184,11 @@
         "entity_values": {
             "PER": [
                 "Jansher",
-                "Australian Rodney Eyles"
+                "Rodney Eyles"
             ],
             "MISC": [
-                "Hong Kong Open"
+                "Hong Kong Open",
+                "Australian"
             ]
         },
         "entity_spans": [
@@ -41533,6 +42204,11 @@
             },
             {
                 "start": 75,
+                "end": 85,
+                "label": "MISC"
+            },
+            {
+                "start": 86,
                 "end": 98,
                 "label": "PER"
             }
@@ -42839,13 +43515,19 @@
         "context": "United States at Netherlands",
         "entity_values": {
             "LOC": [
-                "United States"
+                "United States",
+                "Netherlands"
             ]
         },
         "entity_spans": [
             {
                 "start": 0,
                 "end": 13,
+                "label": "LOC"
+            },
+            {
+                "start": 17,
+                "end": 28,
                 "label": "LOC"
             }
         ]
@@ -42854,13 +43536,19 @@
         "context": "Czech Republic at Germany",
         "entity_values": {
             "LOC": [
-                "Czech Republic"
+                "Czech Republic",
+                "Germany"
             ]
         },
         "entity_spans": [
             {
                 "start": 0,
                 "end": 14,
+                "label": "LOC"
+            },
+            {
+                "start": 18,
+                "end": 25,
                 "label": "LOC"
             }
         ]
@@ -42879,13 +43567,19 @@
         "context": "Switzerland at Slovak Republic",
         "entity_values": {
             "LOC": [
-                "Switzerland"
+                "Switzerland",
+                "Slovak Republic"
             ]
         },
         "entity_spans": [
             {
                 "start": 0,
                 "end": 11,
+                "label": "LOC"
+            },
+            {
+                "start": 15,
+                "end": 30,
                 "label": "LOC"
             }
         ]
@@ -42894,13 +43588,19 @@
         "context": "Argentina at South Korea",
         "entity_values": {
             "LOC": [
-                "Argentina"
+                "Argentina",
+                "South Korea"
             ]
         },
         "entity_spans": [
             {
                 "start": 0,
                 "end": 9,
+                "label": "LOC"
+            },
+            {
+                "start": 13,
+                "end": 24,
                 "label": "LOC"
             }
         ]
@@ -42909,13 +43609,19 @@
         "context": "Australia at South Africa",
         "entity_values": {
             "LOC": [
-                "Australia"
+                "Australia",
+                "South Africa"
             ]
         },
         "entity_spans": [
             {
                 "start": 0,
                 "end": 9,
+                "label": "LOC"
+            },
+            {
+                "start": 13,
+                "end": 25,
                 "label": "LOC"
             }
         ]
@@ -43264,6 +43970,9 @@
         "entity_values": {
             "ORG": [
                 "KANSAS CITY"
+            ],
+            "LOC": [
+                "DETROIT"
             ]
         },
         "entity_spans": [
@@ -43271,6 +43980,11 @@
                 "start": 0,
                 "end": 11,
                 "label": "ORG"
+            },
+            {
+                "start": 15,
+                "end": 22,
+                "label": "LOC"
             }
         ]
     },
@@ -43279,6 +43993,9 @@
         "entity_values": {
             "ORG": [
                 "NEW YORK"
+            ],
+            "LOC": [
+                "CALIFORNIA"
             ]
         },
         "entity_spans": [
@@ -43286,6 +44003,11 @@
                 "start": 0,
                 "end": 8,
                 "label": "ORG"
+            },
+            {
+                "start": 12,
+                "end": 22,
+                "label": "LOC"
             }
         ]
     },
@@ -43514,6 +44236,9 @@
         "entity_values": {
             "ORG": [
                 "SAN FRANCISCO"
+            ],
+            "LOC": [
+                "NEW YORK"
             ]
         },
         "entity_spans": [
@@ -43521,6 +44246,11 @@
                 "start": 0,
                 "end": 13,
                 "label": "ORG"
+            },
+            {
+                "start": 17,
+                "end": 25,
+                "label": "LOC"
             }
         ]
     },
@@ -43529,6 +44259,9 @@
         "entity_values": {
             "ORG": [
                 "LOS ANGELES"
+            ],
+            "LOC": [
+                "PHILADELPHIA"
             ]
         },
         "entity_spans": [
@@ -43536,6 +44269,11 @@
                 "start": 0,
                 "end": 11,
                 "label": "ORG"
+            },
+            {
+                "start": 15,
+                "end": 27,
+                "label": "LOC"
             }
         ]
     },
@@ -43544,6 +44282,9 @@
         "entity_values": {
             "ORG": [
                 "SAN DIEGO"
+            ],
+            "LOC": [
+                "MONTREAL"
             ]
         },
         "entity_spans": [
@@ -43551,6 +44292,11 @@
                 "start": 0,
                 "end": 9,
                 "label": "ORG"
+            },
+            {
+                "start": 13,
+                "end": 21,
+                "label": "LOC"
             }
         ]
     },
@@ -43559,6 +44305,9 @@
         "entity_values": {
             "ORG": [
                 "COLORADO"
+            ],
+            "LOC": [
+                "ST LOUIS"
             ]
         },
         "entity_spans": [
@@ -43566,6 +44315,11 @@
                 "start": 0,
                 "end": 8,
                 "label": "ORG"
+            },
+            {
+                "start": 12,
+                "end": 20,
+                "label": "LOC"
             }
         ]
     },
@@ -43586,8 +44340,18 @@
     },
     {
         "context": "Results of Major League",
-        "entity_values": {},
-        "entity_spans": []
+        "entity_values": {
+            "MISC": [
+                "Major League"
+            ]
+        },
+        "entity_spans": [
+            {
+                "start": 11,
+                "end": 23,
+                "label": "MISC"
+            }
+        ]
     },
     {
         "context": "Baseball games played on Friday ( home team in CAPS ) :",
@@ -45914,8 +46678,11 @@
     {
         "context": "American Tom Johnson successfully defended his IBF featherweight title when he earned a unanimous points decision over Venezuela 's Ramon Guzman on Saturday .",
         "entity_values": {
+            "MISC": [
+                "American"
+            ],
             "PER": [
-                "American Tom Johnson",
+                "Tom Johnson",
                 "Ramon Guzman"
             ],
             "ORG": [
@@ -45928,6 +46695,11 @@
         "entity_spans": [
             {
                 "start": 0,
+                "end": 8,
+                "label": "MISC"
+            },
+            {
+                "start": 9,
                 "end": 20,
                 "label": "PER"
             },
@@ -47521,7 +48293,10 @@
         "entity_values": {
             "PER": [
                 "Nate Miller",
-                "American James Heath"
+                "James Heath"
+            ],
+            "MISC": [
+                "American"
             ],
             "ORG": [
                 "WBA"
@@ -47535,6 +48310,11 @@
             },
             {
                 "start": 128,
+                "end": 136,
+                "label": "MISC"
+            },
+            {
+                "start": 137,
                 "end": 148,
                 "label": "PER"
             },
@@ -47656,7 +48436,8 @@
                 "Netherlands"
             ],
             "PER": [
-                "Ronald de Boer"
+                "Ronald de Boer",
+                "Van Gastel"
             ]
         },
         "entity_spans": [
@@ -47668,6 +48449,11 @@
             {
                 "start": 14,
                 "end": 28,
+                "label": "PER"
+            },
+            {
+                "start": 47,
+                "end": 57,
                 "label": "PER"
             }
         ]
@@ -47732,8 +48518,11 @@
     {
         "context": "American Nate Miller successfully defended his WBA cruiserweight title when he knocked out compatriot James Heath in the seventh round of their bout on Saturday .",
         "entity_values": {
+            "MISC": [
+                "American"
+            ],
             "PER": [
-                "American Nate Miller",
+                "Nate Miller",
                 "James Heath"
             ],
             "ORG": [
@@ -47743,6 +48532,11 @@
         "entity_spans": [
             {
                 "start": 0,
+                "end": 8,
+                "label": "MISC"
+            },
+            {
+                "start": 9,
                 "end": 20,
                 "label": "PER"
             },
@@ -47775,8 +48569,18 @@
     },
     {
         "context": "Result of the Tattersalls Breeders",
-        "entity_values": {},
-        "entity_spans": []
+        "entity_values": {
+            "MISC": [
+                "Tattersalls Breeders"
+            ]
+        },
+        "entity_spans": [
+            {
+                "start": 14,
+                "end": 34,
+                "label": "MISC"
+            }
+        ]
     },
     {
         "context": "Stakes , a race for two-year-olds run over six furlongs ( 1,200",
@@ -50842,12 +51646,18 @@
         "context": "S. African Afrikaners still seek own territory .",
         "entity_values": {
             "MISC": [
-                "S. African Afrikaners"
+                "S. African",
+                "Afrikaners"
             ]
         },
         "entity_spans": [
             {
                 "start": 0,
+                "end": 10,
+                "label": "MISC"
+            },
+            {
+                "start": 11,
                 "end": 21,
                 "label": "MISC"
             }
@@ -51303,7 +52113,8 @@
         "context": "Many of the 1.1 million Rwandan Hutu refugees in Zaire and nearly 600,000 in Tanzania refuse to go home , saying they fear reprisals for the 1994 genocide in Rwanda of up to a million people by Hutus .",
         "entity_values": {
             "MISC": [
-                "Rwandan Hutu",
+                "Rwandan",
+                "Hutu",
                 "Hutus"
             ],
             "LOC": [
@@ -51315,6 +52126,11 @@
         "entity_spans": [
             {
                 "start": 24,
+                "end": 31,
+                "label": "MISC"
+            },
+            {
+                "start": 32,
                 "end": 36,
                 "label": "MISC"
             },
@@ -51786,11 +52602,12 @@
         "context": "It involves the withdrawal of Russian troops sent to Chechnya in December 1994 to crush the separatists and a postponement of the issue at the heart of the conflict -- the status of the mainly-Moslem North Caucasus region .",
         "entity_values": {
             "MISC": [
-                "Russian"
+                "Russian",
+                "mainly-Moslem"
             ],
             "LOC": [
                 "Chechnya",
-                "mainly-Moslem North Caucasus"
+                "North Caucasus"
             ]
         },
         "entity_spans": [
@@ -51806,6 +52623,11 @@
             },
             {
                 "start": 186,
+                "end": 199,
+                "label": "MISC"
+            },
+            {
+                "start": 200,
                 "end": 214,
                 "label": "LOC"
             }
@@ -52416,9 +53238,10 @@
         "entity_values": {
             "ORG": [
                 "UWP-Hachette",
-                "Polish SPC"
+                "SPC"
             ],
             "MISC": [
+                "Polish",
                 "Swiss"
             ]
         },
@@ -52430,6 +53253,11 @@
             },
             {
                 "start": 52,
+                "end": 58,
+                "label": "MISC"
+            },
+            {
+                "start": 59,
                 "end": 62,
                 "label": "ORG"
             },
@@ -58440,7 +59268,8 @@
                 "Sant ' Egidio Community"
             ],
             "MISC": [
-                "Italian Roman Catholic"
+                "Italian",
+                "Roman Catholic"
             ]
         },
         "entity_spans": [
@@ -58476,6 +59305,11 @@
             },
             {
                 "start": 161,
+                "end": 168,
+                "label": "MISC"
+            },
+            {
+                "start": 169,
                 "end": 183,
                 "label": "MISC"
             },
@@ -59145,7 +59979,10 @@
         "entity_values": {
             "LOC": [
                 "Britain",
-                "British-ruled Northern Ireland"
+                "Northern Ireland"
+            ],
+            "MISC": [
+                "British-ruled"
             ]
         },
         "entity_spans": [
@@ -59156,6 +59993,11 @@
             },
             {
                 "start": 146,
+                "end": 159,
+                "label": "MISC"
+            },
+            {
+                "start": 160,
                 "end": 176,
                 "label": "LOC"
             }
