@@ -1,6 +1,7 @@
 import datetime
 from pathlib import Path
 
+from sklearn.model_selection import train_test_split
 import torch
 from torch.utils.data import DataLoader
 from torch.utils.tensorboard import SummaryWriter
@@ -34,9 +35,17 @@ if __name__ == "__main__":
     instructions = load_json(args.path_to_instructions)
 
     # load data files
-    # TODO add train/val split if there is no valid data
     data_train = loads_json(config["data"]["train"])
-    data_valid = loads_json(config["data"]["valid"])
+
+    valid_path = config["data"]["valid"]
+    if valid_path is None:
+        data_train, data_valid = train_test_split(
+            data_train,
+            test_size=0.15,
+            random_state=config["seed"]
+        )
+    else:
+        data_valid = loads_json(config["data"]["valid"])
 
     # Create Datasets
     train_dataset = T5NERDataset(
@@ -44,6 +53,7 @@ if __name__ == "__main__":
         instructions=instructions["train"],
         options=options
     )
+
     valid_dataset = T5NERDataset(
         data=data_valid,
         instructions=instructions["test"],
