@@ -1,4 +1,18 @@
 {
-    "conll2003": ["ORG", "PER", "LOC", "MISC"],
-    "mit_restaurant": ["Amenity", "Cuisine", "Dish", "Hours", "Location", "Price", "Restaurant_Name"]
+    "conll2003": [
+        "ORG",
+        "PER",
+        "LOC",
+        "MISC"
+    ],
+    "mit_restaurant": [
+        "Amenity",
+        "Rating",
+        "Cuisine",
+        "Dish",
+        "Hours",
+        "Location",
+        "Price",
+        "Restaurant_Name"
+    ]
 }
