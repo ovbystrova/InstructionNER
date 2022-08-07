@@ -1,0 +1,31 @@
+data:
+  train: "data/mit_restaurant/restauranttrain.json"
+  valid: null
+  test: "data/mit_restaurant/restauranttest.json"
+  dataset: "mit_restaurant"
+
+tokenizer:
+  max_length: 512
+  padding: true
+  return_tensors: "pt"
+
+model:
+  name: "t5-base"
+
+training:
+  batch_size: 16
+  learning_rate: 5e-5
+  n_epoch: 10
+  do_save_best_checkpoint: true
+  metric_name: "f1-score"
+  metric_avg: "weighted_avg"
+
+evaluation:
+  batch_size: 16
+
+generation:
+  num_beams: 2
+  max_length: 128
+
+seed: 23
+replace_labels_with_special_tokens: false
