@@ -1,3 +1,4 @@
 {
-    "conll2003": ["ORG", "PER", "LOC", "MISC"]
+    "conll2003": ["ORG", "PER", "LOC", "MISC"],
+    "mit_restaurant": ["Amenity", "Cuisine", "Dish", "Hours", "Location", "Price", "Restaurant_Name"]
 }
