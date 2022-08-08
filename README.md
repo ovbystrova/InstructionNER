@@ -109,6 +109,15 @@ Options: ORG, PER, LOC
 Prediction (raw text): Spain is a LOC.
 ```
 ## Inference 
+
+### Models
+[t5-base-ner-conll](https://huggingface.co/olgaduchovny/t5-base-ner-conll)
+
+[t5-base-ner-mit-restaurant](https://huggingface.co/olgaduchovny/t5-base-ner-mit-restaurant)
+
+[t5-base-ner-mit-movie](https://huggingface.co/olgaduchovny/t5-base-ner-mit-movie)
+
+### Code
 ```python
 from instruction_ner.model import Model
 
