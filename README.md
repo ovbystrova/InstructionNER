@@ -113,8 +113,8 @@ Prediction (raw text): Spain is a LOC.
 from instruction_ner.model import Model
 
 model = Model(
-    model_path_or_name="olgaduchovny/t5-base-qa-ner-conll",
-    tokenizer_path_or_name="olgaduchovny/t5-base-qa-ner-conll"
+    model_path_or_name="olgaduchovny/t5-base-ner-conll",
+    tokenizer_path_or_name="olgaduchovny/t5-base-ner-conll"
 )
 
 options = ["LOC", "PER", "ORG", "MISC"]
