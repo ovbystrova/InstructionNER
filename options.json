@@ -14,5 +14,19 @@
         "Location",
         "Price",
         "Restaurant_Name"
+    ],
+    "mit_movie": [
+        "ACTOR",
+        "AWARD",
+        "CHARACTER",
+        "DIRECTOR",
+        "GENRE",
+        "OPINION",
+        "ORIGIN",
+        "PLOT",
+        "QUOTE",
+        "RELATIONSHIP",
+        "SOUNDTRACK",
+        "YEAR"
     ]
 }
