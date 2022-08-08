@@ -97,6 +97,8 @@ Arguments:
 Dataset | Precision | Recall | F1-Score (weighted)
 --- | --- | --- | --- | 
 CONLL-2003 | 0.862 | 0.843 | 0.852 
+MIT MOVIE | 0.792 | 0.845 | 0.809 | 
+MIT REST | 0.766 | 0.771 | 0.768 | 
 
 ## Prediction Sample
 ```
