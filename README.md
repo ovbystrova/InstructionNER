@@ -1,6 +1,10 @@
-[![tests](https://github.com/ovbystrova/InstructionNER/actions/workflows/tests.yml/badge.svg)](https://github.com/ovbystrova/InstructionNER/actions/workflows/tests.yml)
-
 # InstructionNER: A Multi-Task Instruction-Based Generative Framework for Few-shot NER
+
+[![tests](https://github.com/ovbystrova/InstructionNER/actions/workflows/tests.yml/badge.svg)](https://github.com/ovbystrova/InstructionNER/actions/workflows/tests.yml)
+[![codecov](https://codecov.io/gh/ovbystrova/InstructionNER/branch/main/graph/badge.svg?token=L2OOZKLPJL)](https://codecov.io/gh/ovbystrova/InstructionNER)
+[![python 3.8](https://img.shields.io/badge/python-3.8-blue.svg)](https://github.com/ovbystrova/InstructionNER#requirements)
+[![license](https://img.shields.io/github/license/ovbystrova/InstructionNER?color=blue)](https://github.com/ovbystrova/InstructionNER/blob/main/LICENSE)
+
 Unofficial implementation of [InstructionNER](https://arxiv.org/pdf/2203.03903v1.pdf).
 
 ![Screenshot](resources/overall_intro.jpg)
