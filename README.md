@@ -138,14 +138,15 @@ generation_kwargs = {
     "max_length": 128
 }
 
-pred_spans = model.predict(
+pred_text, pred_spans = model.predict(
     text=text,
     generation_kwargs=generation_kwargs,
     instruction=instruction,
     options=options
 )
 
->>> [(99, 104, 'LOC')]
+>>> ('Olga is a PER, Moscow is a LOC, Sber AI Center is an ORG, NLP is a MISC.',
+ [(11, 15, 'PER'), (46, 52, 'LOC'), (65, 79, 'ORG'), (92, 95, 'MISC')])
 ```
 
 
