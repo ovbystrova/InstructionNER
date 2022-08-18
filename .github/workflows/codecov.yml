@@ -17,6 +17,10 @@ jobs:
         python-version: 3.8
     - name: Generate coverage report
       run: |
+        pip install --upgrade pip
+        pip install -r requirements/requirements.in
+        pip install -r requirements/requirements_test.in
+        pip install -r requirements/requirements_dev.in
         pip install pytest
         pip install pytest-cov
         pytest --cov=./ --cov-report=xml
