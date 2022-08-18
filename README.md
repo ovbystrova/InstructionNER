@@ -1,4 +1,10 @@
 # InstructionNER: A Multi-Task Instruction-Based Generative Framework for Few-shot NER
+
+[![tests](https://github.com/ovbystrova/InstructionNER/actions/workflows/tests.yml/badge.svg)](https://github.com/ovbystrova/InstructionNER/actions/workflows/tests.yml)
+[![codecov](https://codecov.io/gh/ovbystrova/InstructionNER/branch/main/graph/badge.svg?token=L2OOZKLPJL)](https://codecov.io/gh/ovbystrova/InstructionNER)
+[![python 3.8](https://img.shields.io/badge/python-3.8-blue.svg)](https://github.com/ovbystrova/InstructionNER#requirements)
+[![license](https://img.shields.io/github/license/ovbystrova/InstructionNER?color=blue)](https://github.com/ovbystrova/InstructionNER/blob/main/LICENSE)
+
 Unofficial implementation of [InstructionNER](https://arxiv.org/pdf/2203.03903v1.pdf).
 
 ![Screenshot](resources/overall_intro.jpg)
@@ -131,21 +137,23 @@ options = ["LOC", "PER", "ORG", "MISC"]
 instruction = "please extract entities and their types from the input sentence, " \
               "all entity types are in options"
 
-text = "The protest , which attracted several thousand supporters , coincided with the 18th anniversary of Spain 's constitution ."
+text = "My name is Olga. I am 24 years old. I live in Moscow and work at Sber AI Center as a Senior NLP Data Scientist." \
+        "This is my reporitory to test generative NER problem with T5 model."
 
 generation_kwargs = {
     "num_beams": 2,
     "max_length": 128
 }
 
-pred_spans = model.predict(
+pred_text, pred_spans = model.predict(
     text=text,
     generation_kwargs=generation_kwargs,
     instruction=instruction,
     options=options
 )
 
->>> [(99, 104, 'LOC')]
+>>> ('Olga is a PER, Moscow is a LOC, Sber AI Center is an ORG, NLP is a MISC.',
+ [(11, 15, 'PER'), (46, 52, 'LOC'), (65, 79, 'ORG'), (92, 95, 'MISC')])
 ```
 
 
