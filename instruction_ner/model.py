@@ -33,7 +33,7 @@ class Model:
                 generation_kwargs: Dict[str, Any],
                 instruction: str,
                 options: List[str]
-                ) -> List[Tuple[int, int, str]]:
+                ) -> Tuple[str, List[Tuple[int, int, str]]]:
         """
         Generate prediction and format spans based on TaskType
         :param options:
@@ -69,4 +69,4 @@ class Model:
         )
         answer_spans = [astuple(span) for span in answer_spans]
 
-        return answer_spans
+        return answer_raw, answer_spans
