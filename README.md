@@ -131,7 +131,8 @@ options = ["LOC", "PER", "ORG", "MISC"]
 instruction = "please extract entities and their types from the input sentence, " \
               "all entity types are in options"
 
-text = "The protest , which attracted several thousand supporters , coincided with the 18th anniversary of Spain 's constitution ."
+text = "My name is Olga. I am 24 years old. I live in Moscow and work at Sber AI Center as a Senior NLP Data Scientist." \
+        "This is my reporitory to test generative NER problem with T5 model."
 
 generation_kwargs = {
     "num_beams": 2,
