@@ -1,0 +1,12 @@
+{
+  "text": "My name is Olga. I am 24 years old. I live in Moscow and work at Sber AI Center as a Senior NLP Data Scientist. This is my reporitory to test generative NER problem with T5 model.",
+  "options": ["LOC", "PER", "ORG", "MISC"],
+  "instruction": "please extract entities and their types from the input sentence, all entity types are in options",
+  "model_name": "olgaduchovny/t5-base-ner-conll",
+
+  "generation_kwargs": {
+    "num_beams": 2,
+    "max_length": 128
+  },
+  "prediction_true": "Olga is a PER, Moscow is a LOC, Sber AI Center is an ORG, NLP is a MISC."
+}
