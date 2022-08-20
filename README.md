@@ -14,6 +14,11 @@ Python >=3.8
 
 ## Installation
 ```shell
+pip install instruction-ner
+```
+
+(Alternative via requirements)
+```shell
 pip install -r requirements/requirements.in # for training purposes
 pip install -r requirements/requirements_test.in # for tests
 pip install -r requirements/requirements_dev.in # for inference only
