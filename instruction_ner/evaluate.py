@@ -11,8 +11,8 @@ from utils.evaluate_utils import evaluate
 import warnings
 warnings.filterwarnings("ignore")
 
-if __name__ == "__main__":
 
+def main():
     args = get_evaluate_args()
     config = load_config(args.path_to_model_config)
 
@@ -67,3 +67,7 @@ if __name__ == "__main__":
         generation_kwargs=generation_kwargs,
         options=options
     )
+
+
+if __name__ == "__main__":
+    main()

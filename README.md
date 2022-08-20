@@ -61,7 +61,7 @@ Every sentence is like this:
 ## Training
 Script for training T5 model:
 ```
-python instruction_ner/train.py \
+instruction_ner-train \
 --path_to_instructions 'instructions.json' \
 --path_to_options 'options.json' \
 --log_dir 'runs/test_run' \
@@ -83,7 +83,7 @@ Arguments:
 ## Evaluation
 Script for evaluation of the trained model:
 ```
-python instruction_ner/evaluate.py \
+instruction_ner-evaluate \
 --model_path_or_name 'olgaduchovny/t5-base-qa-ner-conll' \
 --path_to_model_config 'config.yaml' \
 --path_to_instructions 'instructions.json' \

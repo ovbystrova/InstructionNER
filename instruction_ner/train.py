@@ -16,8 +16,8 @@ from instruction_ner.utils.train_utils import train
 import warnings
 warnings.filterwarnings("ignore")
 
-if __name__ == "__main__":
 
+def main():
     args = get_train_args()
 
     config = load_config(args.path_to_model_config)
@@ -134,3 +134,7 @@ if __name__ == "__main__":
 
     model.save_pretrained(path_to_save_trained_model)
     tokenizer.save_pretrained(path_to_save_trained_model)
+
+
+if __name__ == "__main__":
+    main()
