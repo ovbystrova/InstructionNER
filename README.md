@@ -24,7 +24,7 @@ In order to make a unified training interface,
 you can convert your raw input data (supported dataset formats: **conll**, **spacy**, **mit**)
 with the following script:
 ```
-python prepare_data.py \
+python instruction_ner/prepare_data.py \
 --path_to_file 'data/conll2003/train.txt' \
 --dataset_type 'conll2003' \
 --output_folder 'data/conll2003' \
@@ -61,7 +61,7 @@ Every sentence is like this:
 ## Training
 Script for training T5 model:
 ```
-python train.py \
+python instruction_ner/train.py \
 --path_to_instructions 'instructions.json' \
 --path_to_options 'options.json' \
 --log_dir 'runs/test_run' \
@@ -83,7 +83,7 @@ Arguments:
 ## Evaluation
 Script for evaluation of the trained model:
 ```
-python evaluate.py \
+python instruction_ner/evaluate.py \
 --model_path_or_name 'olgaduchovny/t5-base-qa-ner-conll' \
 --path_to_model_config 'config.yaml' \
 --path_to_instructions 'instructions.json' \
