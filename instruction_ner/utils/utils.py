@@ -2,10 +2,8 @@ import configparser
 import json
 from pathlib import Path
 import random
-from typing import Dict
 
 import numpy as np
-import pandas as pd
 import torch
 import yaml
 
@@ -75,13 +73,3 @@ def load_json(filepath: str):
     with open(filepath, "r") as f:
         data = json.load(f)
     return data
-
-
-def show_classification_report(metrics: Dict[str, Dict[str, float]]):
-    """
-    Based on dictionary of metrics show classification report aka sklearn
-    :param metrics:
-    :return:
-    """
-    df = pd.DataFrame.from_dict(metrics)
-    print(df.transpose())

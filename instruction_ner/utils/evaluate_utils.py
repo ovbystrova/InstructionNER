@@ -2,6 +2,7 @@ import json
 import random
 from typing import List, Dict, Any, Optional
 
+import pandas as pd
 import torch
 from torch.utils.tensorboard import SummaryWriter
 from tqdm import tqdm
@@ -9,7 +10,6 @@ from transformers import T5ForConditionalGeneration, T5Tokenizer
 
 from instruction_ner.metrics import calculate_metrics
 from instruction_ner.formatters.PredictionSpan import PredictionSpanFormatter
-from instruction_ner.utils import show_classification_report
 
 prediction_span_formatter = PredictionSpanFormatter()
 
@@ -182,3 +182,13 @@ def update_best_checkpoint(
             json.dump(metrics_best, ensure_ascii=False, indent=4, fp=f)
 
     return metrics_best
+
+
+def show_classification_report(metrics: Dict[str, Dict[str, float]]):
+    """
+    Based on dictionary of metrics show classification report aka sklearn
+    :param metrics:
+    :return:
+    """
+    df = pd.DataFrame.from_dict(metrics)
+    print(df.transpose())

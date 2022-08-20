@@ -5,7 +5,7 @@ from arg_parse import get_evaluate_args
 from instruction_ner.model import Model
 from instruction_ner.collator import Collator
 from instruction_ner.dataset import T5NERDataset
-from instruction_ner.utils import set_global_seed, load_config, load_json, loads_json
+from instruction_ner.utils.utils import set_global_seed, load_config, load_json, loads_json
 from utils.evaluate_utils import evaluate
 
 import warnings
