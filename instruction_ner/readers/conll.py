@@ -5,7 +5,6 @@ from instruction_ner.core.datatypes import DatasetField, Span
 from instruction_ner.core.reader import Reader
 
 
-
 class CONLLReader(Reader):
 
     token_doc_start = "-DOCSTART-"
@@ -43,8 +42,6 @@ class CONLLReader(Reader):
                 DatasetField.ENTITY_SPANS.value: entity_spans
             }
             data_processed.append(dataset_item)
-        print(f"COUNTER B: {self.C_B}")
-        print(f"COUNTER LAST: {self.C_LAST}")
         return data_processed
 
     def read_from_file(self, path_to_file: Union[str, Path]):
