@@ -10,6 +10,7 @@
 *.coverage
 *coverage.xml
 
+*_venv
 venv
 .idea
 .vscode
