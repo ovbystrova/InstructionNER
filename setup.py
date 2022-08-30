@@ -23,7 +23,17 @@ setup(
             "instruction_ner-evaluate = instruction_ner.evaluate:main",
         ],
     },
-    install_requires=open("./requirements/requirements.in", "r").readlines(),
+    install_requires=[
+        "dataclasses==0.6",
+        "openpyxl==3.0.10",
+        "pandas==1.4.3",
+        "pyyaml==6.0",
+        "SentencePiece==0.1.96",
+        "scikit-learn==1.1.2",
+        "torch==1.12.0",
+        "tensorboard==2.9.1",
+        "transformers==4.3.3"
+    ],
     keywords=["python", "nlp", "deep learning", "ner", "t5"],
     classifiers=[
         "Programming Language :: Python :: 3.8",
