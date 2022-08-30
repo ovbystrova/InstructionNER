@@ -4,7 +4,7 @@ from unittest import TestCase
 
 from parameterized import parameterized
 
-from instruction_ner import Model
+from instruction_ner.model import Model
 
 
 class TestModel(TestCase):
