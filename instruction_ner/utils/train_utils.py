@@ -6,7 +6,7 @@ from torch.utils.tensorboard import SummaryWriter
 from tqdm import tqdm
 from transformers import T5ForConditionalGeneration, T5Tokenizer
 
-from utils.evaluate_utils import evaluate, get_sample_text_prediction, update_best_checkpoint
+from instruction_ner.utils.evaluate_utils import evaluate, get_sample_text_prediction, update_best_checkpoint
 
 
 def train(

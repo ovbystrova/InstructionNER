@@ -1,5 +1,1 @@
-from instruction_ner.model import Model
-
-__all__ = [
-    "Model"
-]
+__version__ = "0.1.2"

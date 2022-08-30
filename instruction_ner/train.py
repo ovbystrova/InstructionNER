@@ -7,7 +7,7 @@ from torch.utils.data import DataLoader
 from torch.utils.tensorboard import SummaryWriter
 from transformers import T5Tokenizer, T5ForConditionalGeneration
 
-from arg_parse import get_train_args
+from instruction_ner.arg_parse import get_train_args
 from instruction_ner.collator import Collator
 from instruction_ner.dataset import T5NERDataset
 from instruction_ner.utils.utils import set_global_seed, load_config, load_json, loads_json

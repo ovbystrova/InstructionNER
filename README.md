@@ -29,7 +29,7 @@ In order to make a unified training interface,
 you can convert your raw input data (supported dataset formats: **conll**, **spacy**, **mit**)
 with the following script:
 ```
-python instruction_ner/prepare_data.py \
+instruction_ner-prepare-data \
 --path_to_file 'data/conll2003/train.txt' \
 --dataset_type 'conll2003' \
 --output_folder 'data/conll2003' \

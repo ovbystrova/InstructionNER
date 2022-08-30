@@ -1,7 +1,7 @@
 import torch
 from torch.utils.data import DataLoader
 
-from arg_parse import get_evaluate_args
+from instruction_ner.arg_parse import get_evaluate_args
 from instruction_ner.model import Model
 from instruction_ner.collator import Collator
 from instruction_ner.dataset import T5NERDataset

@@ -1,6 +1,6 @@
 from pathlib import Path
-from arg_parse import get_data_args
 
+from instruction_ner.arg_parse import get_data_args
 from instruction_ner.core.datatypes import DatasetType
 from instruction_ner.readers import CONLLReader, SpacyReader, MITReader
 
@@ -11,7 +11,7 @@ dataset2reader = {
 }
 
 
-if __name__ == "__main__":
+def main():
 
     args = get_data_args()
 
@@ -39,3 +39,7 @@ if __name__ == "__main__":
         data=data,
         path=filepath_save
     )
+
+
+if __name__ == "__main__":
+    main()
