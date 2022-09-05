@@ -23,24 +23,22 @@ class TestModel(TestCase):
     generation_kwargs = data["generation_kwargs"]
     prediction_true = data["prediction_true"]
 
-    @parameterized.expand([
-        (text, options, instruction, prediction_true),
-    ])
+    @parameterized.expand(
+        [
+            (text, options, instruction, prediction_true),
+        ]
+    )
     def test_model_predict(self, text, options, instruction, prediction_true):
 
         model = Model(
-            model_path_or_name=self.model_name,
-            tokenizer_path_or_name=self.model_name
+            model_path_or_name=self.model_name, tokenizer_path_or_name=self.model_name
         )
 
         pred_text, _ = model.predict(
             text=text,
             instruction=instruction,
             options=options,
-            generation_kwargs=self.generation_kwargs
+            generation_kwargs=self.generation_kwargs,
         )
 
-        self.assertEqual(
-            pred_text,
-            prediction_true
-        )
+        self.assertEqual(pred_text, prediction_true)

@@ -8,9 +8,12 @@ class PredictionSpanFormatter:
     """
     Turns raw Model output into NER spans (start_idx, end_idx, label)
     """
+
     answer_templates = ["is an", "is a"]  # TODO move this (get rid of literals)
 
-    def format_answer_spans(self, context: str, prediction: str, options: List[str]) -> List[Span]:
+    def format_answer_spans(
+        self, context: str, prediction: str, options: List[str]
+    ) -> List[Span]:
         """
         Based on model prediction and context create entity spans
         :param options:
@@ -22,14 +25,13 @@ class PredictionSpanFormatter:
         entity_spans = []
         source_sentence = context.lstrip(Preffix.CONTEXT.value)
 
-        prediction = prediction.strip(".")  # Because answer in train data always ends with '.'
+        prediction = prediction.strip(
+            "."
+        )  # Because answer in train data always ends with '.'
         prediction_parts = prediction.split(",")
 
         for prediction_part in prediction_parts:
-            spans = self._get_span_from_part(
-                prediction_part,
-                source_sentence
-            )
+            spans = self._get_span_from_part(prediction_part, source_sentence)
             if spans is None:
                 continue
 
@@ -38,7 +40,9 @@ class PredictionSpanFormatter:
 
         return entity_spans
 
-    def _get_span_from_part(self, prediction_part: str, source_sentence: str) -> Optional[List[Span]]:
+    def _get_span_from_part(
+        self, prediction_part: str, source_sentence: str
+    ) -> Optional[List[Span]]:
         """
         Gets entity span from part of prediction
         :param prediction_part: Olga is a PER
@@ -60,11 +64,9 @@ class PredictionSpanFormatter:
             label = label.strip(" ").rstrip(" ")
 
             try:
-                matches = re.finditer(value, source_sentence)
+                matches = list(re.finditer(value, source_sentence))
             except re.error:  # unbalanced parenthesis at position
                 return None
-
-            matches = list(matches)
 
             if len(matches) == 0:
                 return None
@@ -75,11 +77,7 @@ class PredictionSpanFormatter:
 
                 start = match.start()
                 end = match.end()
-                span = Span(
-                    start=start,
-                    end=end,
-                    label=label
-                )
+                span = Span(start=start, end=end, label=label)
                 spans.append(span)
 
             return spans

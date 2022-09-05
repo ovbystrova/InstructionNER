@@ -1,4 +1,4 @@
-from typing import List, Dict, Any, Optional
+from typing import Any, Dict, List, Optional
 
 import numpy as np
 import torch
@@ -6,28 +6,32 @@ from torch.utils.tensorboard import SummaryWriter
 from tqdm import tqdm
 from transformers import T5ForConditionalGeneration, T5Tokenizer
 
-from instruction_ner.utils.evaluate_utils import evaluate, get_sample_text_prediction, update_best_checkpoint
+from instruction_ner.utils.evaluate_utils import (
+    evaluate,
+    get_sample_text_prediction,
+    update_best_checkpoint,
+)
 
 
 def train(
-        n_epochs: int,
-        model: T5ForConditionalGeneration,
-        tokenizer: T5Tokenizer,
-        train_dataloader: torch.utils.data.DataLoader,
-        test_dataloader: torch.utils.data.DataLoader,
-        optimizer: torch.optim.Optimizer,
-        writer: Optional[SummaryWriter],
-        device: torch.device,
-        eval_every_n_batches: int,
-        pred_every_n_batches: int,
-        generation_kwargs: Dict[str, Any],
-        options: List[str],
-        path_to_save_model: Optional[str],
-        metric_name_to_choose_best: Optional[str],
-        metric_avg_to_choose_best: Optional[str]
+    n_epochs: int,
+    model: T5ForConditionalGeneration,
+    tokenizer: T5Tokenizer,
+    train_dataloader: torch.utils.data.DataLoader,
+    test_dataloader: torch.utils.data.DataLoader,
+    optimizer: torch.optim.Optimizer,
+    writer: Optional[SummaryWriter],
+    device: torch.device,
+    eval_every_n_batches: int,
+    pred_every_n_batches: int,
+    generation_kwargs: Dict[str, Any],
+    options: List[str],
+    path_to_save_model: Optional[str],
+    metric_name_to_choose_best: str = "f1-score",
+    metric_avg_to_choose_best: str = "weighted",
 ) -> None:
 
-    metrics_best = {}
+    metrics_best: Dict[str, Dict[str, float]] = {}
 
     for epoch in range(n_epochs):
         print(f"Epoch [{epoch + 1} / {n_epochs}]\n")
@@ -48,7 +52,7 @@ def train(
             path_to_save_model=path_to_save_model,
             metrics_best=metrics_best,
             metric_name_to_choose_best=metric_name_to_choose_best,
-            metric_avg_to_choose_best=metric_avg_to_choose_best
+            metric_avg_to_choose_best=metric_avg_to_choose_best,
         )
 
         evaluate_metrics = evaluate(
@@ -59,7 +63,7 @@ def train(
             device=device,
             epoch=epoch,
             generation_kwargs=generation_kwargs,
-            options=options
+            options=options,
         )
 
         if path_to_save_model is None:
@@ -72,28 +76,27 @@ def train(
             metric_avg=metric_avg_to_choose_best,
             model=model,
             tokenizer=tokenizer,
-            path_to_save_model=path_to_save_model
+            path_to_save_model=path_to_save_model,
         )
 
 
 def train_epoch(
-        model: T5ForConditionalGeneration,
-        tokenizer: T5Tokenizer,
-        train_dataloader: torch.utils.data.DataLoader,
-        optimizer: torch.optim.Optimizer,
-        writer: Optional[SummaryWriter],
-        device: torch.device,
-        epoch: int,
-        eval_every_n_batches: int,
-        pred_every_n_batches: int,
-        generation_kwargs: Dict[str, Any],
-        options: List[str],
-        path_to_save_model: Optional[str],
-        metrics_best: Dict[str, Dict[str, float]],
-        metric_name_to_choose_best: Optional[str],
-        metric_avg_to_choose_best: Optional[str],
-        test_dataloader: torch.utils.data.DataLoader = None,
-
+    model: T5ForConditionalGeneration,
+    tokenizer: T5Tokenizer,
+    train_dataloader: torch.utils.data.DataLoader,
+    optimizer: torch.optim.Optimizer,
+    writer: Optional[SummaryWriter],
+    device: torch.device,
+    epoch: int,
+    eval_every_n_batches: int,
+    pred_every_n_batches: int,
+    generation_kwargs: Dict[str, Any],
+    options: List[str],
+    path_to_save_model: Optional[str],
+    metrics_best: Dict[str, Dict[str, float]],
+    metric_name_to_choose_best: str = "f1-score",
+    metric_avg_to_choose_best: str = "weighted",
+    test_dataloader: torch.utils.data.DataLoader = None,
 ) -> Dict[str, Dict[str, float]]:
     """
     One training cycle (loop).
@@ -119,9 +122,9 @@ def train_epoch(
     epoch_loss = []
 
     for i, inputs in tqdm(
-            enumerate(train_dataloader),
-            total=len(train_dataloader),
-            desc="Training",
+        enumerate(train_dataloader),
+        total=len(train_dataloader),
+        desc="Training",
     ):
         model.train()
         optimizer.zero_grad()
@@ -156,7 +159,7 @@ def train_epoch(
                     device=device,
                     epoch=epoch,
                     generation_kwargs=generation_kwargs,
-                    options=options
+                    options=options,
                 )
 
                 metrics_best = update_best_checkpoint(
@@ -166,7 +169,7 @@ def train_epoch(
                     metric_avg=metric_avg_to_choose_best,
                     model=model,
                     tokenizer=tokenizer,
-                    path_to_save_model=path_to_save_model
+                    path_to_save_model=path_to_save_model,
                 )
 
         if i % pred_every_n_batches == 0 and i >= pred_every_n_batches:
@@ -176,7 +179,7 @@ def train_epoch(
                 dataloader=test_dataloader,
                 device=device,
                 generation_kwargs=generation_kwargs,
-                options=options
+                options=options,
             )
 
     avg_loss = np.mean(epoch_loss)

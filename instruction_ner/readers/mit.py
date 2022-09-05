@@ -1,5 +1,5 @@
 from pathlib import Path
-from typing import Any, Dict, Union, List
+from typing import Any, Dict, List, Union
 
 from instruction_ner.core.datatypes import DatasetField, Span
 from instruction_ner.core.reader import Reader
@@ -23,7 +23,11 @@ class MITReader(Reader):
         """
 
         sentences = self._split_by_sentences(data)
-        sentences = [sentence for sentence in sentences if len(sentence) > self.MIN_SENTENCE_LENGTH]
+        sentences = [
+            sentence
+            for sentence in sentences
+            if len(sentence) > self.MIN_SENTENCE_LENGTH
+        ]
 
         data_processed = []
         for sentence in sentences:
@@ -33,7 +37,7 @@ class MITReader(Reader):
             dataset_item = {
                 DatasetField.CONTEXT.value: text,
                 DatasetField.ENTITY_VALUES.value: entity_values,
-                DatasetField.ENTITY_SPANS.value: entity_spans
+                DatasetField.ENTITY_SPANS.value: entity_spans,
             }
             data_processed.append(dataset_item)
 
@@ -49,7 +53,9 @@ class MITReader(Reader):
             path_to_file = Path(path_to_file)
 
         if path_to_file.suffix.lower() not in self.supported_extensions:
-            raise ValueError(f"Expected file to be on of {self.supported_extensions}. Got {path_to_file.suffix}")
+            raise ValueError(
+                f"Expected file to be on of {self.supported_extensions}. Got {path_to_file.suffix}"
+            )
 
         with open(path_to_file, "r") as f:
             file_lines = f.readlines()
@@ -68,7 +74,7 @@ class MITReader(Reader):
         sentences = []
 
         i = 0
-        sentence_tokens = []
+        sentence_tokens: List[str] = []
         while i < len(document):
             line = document[i]
 
@@ -98,9 +104,14 @@ class MITReader(Reader):
             tokens = token_line.split(self.token_separator)
 
             if len(tokens) != 2:
-                raise ValueError(f"Expected 2 elements after split, got {len(tokens)}: {token_line}")
+                raise ValueError(
+                    f"Expected 2 elements after split, got {len(tokens)}: {token_line}"
+                )
 
-            token, label = tokens[-1], tokens[0]  # this is the only difference from CONLL
+            token, label = (
+                tokens[-1],
+                tokens[0],
+            )  # this is the only difference from CONLL
             text_tokens.append(token)
 
             if label == "O":
@@ -110,7 +121,7 @@ class MITReader(Reader):
                     entity_span = Span(
                         start=current_start_idx,
                         end=current_start_idx + entity_length - 1,
-                        label=entity_label
+                        label=entity_label,
                     )
                     entity_spans.append(entity_span)
 
@@ -120,7 +131,9 @@ class MITReader(Reader):
                     current_start_idx = entity_span.end + 1
 
                 current_start_idx += len(token)
-                current_start_idx += 1  # Because in the end we join them with space symbol
+                current_start_idx += (
+                    1  # Because in the end we join them with space symbol
+                )
                 continue
 
             # If we have two entities one after another
@@ -128,7 +141,7 @@ class MITReader(Reader):
                 entity_span = Span(
                     start=current_start_idx,
                     end=current_start_idx + entity_length - 1,
-                    label=entity_label
+                    label=entity_label,
                 )
                 entity_spans.append(entity_span)
 
@@ -141,10 +154,10 @@ class MITReader(Reader):
         # if last tokens of sentence are entity
         if entity_length is not None and entity_label is not None:
             entity_span = Span(
-                        start=current_start_idx,
-                        end=current_start_idx + entity_length - 1,
-                        label=entity_label
-                    )
+                start=current_start_idx,
+                end=current_start_idx + entity_length - 1,
+                label=entity_label,
+            )
             entity_spans.append(entity_span)
 
         text = " ".join(text_tokens)

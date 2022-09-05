@@ -1,4 +1,4 @@
-from setuptools import setup, find_packages
+from setuptools import find_packages, setup
 
 from instruction_ner import __version__
 
@@ -32,13 +32,13 @@ setup(
         "scikit-learn==1.1.2",
         "torch==1.12.0",
         "tensorboard==2.9.1",
-        "transformers==4.3.3"
+        "transformers==4.3.3",
     ],
     keywords=["python", "nlp", "deep learning", "ner", "t5"],
     classifiers=[
         "Programming Language :: Python :: 3.8",
         "Programming Language :: Python :: 3.9",
         "License :: OSI Approved :: MIT License",
-        "Intended Audience :: Developers"
-    ]
+        "Intended Audience :: Developers",
+    ],
 )

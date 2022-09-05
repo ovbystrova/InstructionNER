@@ -1,5 +1,5 @@
 from pathlib import Path
-from typing import Any, Dict, List, Union, Tuple
+from typing import Any, Dict, List, Tuple, Union
 
 from instruction_ner.core.datatypes import DatasetField, Span
 from instruction_ner.core.reader import Reader
@@ -29,7 +29,11 @@ class CONLLReader(Reader):
             sentence_tokens = self._split_documents_by_sentences(document)
             sentences.extend(sentence_tokens)
 
-        sentences = [sentence for sentence in sentences if len(sentence) > self.MIN_SENTENCE_LENGTH]
+        sentences = [
+            sentence
+            for sentence in sentences
+            if len(sentence) > self.MIN_SENTENCE_LENGTH
+        ]
 
         data_processed = []
         for sentence in sentences:
@@ -39,7 +43,7 @@ class CONLLReader(Reader):
             dataset_item = {
                 DatasetField.CONTEXT.value: text,
                 DatasetField.ENTITY_VALUES.value: entity_values,
-                DatasetField.ENTITY_SPANS.value: entity_spans
+                DatasetField.ENTITY_SPANS.value: entity_spans,
             }
             data_processed.append(dataset_item)
         return data_processed
@@ -75,17 +79,19 @@ class CONLLReader(Reader):
         documents = []
 
         i = 0
-        document_tokens = []
+        document_tokens: List[str] = []
         while i < len(file_lines):
             line = file_lines[i]
             if line.startswith(self.token_doc_start):
                 i += 2
 
-                if len(document_tokens) == 0:  # When processing first line document_tokens is empty
+                if (
+                    len(document_tokens) == 0
+                ):  # When processing first line document_tokens is empty
                     continue
 
                 documents.append(document_tokens)
-                document_tokens = []
+                document_tokens = list()
                 continue
 
             document_tokens.append(line)
@@ -105,7 +111,7 @@ class CONLLReader(Reader):
         sentences = []
 
         i = 0
-        sentence_tokens = []
+        sentence_tokens: List[str] = []
         while i < len(document):
             line = document[i]
 
@@ -123,7 +129,9 @@ class CONLLReader(Reader):
 
         return sentences
 
-    def _get_text_and_spans_from_sentence(self, sentence: List[str]) -> Tuple[str, List[Span]]:
+    def _get_text_and_spans_from_sentence(
+        self, sentence: List[str]
+    ) -> Tuple[str, List[Span]]:
         """
         Get raw text from sentence token lines. Along with raw text return list of Span entities
         :param sentence: List of tokens (eg. ['-DOCSTART- -X- -X- O', '\n', '\n', 'JAPAN NNP B-NP B-LOC'])
@@ -140,7 +148,9 @@ class CONLLReader(Reader):
             tokens = token_line.split(self.token_separator)
 
             if len(tokens) != 4:
-                raise ValueError(f"Expected 4 elements after split, got {len(tokens)}: {token_line}")
+                raise ValueError(
+                    f"Expected 4 elements after split, got {len(tokens)}: {token_line}"
+                )
 
             token, label = tokens[0], tokens[-1]
             text_tokens.append(token)
@@ -151,8 +161,8 @@ class CONLLReader(Reader):
                     # It means that previous token was entity and we should create Span
                     entity_span = Span(
                         start=current_start_idx,
-                        end=current_start_idx+entity_length-1,
-                        label=entity_label
+                        end=current_start_idx + entity_length - 1,
+                        label=entity_label,
                     )
                     entity_spans.append(entity_span)
 
@@ -162,7 +172,9 @@ class CONLLReader(Reader):
                     current_start_idx = entity_span.end + 1
 
                 current_start_idx += len(token)
-                current_start_idx += 1  # Because in the end we join them with space symbol
+                current_start_idx += (
+                    1  # Because in the end we join them with space symbol
+                )
                 continue
 
             # If we have two entities one after another
@@ -173,7 +185,7 @@ class CONLLReader(Reader):
                 entity_span = Span(
                     start=current_start_idx,
                     end=current_start_idx + entity_length - 1,
-                    label=entity_label
+                    label=entity_label,
                 )
                 entity_spans.append(entity_span)
 
@@ -189,7 +201,7 @@ class CONLLReader(Reader):
             entity_span = Span(
                 start=current_start_idx,
                 end=current_start_idx + entity_length - 1,
-                label=entity_label
+                label=entity_label,
             )
             entity_spans.append(entity_span)
 

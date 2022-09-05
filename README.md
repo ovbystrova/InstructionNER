@@ -29,7 +29,7 @@ pip install -r requirements/requirements_dev.in # for inference only
 ```
 
 ## Data Preparation
-In order to make a unified training interface, 
+In order to make a unified training interface,
 you can convert your raw input data (supported dataset formats: **conll**, **spacy**, **mit**)
 with the following script:
 ```
@@ -110,10 +110,10 @@ Arguments:
 
 
 Dataset | Precision | Recall | F1-Score (weighted)
---- | --- | --- | --- | 
-CONLL-2003 | 0.862 | 0.843 | 0.852 
-MIT MOVIE | 0.792 | 0.845 | 0.809 | 
-MIT REST | 0.766 | 0.771 | 0.768 | 
+--- | --- | --- | --- |
+CONLL-2003 | 0.862 | 0.843 | 0.852
+MIT MOVIE | 0.792 | 0.845 | 0.809 |
+MIT REST | 0.766 | 0.771 | 0.768 |
 
 ## Prediction Sample
 ```
@@ -123,7 +123,7 @@ Options: ORG, PER, LOC
 
 Prediction (raw text): Spain is a LOC.
 ```
-## Inference 
+## Inference
 
 ### Models
 [t5-base-ner-conll](https://huggingface.co/olgaduchovny/t5-base-ner-conll)

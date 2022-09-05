@@ -1,19 +1,18 @@
 from abc import ABC, abstractmethod
-from typing import Dict, List, Tuple, Optional
+from typing import Dict, List, Optional, Tuple
 
 from instruction_ner.core.datatypes import Instance
 
 
 class InstanceFormatter(ABC):
-
     @abstractmethod
     def format_instance(
-            self,
-            context: str,
-            entity_values: Optional[Dict[str, List[str]]],
-            entity_spans: Optional[List[Tuple[int, int, str]]],
-            instruction: str,
-            options: List[str]
+        self,
+        context: str,
+        entity_values: Optional[Dict[str, List[str]]],
+        entity_spans: Optional[List[Tuple[int, int, str]]],
+        instruction: str,
+        options: List[str],
     ) -> Instance:
         """
         Based on text, values, instruction and list of labels creates Instance objects

@@ -1,5 +1,5 @@
-from dataclasses import astuple
 import json
+from dataclasses import astuple
 from pathlib import Path
 from unittest import TestCase
 
@@ -23,25 +23,22 @@ class TestSpanFormatter(TestCase):
         spans = [tuple(span) for span in spans]
         spans_true.append(spans)
 
-    @parameterized.expand([
-        (context, predictions[0], spans_true[0]),
-        (context, predictions[0], spans_true[0]),
-        (context, predictions[0], spans_true[0])
-    ])
+    @parameterized.expand(
+        [
+            (context, predictions[0], spans_true[0]),
+            (context, predictions[0], spans_true[0]),
+            (context, predictions[0], spans_true[0]),
+        ]
+    )
     def test_format_span(self, context, prediction, spans_true):
 
         formatter = PredictionSpanFormatter()
         options = ["ORG", "PER", "LOC"]
 
         spans_pred = formatter.format_answer_spans(
-            context=context,
-            prediction=prediction,
-            options=options
+            context=context, prediction=prediction, options=options
         )
 
         spans_pred = [astuple(span) for span in spans_pred]
 
-        self.assertListEqual(
-            spans_pred,
-            spans_true
-        )
+        self.assertListEqual(spans_pred, spans_true)

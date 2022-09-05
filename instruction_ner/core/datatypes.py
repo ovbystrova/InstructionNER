@@ -1,7 +1,6 @@
-from enum import Enum
-from typing import Dict, List, Optional
-
 from dataclasses import dataclass
+from enum import Enum
+from typing import Dict, List, Optional, Tuple, Union
 
 
 @dataclass(frozen=True, eq=True)
@@ -12,6 +11,7 @@ class Span:
     :param end(int): end index of an entity
     :param label(str): entity label
     """
+
     start: int
     end: int
     label: str
@@ -21,19 +21,11 @@ class Span:
 
     @staticmethod
     def from_json(data):
-        return Span(
-            start=int(data["start"]),
-            end=int(data["end"]),
-            label=data["label"]
-        )
+        return Span(start=int(data["start"]), end=int(data["end"]), label=data["label"])
 
     @staticmethod
     def from_tuple(data):
-        return Span(
-            start=int(data[0]),
-            end=int(data[1]),
-            label=data[2]
-        )
+        return Span(start=int(data[0]), end=int(data[1]), label=data[2])
 
 
 @dataclass()
@@ -45,10 +37,11 @@ class Instance:
     :param answer (optional): raw answer from QA model
     :param spans (optional): List of Spans
     """
+
     context: str
     question: str
     answer: Optional[str]
-    entity_spans: Optional[List[Span]]
+    entity_spans: Optional[Union[List[Span], List[Tuple[int, int, str]]]]
     entity_values: Optional[Dict[str, List[str]]]
 
     def __str__(self):

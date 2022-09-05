@@ -1,4 +1,4 @@
-from typing import Dict, List, Any
+from typing import Any, Dict, List, Tuple, Union
 
 from torch.utils.data import Dataset
 from tqdm import tqdm
@@ -7,30 +7,26 @@ from instruction_ner.core.datatypes import Instance, TaskType
 from instruction_ner.formatters import (
     EntityExtractTaskFormatter,
     EntityTypeTaskFormatter,
-    NERTaskFormatter
+    NERTaskFormatter,
 )
 
 
 class T5NERDataset(Dataset):
-
     def __init__(
-            self,
-            data: List[Dict[str, Any]],
-            instructions: Dict[str, str],
-            options: List[str],
-            tasks: List[TaskType] = (
-                    TaskType.NER,
-                    TaskType.ENTITY_EXTRACTOR,
-                    TaskType.ENTITY_TYPING
-            )
+        self,
+        data: List[Dict[str, Any]],
+        instructions: Dict[str, str],
+        options: List[str],
+        tasks: Union[Tuple[TaskType, TaskType, TaskType], List[TaskType]] = (
+            TaskType.NER,
+            TaskType.ENTITY_EXTRACTOR,
+            TaskType.ENTITY_TYPING,
+        ),
     ):
         super().__init__()
 
         self.instances = self._convert_list_to_instances(
-            data=data,
-            instructions=instructions,
-            options=options,
-            tasks=tasks
+            data=data, instructions=instructions, options=options, tasks=list(tasks)
         )
 
     def __len__(self) -> int:
@@ -40,12 +36,12 @@ class T5NERDataset(Dataset):
         return self.instances[index]
 
     def _convert_list_to_instances(
-            self,
-            data: List[Dict[str, Any]],
-            instructions: Dict[str, str],
-            options: List[str],
-            tasks: List[TaskType],
-            language: str = "en"
+        self,
+        data: List[Dict[str, Any]],
+        instructions: Dict[str, str],
+        options: List[str],
+        tasks: List[TaskType],
+        language: str = "en",
     ) -> List[Instance]:
         """
         Converts raw data into list of Instance objects
@@ -65,19 +61,19 @@ class T5NERDataset(Dataset):
                 instructions=instructions,
                 options=options,
                 tasks=tasks,
-                language=language
+                language=language,
             )
 
             instances.extend(instances_per_item)
         return instances
 
     def _convert_item_to_instances(
-            self,
-            data_item: Dict[str, Any],
-            instructions: Dict[str, str],
-            options: List[str],
-            tasks: List[TaskType],
-            language: str = "en"  # TODO uncomment this
+        self,
+        data_item: Dict[str, Any],
+        instructions: Dict[str, str],
+        options: List[str],
+        tasks: List[TaskType],
+        language: str = "en",  # TODO uncomment this
     ):
         """
         Creates all task instances from one element of data
@@ -94,7 +90,7 @@ class T5NERDataset(Dataset):
         task_to_formatter = {
             TaskType.ENTITY_EXTRACTOR: EntityExtractTaskFormatter(),
             TaskType.ENTITY_TYPING: EntityTypeTaskFormatter(),
-            TaskType.NER: NERTaskFormatter()
+            TaskType.NER: NERTaskFormatter(),
         }
 
         for task in tasks:
@@ -111,7 +107,7 @@ class T5NERDataset(Dataset):
                 entity_values=entity_values,
                 entity_spans=entity_spans,
                 instruction=instructions[task.value],
-                options=options
+                options=options,
             )
 
             instances.append(instance)

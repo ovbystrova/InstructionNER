@@ -1,19 +1,24 @@
 import datetime
+import warnings
 from pathlib import Path
 
-from sklearn.model_selection import train_test_split
 import torch
+from sklearn.model_selection import train_test_split
 from torch.utils.data import DataLoader
 from torch.utils.tensorboard import SummaryWriter
-from transformers import T5Tokenizer, T5ForConditionalGeneration
+from transformers import T5ForConditionalGeneration, T5Tokenizer
 
 from instruction_ner.arg_parse import get_train_args
 from instruction_ner.collator import Collator
 from instruction_ner.dataset import T5NERDataset
-from instruction_ner.utils.utils import set_global_seed, load_config, load_json, loads_json
 from instruction_ner.utils.train_utils import train
+from instruction_ner.utils.utils import (
+    load_config,
+    load_json,
+    loads_json,
+    set_global_seed,
+)
 
-import warnings
 warnings.filterwarnings("ignore")
 
 
@@ -40,24 +45,18 @@ def main():
     valid_path = config["data"]["valid"]
     if valid_path is None:
         data_train, data_valid = train_test_split(
-            data_train,
-            test_size=0.15,
-            random_state=config["seed"]
+            data_train, test_size=0.15, random_state=config["seed"]
         )
     else:
         data_valid = loads_json(config["data"]["valid"])
 
     # Create Datasets
     train_dataset = T5NERDataset(
-        data=data_train,
-        instructions=instructions["train"],
-        options=options
+        data=data_train, instructions=instructions["train"], options=options
     )
 
     valid_dataset = T5NERDataset(
-        data=data_valid,
-        instructions=instructions["test"],
-        options=options
+        data=data_valid, instructions=instructions["test"], options=options
     )
 
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -126,7 +125,7 @@ def main():
         options=options,
         path_to_save_model=path_to_save_best_checkpoint.as_posix(),
         metric_name_to_choose_best=config["training"]["metric_name"],
-        metric_avg_to_choose_best=config["training"]["metric_avg"]
+        metric_avg_to_choose_best=config["training"]["metric_avg"],
     )
 
     path_to_save_model_last = path_to_save_trained_model / "last"

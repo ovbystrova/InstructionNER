@@ -2,7 +2,7 @@ from pathlib import Path
 
 from instruction_ner.arg_parse import get_data_args
 from instruction_ner.core.datatypes import DatasetType
-from instruction_ner.readers import CONLLReader, SpacyReader, MITReader
+from instruction_ner.readers import CONLLReader, MITReader, SpacyReader
 
 dataset2reader = {
     DatasetType.CONLL2003.value: CONLLReader,
@@ -22,7 +22,9 @@ def main():
     output_dir = args.output_folder
     if output_dir is None:
         output_dir = filepath.parent
-        print(f"--output_dir not specified. Going to save at {filepath.parent.as_posix()}")
+        print(
+            f"--output_dir not specified. Going to save at {filepath.parent.as_posix()}"
+        )
     else:
         output_dir = Path(output_dir)
 
@@ -30,15 +32,10 @@ def main():
         raise ValueError(f"Expected dataset to be on of {dataset2reader.keys()}")
 
     reader = dataset2reader[dataset]()
-    data = reader.read_from_file(
-        path_to_file=filepath
-    )
+    data = reader.read_from_file(path_to_file=filepath)
 
     filepath_save = output_dir / (filepath.stem + ".json")
-    reader.save_to_json(
-        data=data,
-        path=filepath_save
-    )
+    reader.save_to_json(data=data, path=filepath_save)
 
 
 if __name__ == "__main__":

@@ -1,14 +1,20 @@
+import warnings
+
 import torch
 from torch.utils.data import DataLoader
-
-from instruction_ner.arg_parse import get_evaluate_args
-from instruction_ner.model import Model
-from instruction_ner.collator import Collator
-from instruction_ner.dataset import T5NERDataset
-from instruction_ner.utils.utils import set_global_seed, load_config, load_json, loads_json
 from utils.evaluate_utils import evaluate
 
-import warnings
+from instruction_ner.arg_parse import get_evaluate_args
+from instruction_ner.collator import Collator
+from instruction_ner.dataset import T5NERDataset
+from instruction_ner.model import Model
+from instruction_ner.utils.utils import (
+    load_config,
+    load_json,
+    loads_json,
+    set_global_seed,
+)
+
 warnings.filterwarnings("ignore")
 
 
@@ -26,9 +32,7 @@ def main():
     data_test = loads_json(config["data"]["test"])
 
     test_dataset = T5NERDataset(
-        data=data_test,
-        instructions=instructions["test"],
-        options=options
+        data=data_test, instructions=instructions["test"], options=options
     )
 
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -37,8 +41,7 @@ def main():
     # load model
     model_path_or_name = args.model_path_or_name
     model = Model(
-        model_path_or_name=model_path_or_name,
-        tokenizer_path_or_name=model_path_or_name
+        model_path_or_name=model_path_or_name, tokenizer_path_or_name=model_path_or_name
     )
     model.model.to(device)
 
@@ -65,7 +68,7 @@ def main():
         device=device,
         epoch=0,
         generation_kwargs=generation_kwargs,
-        options=options
+        options=options,
     )
 
 

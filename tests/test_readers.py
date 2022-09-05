@@ -2,12 +2,12 @@ import json
 from pathlib import Path
 from typing import List
 from unittest import TestCase
-from parameterized import parameterized
 
 import pandas as pd
+from parameterized import parameterized
 
-from instruction_ner.core.datatypes import Span, DatasetField
-from instruction_ner.readers import CONLLReader, SpacyReader, MITReader
+from instruction_ner.core.datatypes import DatasetField, Span
+from instruction_ner.readers import CONLLReader, MITReader, SpacyReader
 
 
 # TODO optimize these tests: looks like they can be simplified
@@ -27,38 +27,26 @@ class TestConllReader(TestCase):
 
         for element in output_data:
             spans = element[DatasetField.ENTITY_SPANS.value]
-            element[DatasetField.ENTITY_SPANS.value] = [Span.from_json(x) for x in spans]
+            element[DatasetField.ENTITY_SPANS.value] = [
+                Span.from_json(x) for x in spans
+            ]
 
-    @parameterized.expand([
-        (input_data, output_data)
-    ])
+    @parameterized.expand([(input_data, output_data)])
     def test_conll_reader(self, input_lines: List[str], output_true):
 
         reader = CONLLReader()
 
-        output_pred = reader.read(
-            data=input_lines
-        )
+        output_pred = reader.read(data=input_lines)
 
-        self.assertListEqual(
-            output_pred,
-            output_true
-        )
+        self.assertListEqual(output_pred, output_true)
 
-    @parameterized.expand([
-        (input_file.as_posix(), output_data)
-    ])
+    @parameterized.expand([(input_file.as_posix(), output_data)])
     def test_conll_reader_from_file(self, input_conll_file: str, output_true):
         reader = CONLLReader()
 
-        output_pred = reader.read_from_file(
-            path_to_file=input_conll_file
-        )
+        output_pred = reader.read_from_file(path_to_file=input_conll_file)
 
-        self.assertListEqual(
-            output_pred,
-            output_true
-        )
+        self.assertListEqual(output_pred, output_true)
 
 
 class TestSpacyReader(TestCase):
@@ -78,39 +66,28 @@ class TestSpacyReader(TestCase):
 
         for element in output_data:
             spans = element[DatasetField.ENTITY_SPANS.value]
-            element[DatasetField.ENTITY_SPANS.value] = [Span.from_json(x) for x in spans]
+            element[DatasetField.ENTITY_SPANS.value] = [
+                Span.from_json(x) for x in spans
+            ]
 
-    @parameterized.expand([
-        (input_data, output_data)
-    ])
+    @parameterized.expand([(input_data, output_data)])
     def test_spacy_reader(self, input_data: pd.DataFrame, output_true):
 
         reader = SpacyReader()
 
-        output_pred = reader.read(
-            data=input_data
-        )
+        output_pred = reader.read(data=input_data)
 
-        self.assertListEqual(
-            output_pred,
-            output_true
-        )
+        self.assertListEqual(output_pred, output_true)
 
-    @parameterized.expand([
-        (input_file_csv, output_data),
-        (input_file_xlsx, output_data)
-    ])
+    @parameterized.expand(
+        [(input_file_csv, output_data), (input_file_xlsx, output_data)]
+    )
     def test_spacy_reader_from_file(self, input_file: str, output_true):
         reader = SpacyReader()
 
-        output_pred = reader.read_from_file(
-            path_to_file=input_file
-        )
+        output_pred = reader.read_from_file(path_to_file=input_file)
 
-        self.assertListEqual(
-            output_pred,
-            output_true
-        )
+        self.assertListEqual(output_pred, output_true)
 
     def test_spacy_reader_wrong_columns(self):
 
@@ -123,17 +100,11 @@ class TestSpacyReader(TestCase):
             df_wrong,
         )
 
-    @parameterized.expand([
-        "test.docs"
-    ])
+    @parameterized.expand(["test.docs"])
     def test_spacy_reader_wrong_file_extension(self, input_filename: str):
         reader = SpacyReader()
 
-        self.assertRaises(
-            ValueError,
-            reader.read_from_file,
-            input_filename
-        )
+        self.assertRaises(ValueError, reader.read_from_file, input_filename)
 
 
 class TestMITReader(TestCase):
@@ -152,35 +123,23 @@ class TestMITReader(TestCase):
 
         for element in output_data:
             spans = element[DatasetField.ENTITY_SPANS.value]
-            element[DatasetField.ENTITY_SPANS.value] = [Span.from_json(x) for x in spans]
+            element[DatasetField.ENTITY_SPANS.value] = [
+                Span.from_json(x) for x in spans
+            ]
 
-    @parameterized.expand([
-        (input_data, output_data)
-    ])
+    @parameterized.expand([(input_data, output_data)])
     def test_mit_reader(self, input_lines: List[str], output_true):
 
         reader = MITReader()
 
-        output_pred = reader.read(
-            data=input_lines
-        )
+        output_pred = reader.read(data=input_lines)
 
-        self.assertListEqual(
-            output_pred,
-            output_true
-        )
+        self.assertListEqual(output_pred, output_true)
 
-    @parameterized.expand([
-        (input_file.as_posix(), output_data)
-    ])
+    @parameterized.expand([(input_file.as_posix(), output_data)])
     def test_mit_reader_from_file(self, input_file: str, output_true):
         reader = MITReader()
 
-        output_pred = reader.read_from_file(
-            path_to_file=input_file
-        )
+        output_pred = reader.read_from_file(path_to_file=input_file)
 
-        self.assertListEqual(
-            output_pred,
-            output_true
-        )
+        self.assertListEqual(output_pred, output_true)

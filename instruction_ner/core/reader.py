@@ -1,7 +1,7 @@
-from abc import ABC, abstractmethod
 import json
+from abc import ABC, abstractmethod
 from pathlib import Path
-from typing import Any, Union, List, Dict
+from typing import Any, Dict, List, Union
 
 from instruction_ner.core.datatypes import DatasetField, Span
 
@@ -10,6 +10,7 @@ class Reader(ABC):
     """
     Abstract class for Reading different datasets
     """
+
     @abstractmethod
     def read(self, data: Any):
         raise NotImplementedError
@@ -52,12 +53,12 @@ class Reader(ABC):
         :return:
         """
 
-        entity_values = {}
+        entity_values: Dict[str, List[str]] = {}
 
         for entity in entity_spans:
             start, end, label = entity.start, entity.end, entity.label
 
-            entity_value = sentence[start: end]
+            entity_value = sentence[start:end]
 
             if label not in entity_values:
                 entity_values[label] = []
