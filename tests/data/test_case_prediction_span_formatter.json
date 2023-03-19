@@ -1,9 +1,9 @@
 {
-  "context": "Sentence: London is a capital of Great Britain",
+  "context": "Sentence: Sental is a capital of Great Gritace",
   "answers": [
-    "London is a LOC, Great Britain is a LOC.",
-    "London sdsdd LOC, Great Britain is a LOC.",
-    "Great Britain is a LOC."
+    "Sental is a LOC, Great Gritace is a LOC.",
+    "Sental sdsdd LOC, Great Gritace is a LOC.",
+    "Great Gritace is a LOC."
   ],
   "spans_true": [
     [[0,6, "LOC"], [23, 36, "LOC"]],

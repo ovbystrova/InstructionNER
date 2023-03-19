@@ -23,7 +23,11 @@ class PredictionSpanFormatter:
         """
 
         entity_spans = []
-        source_sentence = context.lstrip(Preffix.CONTEXT.value)
+        source_sentence = context.replace(
+            Preffix.CONTEXT.value,
+            "",
+            1  # replace only the first occurrence of substring
+        )
 
         prediction = prediction.strip(
             "."

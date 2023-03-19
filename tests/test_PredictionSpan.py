@@ -26,8 +26,8 @@ class TestSpanFormatter(TestCase):
     @parameterized.expand(
         [
             (context, predictions[0], spans_true[0]),
-            (context, predictions[0], spans_true[0]),
-            (context, predictions[0], spans_true[0]),
+            (context, predictions[1], spans_true[1]),
+            (context, predictions[2], spans_true[2])
         ]
     )
     def test_format_span(self, context, prediction, spans_true):
