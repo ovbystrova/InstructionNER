@@ -22,11 +22,23 @@ def calculate_metrics(
         label2index[option] = len(label2index)
 
     confusion_matrix = build_confusion_matrix(
-        spans_pred=spans_pred, spans_true=spans_true, label2index=label2index
+        spans_pred=spans_pred,
+        spans_true=spans_true,
+        label2index=label2index
+    )
+
+    support_per_label = calculate_support_classes(
+        spans=spans_true
     )
 
     metrics_per_label = calculate_metrics_from_confusion_matrix(
-        confusion_matrix=confusion_matrix, label2index=label2index
+        confusion_matrix=confusion_matrix,
+        label2index=label2index
+    )
+
+    metrics_per_label = merge_metrics_and_support(
+        metrics_per_label=metrics_per_label,
+        support_per_label=support_per_label
     )
 
     metrics = add_average_metrics(
@@ -36,6 +48,21 @@ def calculate_metrics(
     )
 
     return metrics
+
+
+def calculate_support_classes(spans: List[List[Span]]):
+    """
+    Calculate how many items there are for every label
+    :param spans: true spans
+    """
+    support_dict = {}
+    spans = [span for sub_spans in spans for span in sub_spans]
+    for span in spans:
+        if span.label not in support_dict:
+            support_dict[span.label] = 1
+        else:
+            support_dict[span.label] += 1
+    return support_dict
 
 
 def build_confusion_matrix(
@@ -195,11 +222,28 @@ def calculate_metrics_from_confusion_matrix(
             if precision > 0 and recall > 0
             else 0
         )
-        metrics_per_label["support"] = np.sum(confusion_matrix[idx][:])
 
         metrics[label] = metrics_per_label
 
     return metrics
+
+
+def merge_metrics_and_support(
+        metrics_per_label: Dict[str, Dict[str, float]],
+        support_per_label: Dict[str, float]
+) -> Dict[str, Dict[str, float]]:
+    """
+    Merge dictionary with metrics with support for every label
+    :param metrics_per_label: dictionary with label and its metrics
+    :param support_per_label: dictionary with label and its support
+    """
+    for label in metrics_per_label:
+        if label in support_per_label:
+            metrics_per_label[label]["support"] = support_per_label[label]
+        else:
+            metrics_per_label[label]["support"] = 0
+
+    return metrics_per_label
 
 
 def add_average_metrics(

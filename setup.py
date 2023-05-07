@@ -30,9 +30,10 @@ setup(
         "pyyaml==6.0",
         "SentencePiece==0.1.96",
         "scikit-learn==1.1.2",
-        "torch==1.12.0",
+        "torch==1.13.1",
         "tensorboard==2.9.1",
-        "transformers==4.3.3",
+        "tokenizers==0.13.2",
+        "transformers==4.27.1",
     ],
     keywords=["python", "nlp", "deep learning", "ner", "t5"],
     classifiers=[
