@@ -60,7 +60,7 @@ class Model:
         answer_raw = self.tokenizer.decode(outputs[0], skip_special_tokens=True)
 
         answer_spans = self.answer_formatter.format_answer_spans(
-            context=instance.context, prediction=answer_raw, options=options
+            context=text, prediction=answer_raw, options=options
         )
         answer_spans_raw = [astuple(span) for span in answer_spans]
 
